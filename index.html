@@ -1,55 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test Page</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>TikTok Page Redirect</title>
     <style>
-        /* Step 1: Reset default margins and set full viewport height */
+        /* Step 1: Reset margins and set full viewport height */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        /* Step 2: Apply blue background to the entire page */
+        /* Step 2: Blue background covering entire page */
         body {
-            background-color: #1a73e8; /* solid blue, you can change to any blue shade */
+            background-color: #1a73e8;
             min-height: 100vh;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             font-family: Arial, Helvetica, sans-serif;
         }
 
-        /* Step 3: Style the text container */
+        /* Step 3: Styling the main container */
         .container {
-            background-color: rgba(255, 255, 255, 0.9); /* semi-transparent white for contrast */
-            padding: 2rem 3rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            background-color: rgba(255, 255, 255, 0.92);
+            padding: 2.5rem 3rem;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+        }
+
+        /* Step 4: Main heading text */
+        h1 {
+            font-size: 2.8rem;
+            color: #0a2a4a;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.4);
+        }
+
+        /* Step 5: Button container */
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Step 6: General button style */
+        .btn {
+            display: inline-block;
+            padding: 0.9rem 1.8rem;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #fff;
+            background-color: #000000;
+            border: none;
+            border-radius: 40px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.2s ease, transform 0.1s ease;
             text-align: center;
         }
 
-        /* Step 4: Style the main text */
-        h1 {
-            font-size: 3rem;
-            color: #0a2a4a;
-            letter-spacing: 1px;
-            font-weight: 700;
-            margin: 0;
+        /* Step 7: TikTok brand color on hover */
+        .btn:hover {
+            background-color: #25f4ee;
+            color: #000;
+            transform: scale(1.02);
         }
 
-        /* Step 5: (Optional) add a subtle text shadow for readability */
-        h1 {
-            text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
+        /* Step 8: Different button variant – slightly different shade */
+        .btn-alt {
+            background-color: #fe2c55;
+        }
+
+        .btn-alt:hover {
+            background-color: #ff6b8a;
+            color: #fff;
         }
     </style>
 </head>
 <body>
-    <!-- Step 6: The actual content – "this is a test" in the middle -->
     <div class="container">
+        <!-- Step 9: The "this is a test" heading -->
         <h1>this is a test</h1>
+
+        <!-- Step 10: Buttons that send to TikTok pages -->
+        <div class="button-group">
+            <!-- Button 1: Opens TikTok profile (example: @tiktok) -->
+            <a href="https://www.tiktok.com/@tiktok" target="_blank" class="btn">
+                Go to TikTok Profile
+            </a>
+
+            <!-- Button 2: Opens TikTok trending page -->
+            <a href="https://www.tiktok.com" target="_blank" class="btn btn-alt">
+                Go to TikTok Home
+            </a>
+
+            <!-- Button 3: Opens a specific TikTok video (example) -->
+            <a href="https://www.tiktok.com/@tiktok/video/1234567890123456789" target="_blank" class="btn">
+                Go to Sample Video
+            </a>
+
+            <!-- Button 4: Opens TikTok search page (hashtag example) -->
+            <a href="https://www.tiktok.com/tag/test" target="_blank" class="btn btn-alt">
+                Go to #test on TikTok
+            </a>
+        </div>
     </div>
 </body>
 </html>
