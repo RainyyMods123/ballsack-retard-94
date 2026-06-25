@@ -3,59 +3,81 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>TikTok Page Redirect</title>
+    <title>Scrolling Test Page</title>
     <style>
-        /* Step 1: Reset margins and set full viewport height */
+        /* Step 1: Reset all margins and padding */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        /* Step 2: Blue background covering entire page */
+        /* Step 2: Full blue background that extends with content */
         body {
             background-color: #1a73e8;
             min-height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            font-family: Arial, Helvetica, sans-serif;
+            padding: 2rem 1rem;
         }
 
-        /* Step 3: Styling the main container */
+        /* Step 3: Main container – scrollable content area */
         .container {
             background-color: rgba(255, 255, 255, 0.92);
-            padding: 2.5rem 3rem;
+            padding: 2rem 2.5rem;
             border-radius: 16px;
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+            max-width: 700px;
+            width: 100%;
+            max-height: 80vh;           /* limits height to enable scrolling */
+            overflow-y: auto;            /* enables vertical scrolling when content overflows */
             text-align: center;
-            max-width: 500px;
-            width: 90%;
         }
 
-        /* Step 4: Main heading text */
+        /* Step 4: Heading style */
         h1 {
             font-size: 2.8rem;
             color: #0a2a4a;
             margin-bottom: 1.5rem;
             font-weight: 700;
-            text-shadow: 1px 1px 2px rgba(255,255,255,0.4);
         }
 
-        /* Step 5: Button container */
-        .button-group {
+        /* Step 5: Paragraphs and list items for scrollable content */
+        p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #1e2a3a;
+            margin-bottom: 1rem;
+            text-align: left;
+        }
+
+        ul {
+            text-align: left;
+            padding-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        li {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #1e2a3a;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Step 6: Button styling (same as before, for TikTok links) */
+        .btn-group {
             display: flex;
             flex-direction: column;
-            gap: 1rem;
-            margin-top: 0.5rem;
+            gap: 0.8rem;
+            margin: 1.5rem 0 0.5rem 0;
         }
 
-        /* Step 6: General button style */
         .btn {
             display: inline-block;
-            padding: 0.9rem 1.8rem;
-            font-size: 1.3rem;
+            padding: 0.8rem 1.5rem;
+            font-size: 1.1rem;
             font-weight: 600;
             color: #fff;
             background-color: #000000;
@@ -67,14 +89,12 @@
             text-align: center;
         }
 
-        /* Step 7: TikTok brand color on hover */
         .btn:hover {
             background-color: #25f4ee;
             color: #000;
             transform: scale(1.02);
         }
 
-        /* Step 8: Different button variant – slightly different shade */
         .btn-alt {
             background-color: #fe2c55;
         }
@@ -83,35 +103,62 @@
             background-color: #ff6b8a;
             color: #fff;
         }
+
+        /* Step 7: Custom scrollbar (optional but neat) */
+        .container::-webkit-scrollbar {
+            width: 8px;
+        }
+        .container::-webkit-scrollbar-track {
+            background: rgba(0,0,0,0.05);
+            border-radius: 10px;
+        }
+        .container::-webkit-scrollbar-thumb {
+            background: #1a73e8;
+            border-radius: 10px;
+        }
+        .container::-webkit-scrollbar-thumb:hover {
+            background: #0d47a1;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Step 9: The "this is a test" heading -->
+        <!-- Step 8: Fixed heading -->
         <h1>this is a test</h1>
 
-        <!-- Step 10: Buttons that send to TikTok pages -->
-        <div class="button-group">
-            <!-- Button 1: Opens TikTok profile (example: @tiktok) -->
+        <!-- Step 9: Scrollable content – enough lines to force scrolling -->
+        <p>Scroll down to see more content and the TikTok buttons.</p>
+
+        <ul>
+            <li>Line 1 – This page has a blue background.</li>
+            <li>Line 2 – The container has a fixed height with overflow scroll.</li>
+            <li>Line 3 – You can scroll through this list.</li>
+            <li>Line 4 – More items here to demonstrate scrolling.</li>
+            <li>Line 5 – Keep going, there's more below.</li>
+            <li>Line 6 – Scrolling works on both desktop and mobile.</li>
+            <li>Line 7 – You can also scroll using mouse wheel or touch.</li>
+            <li>Line 8 – The buttons stay at the bottom of the scroll area.</li>
+            <li>Line 9 – Almost at the buttons now.</li>
+            <li>Line 10 – This is the last line before the buttons.</li>
+        </ul>
+
+        <!-- Step 10: Buttons that send you to TikTok pages -->
+        <div class="btn-group">
             <a href="https://www.tiktok.com/@tiktok" target="_blank" class="btn">
                 Go to TikTok Profile
             </a>
-
-            <!-- Button 2: Opens TikTok trending page -->
             <a href="https://www.tiktok.com" target="_blank" class="btn btn-alt">
                 Go to TikTok Home
             </a>
-
-            <!-- Button 3: Opens a specific TikTok video (example) -->
-            <a href="https://www.tiktok.com/@tiktok/video/1234567890123456789" target="_blank" class="btn">
-                Go to Sample Video
-            </a>
-
-            <!-- Button 4: Opens TikTok search page (hashtag example) -->
-            <a href="https://www.tiktok.com/tag/test" target="_blank" class="btn btn-alt">
+            <a href="https://www.tiktok.com/tag/test" target="_blank" class="btn">
                 Go to #test on TikTok
             </a>
         </div>
+
+        <!-- Step 11: Extra note to show scroll works -->
+        <p style="text-align:center; font-size:0.9rem; color:#666; margin-top:1rem;">
+            Scroll up/down to see all content.
+        </p>
     </div>
 </body>
 </html>
