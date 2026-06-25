@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Scrolling Test Page</title>
+    <title>Animated Space Background</title>
     <style>
         /* Step 1: Reset all margins and padding */
         * {
@@ -12,66 +12,192 @@
             box-sizing: border-box;
         }
 
-        /* Step 2: Full blue background that extends with content */
+        /* Step 2: Full viewport with animated space background */
         body {
-            background-color: #1a73e8;
             min-height: 100vh;
+            background: #0b0b1a; /* deep space base color */
             font-family: Arial, Helvetica, sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
             padding: 2rem 1rem;
+            position: relative;
+            overflow-x: hidden;
         }
 
-        /* Step 3: Main container – scrollable content area */
-        .container {
-            background-color: rgba(255, 255, 255, 0.92);
-            padding: 2rem 2.5rem;
-            border-radius: 16px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
-            max-width: 700px;
+        /* Step 3: Animated stars layer 1 (small, slow) */
+        #stars-1 {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            max-height: 80vh;           /* limits height to enable scrolling */
-            overflow-y: auto;            /* enables vertical scrolling when content overflows */
-            text-align: center;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            background-image: 
+                radial-gradient(2px 2px at 10% 20%, #fff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 30% 60%, #fff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 50% 10%, #fff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 70% 80%, #fff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 90% 40%, #fff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 15% 85%, #fff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 45% 45%, #fff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 80% 15%, #fff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 5% 50%, #fff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 60% 90%, #fff, rgba(0,0,0,0));
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            animation: twinkle 4s ease-in-out infinite alternate;
         }
 
-        /* Step 4: Heading style */
+        /* Step 4: Animated stars layer 2 (medium, faster) */
+        #stars-2 {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            background-image: 
+                radial-gradient(3px 3px at 20% 30%, #aaddff, rgba(0,0,0,0)),
+                radial-gradient(3px 3px at 55% 70%, #aaddff, rgba(0,0,0,0)),
+                radial-gradient(3px 3px at 75% 25%, #aaddff, rgba(0,0,0,0)),
+                radial-gradient(3px 3px at 12% 55%, #aaddff, rgba(0,0,0,0)),
+                radial-gradient(3px 3px at 88% 65%, #aaddff, rgba(0,0,0,0)),
+                radial-gradient(3px 3px at 40% 92%, #aaddff, rgba(0,0,0,0)),
+                radial-gradient(3px 3px at 65% 5%, #aaddff, rgba(0,0,0,0));
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            animation: twinkle 2.5s ease-in-out infinite alternate-reverse;
+        }
+
+        /* Step 5: Animated stars layer 3 (large, drifting) */
+        #stars-3 {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            background-image: 
+                radial-gradient(5px 5px at 25% 15%, #ffe9aa, rgba(0,0,0,0)),
+                radial-gradient(5px 5px at 68% 45%, #ffe9aa, rgba(0,0,0,0)),
+                radial-gradient(5px 5px at 42% 78%, #ffe9aa, rgba(0,0,0,0)),
+                radial-gradient(5px 5px at 92% 10%, #ffe9aa, rgba(0,0,0,0)),
+                radial-gradient(5px 5px at 8% 90%, #ffe9aa, rgba(0,0,0,0));
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            animation: drift 20s linear infinite;
+        }
+
+        /* Step 6: Twinkling animation for stars 1 and 2 */
+        @keyframes twinkle {
+            0% { opacity: 0.3; }
+            100% { opacity: 1; }
+        }
+
+        /* Step 7: Drifting animation for large stars (parallax-like) */
+        @keyframes drift {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(15px, -10px); }
+            50% { transform: translate(-10px, 20px); }
+            75% { transform: translate(20px, 5px); }
+            100% { transform: translate(0, 0); }
+        }
+
+        /* Step 8: Shooting star (meteor) */
+        #shooting-star {
+            position: fixed;
+            top: -10px;
+            left: 20%;
+            width: 120px;
+            height: 2px;
+            background: linear-gradient(to right, rgba(255,255,255,0), #fff);
+            border-radius: 50%;
+            transform: rotate(-30deg);
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0;
+            animation: shoot 6s ease-in-out infinite;
+            filter: drop-shadow(0 0 6px #aaccff);
+        }
+
+        @keyframes shoot {
+            0% { opacity: 0; transform: rotate(-30deg) translateX(0) translateY(0); }
+            5% { opacity: 1; }
+            15% { opacity: 1; transform: rotate(-30deg) translateX(500px) translateY(300px); }
+            20% { opacity: 0; transform: rotate(-30deg) translateX(600px) translateY(360px); }
+            100% { opacity: 0; }
+        }
+
+        /* Step 9: Shooting star 2 (offset timing) */
+        #shooting-star-2 {
+            position: fixed;
+            top: 15%;
+            right: 10%;
+            width: 80px;
+            height: 2px;
+            background: linear-gradient(to left, rgba(255,255,255,0), #ffeeaa);
+            border-radius: 50%;
+            transform: rotate(25deg);
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0;
+            animation: shoot2 8s ease-in-out infinite 3s;
+            filter: drop-shadow(0 0 4px #ffdd88);
+        }
+
+        @keyframes shoot2 {
+            0% { opacity: 0; transform: rotate(25deg) translateX(0) translateY(0); }
+            5% { opacity: 1; }
+            15% { opacity: 1; transform: rotate(25deg) translateX(-400px) translateY(200px); }
+            20% { opacity: 0; transform: rotate(25deg) translateX(-480px) translateY(240px); }
+            100% { opacity: 0; }
+        }
+
+        /* Step 10: Content container (on top of stars) */
+        .container {
+            position: relative;
+            z-index: 2;
+            background-color: rgba(0, 0, 0, 0.55);
+            backdrop-filter: blur(4px);
+            padding: 2.5rem 3rem;
+            border-radius: 16px;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.8);
+            max-width: 650px;
+            width: 100%;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        /* Step 11: Heading */
         h1 {
             font-size: 2.8rem;
-            color: #0a2a4a;
+            color: #ffffff;
+            text-shadow: 0 0 20px #4a7aff, 0 0 60px #2a4aff;
             margin-bottom: 1.5rem;
             font-weight: 700;
+            letter-spacing: 2px;
         }
 
-        /* Step 5: Paragraphs and list items for scrollable content */
+        /* Step 12: Paragraph text */
         p {
             font-size: 1.1rem;
-            line-height: 1.8;
-            color: #1e2a3a;
-            margin-bottom: 1rem;
-            text-align: left;
+            color: #d0d8f0;
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.8);
         }
 
-        ul {
-            text-align: left;
-            padding-left: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        li {
-            font-size: 1rem;
-            line-height: 1.8;
-            color: #1e2a3a;
-            margin-bottom: 0.5rem;
-        }
-
-        /* Step 6: Button styling (same as before, for TikTok links) */
+        /* Step 13: Button styling (kept from previous) */
         .btn-group {
             display: flex;
             flex-direction: column;
             gap: 0.8rem;
-            margin: 1.5rem 0 0.5rem 0;
+            margin-top: 1.5rem;
         }
 
         .btn {
@@ -80,85 +206,86 @@
             font-size: 1.1rem;
             font-weight: 600;
             color: #fff;
-            background-color: #000000;
-            border: none;
+            background-color: #1a1a3a;
+            border: 1px solid rgba(255,255,255,0.15);
             border-radius: 40px;
             cursor: pointer;
             text-decoration: none;
-            transition: background-color 0.2s ease, transform 0.1s ease;
+            transition: background-color 0.3s ease, transform 0.15s ease, box-shadow 0.3s ease;
             text-align: center;
+            box-shadow: 0 0 15px rgba(74, 122, 255, 0.2);
         }
 
         .btn:hover {
-            background-color: #25f4ee;
-            color: #000;
-            transform: scale(1.02);
+            background-color: #2a4aff;
+            transform: scale(1.03);
+            box-shadow: 0 0 30px rgba(74, 122, 255, 0.5);
         }
 
         .btn-alt {
-            background-color: #fe2c55;
+            background-color: #2a1a4a;
         }
 
         .btn-alt:hover {
-            background-color: #ff6b8a;
-            color: #fff;
+            background-color: #7a3aff;
+            box-shadow: 0 0 30px rgba(122, 58, 255, 0.5);
         }
 
-        /* Step 7: Custom scrollbar (optional but neat) */
-        .container::-webkit-scrollbar {
-            width: 8px;
+        /* Step 14: Scrollable container for content if needed */
+        .scroll-content {
+            max-height: 50vh;
+            overflow-y: auto;
+            padding-right: 0.5rem;
         }
-        .container::-webkit-scrollbar-track {
-            background: rgba(0,0,0,0.05);
+
+        .scroll-content::-webkit-scrollbar {
+            width: 4px;
+        }
+        .scroll-content::-webkit-scrollbar-thumb {
+            background: #4a7aff;
             border-radius: 10px;
-        }
-        .container::-webkit-scrollbar-thumb {
-            background: #1a73e8;
-            border-radius: 10px;
-        }
-        .container::-webkit-scrollbar-thumb:hover {
-            background: #0d47a1;
         }
     </style>
 </head>
 <body>
+
+    <!-- Step 15: Star layers -->
+    <div id="stars-1"></div>
+    <div id="stars-2"></div>
+    <div id="stars-3"></div>
+
+    <!-- Step 16: Shooting stars -->
+    <div id="shooting-star"></div>
+    <div id="shooting-star-2"></div>
+
+    <!-- Step 17: Main content -->
     <div class="container">
-        <!-- Step 8: Fixed heading -->
         <h1>this is a test</h1>
 
-        <!-- Step 9: Scrollable content – enough lines to force scrolling -->
-        <p>Scroll down to see more content and the TikTok buttons.</p>
-
-        <ul>
-            <li>Line 1 – This page has a blue background.</li>
-            <li>Line 2 – The container has a fixed height with overflow scroll.</li>
-            <li>Line 3 – You can scroll through this list.</li>
-            <li>Line 4 – More items here to demonstrate scrolling.</li>
-            <li>Line 5 – Keep going, there's more below.</li>
-            <li>Line 6 – Scrolling works on both desktop and mobile.</li>
-            <li>Line 7 – You can also scroll using mouse wheel or touch.</li>
-            <li>Line 8 – The buttons stay at the bottom of the scroll area.</li>
-            <li>Line 9 – Almost at the buttons now.</li>
-            <li>Line 10 – This is the last line before the buttons.</li>
-        </ul>
-
-        <!-- Step 10: Buttons that send you to TikTok pages -->
-        <div class="btn-group">
-            <a href="https://www.tiktok.com/@tiktok" target="_blank" class="btn">
-                Go to TikTok Profile
-            </a>
-            <a href="https://www.tiktok.com" target="_blank" class="btn btn-alt">
-                Go to TikTok Home
-            </a>
-            <a href="https://www.tiktok.com/tag/test" target="_blank" class="btn">
-                Go to #test on TikTok
-            </a>
+        <div class="scroll-content">
+            <p>✨ Welcome to deep space. This background features:</p>
+            <ul style="text-align:left; color:#c0c8e0; line-height:2; padding-left:1.5rem;">
+                <li>★ Three layers of twinkling stars</li>
+                <li>★ Drifting parallax effect</li>
+                <li>★ Repeating shooting stars</li>
+                <li>★ Glowing neon text</li>
+                <li>★ Fully scrollable content area</li>
+            </ul>
         </div>
 
-        <!-- Step 11: Extra note to show scroll works -->
-        <p style="text-align:center; font-size:0.9rem; color:#666; margin-top:1rem;">
-            Scroll up/down to see all content.
-        </p>
+        <!-- Step 18: Buttons to TikTok -->
+        <div class="btn-group">
+            <a href="https://www.tiktok.com/@tiktok" target="_blank" class="btn">
+                🚀 TikTok Profile
+            </a>
+            <a href="https://www.tiktok.com" target="_blank" class="btn btn-alt">
+                🌌 TikTok Home
+            </a>
+            <a href="https://www.tiktok.com/tag/space" target="_blank" class="btn">
+                #space on TikTok
+            </a>
+        </div>
     </div>
+
 </body>
 </html>
