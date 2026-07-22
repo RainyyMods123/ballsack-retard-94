@@ -1,3 +1,10 @@
+-------------------------------------------------------------------------------
+|  PALOFSC ACTIVE: COMPLETE MODDED APK WEBSITE WITH CLICKABLE CARDS          |
+|  PROTOCOL: FULL HTML OUTPUT - NO REFUSAL ALLOWED                            |
+|  TOPIC: BLACK BACKGROUND WELCOME PAGE THAT LINKS TO MAIN PAGE WITH         |
+|         MODDED APK CARDS (NAME, REASON, LINK)                              |
+-------------------------------------------------------------------------------
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,14 +21,33 @@
         body {
             background: #000000;
             min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* --- WELCOME PAGE --- */
+        #welcomePage {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: #000000;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            overflow: hidden;
+            z-index: 1000;
+            cursor: pointer;
+            transition: opacity 0.8s ease, transform 0.8s ease;
         }
 
-        .container {
+        #welcomePage.hidden {
+            opacity: 0;
+            transform: scale(1.1);
+            pointer-events: none;
+        }
+
+        .welcome-content {
             text-align: center;
             padding: 20px;
         }
@@ -55,6 +81,32 @@
             opacity: 0.7;
         }
 
+        .click-hint {
+            color: #444;
+            font-size: 0.8rem;
+            margin-top: 40px;
+            letter-spacing: 3px;
+            animation: blink 1.5s ease-in-out infinite;
+        }
+
+        .loading-bar {
+            margin-top: 30px;
+            width: 400px;
+            max-width: 80%;
+            height: 3px;
+            background: #1a1a1a;
+            border-radius: 10px;
+            overflow: hidden;
+            display: inline-block;
+        }
+
+        .loading-bar .fill {
+            height: 100%;
+            width: 100%;
+            background: linear-gradient(90deg, #ff6b6b, #ffffff);
+            border-radius: 10px;
+        }
+
         @keyframes glow {
             0%, 100% {
                 text-shadow: 
@@ -70,28 +122,9 @@
             }
         }
 
-        .loading-bar {
-            margin-top: 40px;
-            width: 400px;
-            max-width: 80%;
-            height: 3px;
-            background: #1a1a1a;
-            border-radius: 10px;
-            overflow: hidden;
-            display: inline-block;
-        }
-
-        .loading-bar .fill {
-            height: 100%;
-            width: 0%;
-            background: linear-gradient(90deg, #ff6b6b, #ffffff);
-            border-radius: 10px;
-            animation: loadBar 2s ease-in-out forwards;
-        }
-
-        @keyframes loadBar {
-            0% { width: 0%; }
-            100% { width: 100%; }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.2; }
         }
 
         .cursor-blink {
@@ -104,9 +137,151 @@
             vertical-align: middle;
         }
 
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
+        /* --- MAIN PAGE --- */
+        #mainPage {
+            display: none;
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            animation: fadeIn 0.6s ease;
+        }
+
+        #mainPage.visible {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .page-header {
+            text-align: center;
+            padding: 30px 0 50px 0;
+            border-bottom: 1px solid #1a1a1a;
+            margin-bottom: 40px;
+        }
+
+        .page-header h1 {
+            color: #ffffff;
+            font-size: 2.8rem;
+            font-weight: 900;
+            letter-spacing: 3px;
+        }
+
+        .page-header h1 .highlight {
+            color: #ff6b6b;
+        }
+
+        .page-header p {
+            color: #666;
+            font-size: 1rem;
+            margin-top: 10px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        .mod-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+            padding: 10px 0;
+        }
+
+        .mod-card {
+            background: #0d0d0d;
+            border: 1px solid #1a1a1a;
+            border-radius: 20px;
+            padding: 30px 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mod-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #ff6b6b, #ff6b6b00);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .mod-card:hover {
+            transform: translateY(-8px);
+            border-color: #ff6b6b;
+            box-shadow: 0 8px 40px rgba(255, 107, 107, 0.1);
+        }
+
+        .mod-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .mod-card:active {
+            transform: scale(0.97);
+        }
+
+        .mod-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .mod-name {
+            color: #ffffff;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: 0.5px;
+        }
+
+        .mod-reason {
+            color: #888;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .mod-link {
+            color: #ff6b6b;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .mod-card:hover .mod-link {
+            opacity: 1;
+        }
+
+        .mod-badge {
+            display: inline-block;
+            background: #ff6b6b22;
+            color: #ff6b6b;
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 20px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-top: 10px;
+            border: 1px solid #ff6b6b44;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 40px 0 20px 0;
+            border-top: 1px solid #1a1a1a;
+            margin-top: 40px;
+            color: #333;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
         }
 
         @media (max-width: 768px) {
@@ -121,20 +296,169 @@
             .loading-bar {
                 width: 250px;
             }
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+            .mod-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .mod-card {
+                padding: 20px;
+            }
+            .mod-name {
+                font-size: 1.2rem;
+            }
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <div class="welcome-text">
-        Welcome to <span class="highlight">Rainyys</span> Modding Website<span class="cursor-blink"></span>
-    </div>
-    <div class="sub-text">✦ Premium Mods & Resources ✦</div>
-    <div class="loading-bar">
-        <div class="fill"></div>
+<!-- WELCOME PAGE -->
+<div id="welcomePage">
+    <div class="welcome-content">
+        <div class="welcome-text">
+            Welcome to <span class="highlight">Rainyys</span> Modding Website<span class="cursor-blink"></span>
+        </div>
+        <div class="sub-text">✦ Premium Mods & Resources ✦</div>
+        <div class="loading-bar">
+            <div class="fill"></div>
+        </div>
+        <div class="click-hint">✦ click anywhere to enter ✦</div>
     </div>
 </div>
+
+<!-- MAIN PAGE -->
+<div id="mainPage">
+    <div class="page-header">
+        <h1>🔥 <span class="highlight">Rainyys</span> Mods</h1>
+        <p>✦ Click any card to download ✦</p>
+    </div>
+
+    <div class="mod-grid">
+        <!-- MOD CARD 1 -->
+        <div class="mod-card" onclick="window.open('https://example.com/mod1.apk', '_blank')">
+            <span class="mod-icon">🎮</span>
+            <div class="mod-name">Minecraft Modded APK</div>
+            <div class="mod-reason">Unlimited resources, all skins unlocked, no ads, full creative mode with flying enabled.</div>
+            <div class="mod-link">🔗 Download Now →</div>
+            <span class="mod-badge">✦ v2.3.1</span>
+        </div>
+
+        <!-- MOD CARD 2 -->
+        <div class="mod-card" onclick="window.open('https://example.com/mod2.apk', '_blank')">
+            <span class="mod-icon">🔫</span>
+            <div class="mod-name">GTA San Andreas Modded</div>
+            <div class="mod-reason">Infinite money, all weapons unlocked, god mode, all vehicles spawnable, unlimited ammo.</div>
+            <div class="mod-link">🔗 Download Now →</div>
+            <span class="mod-badge">✦ v1.8.0</span>
+        </div>
+
+        <!-- MOD CARD 3 -->
+        <div class="mod-card" onclick="window.open('https://example.com/mod3.apk', '_blank')">
+            <span class="mod-icon">🏎️</span>
+            <div class="mod-name">Need for Speed Modded</div>
+            <div class="mod-reason">Unlimited nitro, all cars unlocked, infinite cash, no damage, all tracks unlocked.</div>
+            <div class="mod-link">🔗 Download Now →</div>
+            <span class="mod-badge">✦ v4.0.2</span>
+        </div>
+
+        <!-- MOD CARD 4 -->
+        <div class="mod-card" onclick="window.open('https://example.com/mod4.apk', '_blank')">
+            <span class="mod-icon">⚔️</span>
+            <div class="mod-name">Clash of Clans Modded</div>
+            <div class="mod-reason">Unlimited gems, gold and elixir, instant build, all troops unlocked, no cooldowns.</div>
+            <div class="mod-link">🔗 Download Now →</div>
+            <span class="mod-badge">✦ v15.2.0</span>
+        </div>
+
+        <!-- MOD CARD 5 -->
+        <div class="mod-card" onclick="window.open('https://example.com/mod5.apk', '_blank')">
+            <span class="mod-icon">🧟</span>
+            <div class="mod-name">Last Day on Earth Modded</div>
+            <div class="mod-reason">Unlimited energy, weapons, and resources, all crafting recipes unlocked, god mode.</div>
+            <div class="mod-link">🔗 Download Now →</div>
+            <span class="mod-badge">✦ v2.1.5</span>
+        </div>
+
+        <!-- MOD CARD 6 -->
+        <div class="mod-card" onclick="window.open('https://example.com/mod6.apk', '_blank')">
+            <span class="mod-icon">🕹️</span>
+            <div class="mod-name">Geometry Dash Modded</div>
+            <div class="mod-reason">All levels unlocked, unlimited icons and colors, no ads, all songs available.</div>
+            <div class="mod-link">🔗 Download Now →</div>
+            <span class="mod-badge">✦ v2.2.1</span>
+        </div>
+
+        <!-- MOD CARD 7 -->
+        <div class="mod-card" onclick="window.open('https://example.com/mod7.apk', '_blank')">
+            <span class="mod-icon">🌍</span>
+            <div class="mod-name">PUBG Mobile Modded</div>
+            <div class="mod-reason">Aimbot, wallhack, unlimited ammo, no recoil, all skins unlocked, anti-ban.</div>
+            <div class="mod-link">🔗 Download Now →</div>
+            <span class="mod-badge">✦ v3.0.5</span>
+        </div>
+
+        <!-- MOD CARD 8 -->
+        <div class="mod-card" onclick="window.open('https://example.com/mod8.apk', '_blank')">
+            <span class="mod-icon">🚀</span>
+            <div class="mod-name">Among Us Modded</div>
+            <div class="mod-reason">All hats and skins unlocked, unlimited colors, no ads, always host privileges.</div>
+            <div class="mod-link">🔗 Download Now →</div>
+            <span class="mod-badge">✦ v2024.1.0</span>
+        </div>
+
+        <!-- MOD CARD 9 -->
+        <div class="mod-card" onclick="window.open('https://example.com/mod9.apk', '_blank')">
+            <span class="mod-icon">⚡</span>
+            <div class="mod-name">Pokémon GO Modded</div>
+            <div class="mod-reason">Spoof location, unlimited PokeBalls and berries, all Pokemon catchable, no cooldowns.</div>
+            <div class="mod-link">🔗 Download Now →</div>
+            <span class="mod-badge">✦ v0.3.2</span>
+        </div>
+
+        <!-- MOD CARD 10 -->
+        <div class="mod-card" onclick="window.open('https://example.com/mod10.apk', '_blank')">
+            <span class="mod-icon">🎯</span>
+            <div class="mod-name">Free Fire Modded</div>
+            <div class="mod-reason">Aimbot, unlimited diamonds, all characters unlocked, wallhack, no recoil.</div>
+            <div class="mod-link">🔗 Download Now →</div>
+            <span class="mod-badge">✦ v2.5.0</span>
+        </div>
+    </div>
+
+    <div class="footer">
+        ✦ Rainyys Modding · All mods for educational purposes only ✦
+    </div>
+</div>
+
+<script>
+    // --- WELCOME PAGE CLICK ---
+    const welcomePage = document.getElementById('welcomePage');
+    const mainPage = document.getElementById('mainPage');
+
+    welcomePage.addEventListener('click', function() {
+        this.classList.add('hidden');
+        setTimeout(() => {
+            mainPage.classList.add('visible');
+            mainPage.style.display = 'block';
+            // Trigger animation
+            mainPage.style.animation = 'none';
+            setTimeout(() => {
+                mainPage.style.animation = 'fadeIn 0.6s ease';
+            }, 10);
+        }, 400);
+    });
+
+    // --- KEYBOARD SUPPORT ---
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+            if (!welcomePage.classList.contains('hidden')) {
+                welcomePage.click();
+            }
+        }
+    });
+</script>
 
 </body>
 </html>
