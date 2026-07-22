@@ -513,15 +513,9 @@
             margin-bottom: 12px;
         }
 
-        .mod-size {
-            color: #555;
-            font-size: 0.75rem;
-            letter-spacing: 0.5px;
-        }
-
         .mod-downloads {
             color: #555;
-            font-size: 0.75rem;
+            font-size: 0.85rem;
         }
 
         .mod-downloads strong {
@@ -888,7 +882,7 @@
 
     <!-- STATS BAR -->
     <div class="stats-bar">
-        <span>📦 Total Mods: <strong id="totalMods">10</strong></span>
+        <span>📦 Total Mods: <strong id="totalMods">0</strong></span>
         <span>⬇️ Total Downloads: <strong id="totalDownloads">0</strong></span>
         <span>⭐ Avg Rating: <strong id="avgRating">0.0</strong></span>
         <span>❤️ Favorites: <strong id="totalFavorites">0</strong></span>
@@ -910,8 +904,6 @@
             <button class="tab-btn active" data-filter="all">All</button>
             <button class="tab-btn" data-filter="applab">Applab</button>
             <button class="tab-btn" data-filter="itch">Itch</button>
-            <button class="tab-btn" data-filter="fps">FPS</button>
-            <button class="tab-btn" data-filter="sandbox">Sandbox</button>
         </div>
         <select class="sort-select" id="sortSelect">
             <option value="default">Sort by: Latest</option>
@@ -931,8 +923,7 @@
             <div class="mod-name">Electric Taggering</div>
             <div class="mod-reason">Reviving AMH - The ultimate modding experience!</div>
             <div class="mod-meta">
-                <span class="mod-size">📦 45.2 MB</span>
-                <span class="mod-downloads">⬇️ <strong>156</strong> downloads</span>
+                <span class="mod-downloads">⬇️ <strong class="download-count" data-initial="156">156</strong> downloads</span>
             </div>
             <div class="mod-rating">
                 <span class="star active" data-val="1">★</span>
@@ -953,8 +944,7 @@
             <div class="mod-name">Speedy Monkeys</div>
             <div class="mod-reason">Reviving AMH - Fast-paced monkey mayhem!</div>
             <div class="mod-meta">
-                <span class="mod-size">📦 32.1 MB</span>
-                <span class="mod-downloads">⬇️ <strong>89</strong> downloads</span>
+                <span class="mod-downloads">⬇️ <strong class="download-count" data-initial="89">89</strong> downloads</span>
             </div>
             <div class="mod-rating">
                 <span class="star active" data-val="1">★</span>
@@ -974,8 +964,7 @@
             <div class="mod-name">Timmy tag</div>
             <div class="mod-reason">Reviving AMH - The classic tag game reimagined!</div>
             <div class="mod-meta">
-                <span class="mod-size">📦 28.7 MB</span>
-                <span class="mod-downloads">⬇️ <strong>234</strong> downloads</span>
+                <span class="mod-downloads">⬇️ <strong class="download-count" data-initial="234">234</strong> downloads</span>
             </div>
             <div class="mod-rating">
                 <span class="star active" data-val="1">★</span>
@@ -995,8 +984,7 @@
             <div class="mod-name">Project Ice</div>
             <div class="mod-reason">Reviving AMH - Chill out with this cool mod!</div>
             <div class="mod-meta">
-                <span class="mod-size">📦 52.3 MB</span>
-                <span class="mod-downloads">⬇️ <strong>67</strong> downloads</span>
+                <span class="mod-downloads">⬇️ <strong class="download-count" data-initial="67">67</strong> downloads</span>
             </div>
             <div class="mod-rating">
                 <span class="star active" data-val="1">★</span>
@@ -1009,15 +997,14 @@
             <span class="mod-badge new">🆕 NEW</span>
         </div>
 
-        <!-- MOD CARD 5 - FPS -->
-        <div class="mod-card" data-category="fps" data-downloads="12" data-rating="3.8" data-name="PlaceHolder 1" data-link="https://example.com/mod5.apk">
+        <!-- MOD CARD 5 - Applab -->
+        <div class="mod-card" data-category="applab" data-downloads="12" data-rating="3.8" data-name="PlaceHolder 1" data-link="https://example.com/mod5.apk">
             <button class="favorite-btn" onclick="event.stopPropagation(); toggleFavorite(this)">🤍</button>
             <span class="mod-icon">❓</span>
             <div class="mod-name">PlaceHolder 1</div>
             <div class="mod-reason">Coming soon - Stay tuned for updates!</div>
             <div class="mod-meta">
-                <span class="mod-size">📦 ?? MB</span>
-                <span class="mod-downloads">⬇️ <strong>12</strong> downloads</span>
+                <span class="mod-downloads">⬇️ <strong class="download-count" data-initial="12">12</strong> downloads</span>
             </div>
             <div class="mod-rating">
                 <span class="star active" data-val="1">★</span>
@@ -1029,389 +1016,5 @@
             <div class="mod-link">🔗 Download Now →</div>
         </div>
 
-        <!-- MOD CARD 6 - Sandbox -->
-        <div class="mod-card" data-category="sandbox" data-downloads="8" data-rating="3.5" data-name="PlaceHolder 2" data-link="https://example.com/mod6.apk">
-            <button class="favorite-btn" onclick="event.stopPropagation(); toggleFavorite(this)">🤍</button>
-            <span class="mod-icon">❓</span>
-            <div class="mod-name">PlaceHolder 2</div>
-            <div class="mod-reason">Coming soon - Stay tuned for updates!</div>
-            <div class="mod-meta">
-                <span class="mod-size">📦 ?? MB</span>
-                <span class="mod-downloads">⬇️ <strong>8</strong> downloads</span>
-            </div>
-            <div class="mod-rating">
-                <span class="star active" data-val="1">★</span>
-                <span class="star active" data-val="2">★</span>
-                <span class="star" data-val="3">★</span>
-                <span class="star" data-val="4">★</span>
-                <span class="star" data-val="5">★</span>
-            </div>
-            <div class="mod-link">🔗 Download Now →</div>
-        </div>
-
-        <!-- MOD CARD 7 - Applab -->
-        <div class="mod-card" data-category="applab" data-downloads="5" data-rating="3.0" data-name="PlaceHolder 3" data-link="https://example.com/mod7.apk">
-            <button class="favorite-btn" onclick="event.stopPropagation(); toggleFavorite(this)">🤍</button>
-            <span class="mod-icon">❓</span>
-            <div class="mod-name">PlaceHolder 3</div>
-            <div class="mod-reason">Coming soon - Stay tuned for updates!</div>
-            <div class="mod-meta">
-                <span class="mod-size">📦 ?? MB</span>
-                <span class="mod-downloads">⬇️ <strong>5</strong> downloads</span>
-            </div>
-            <div class="mod-rating">
-                <span class="star active" data-val="1">★</span>
-                <span class="star active" data-val="2">★</span>
-                <span class="star" data-val="3">★</span>
-                <span class="star" data-val="4">★</span>
-                <span class="star" data-val="5">★</span>
-            </div>
-            <div class="mod-link">🔗 Download Now →</div>
-        </div>
-
-        <!-- MOD CARD 8 - Itch -->
-        <div class="mod-card" data-category="itch" data-downloads="3" data-rating="2.8" data-name="PlaceHolder 4" data-link="https://example.com/mod8.apk">
-            <button class="favorite-btn" onclick="event.stopPropagation(); toggleFavorite(this)">🤍</button>
-            <span class="mod-icon">❓</span>
-            <div class="mod-name">PlaceHolder 4</div>
-            <div class="mod-reason">Coming soon - Stay tuned for updates!</div>
-            <div class="mod-meta">
-                <span class="mod-size">📦 ?? MB</span>
-                <span class="mod-downloads">⬇️ <strong>3</strong> downloads</span>
-            </div>
-            <div class="mod-rating">
-                <span class="star active" data-val="1">★</span>
-                <span class="star" data-val="2">★</span>
-                <span class="star" data-val="3">★</span>
-                <span class="star" data-val="4">★</span>
-                <span class="star" data-val="5">★</span>
-            </div>
-            <div class="mod-link">🔗 Download Now →</div>
-        </div>
-
-        <!-- MOD CARD 9 - FPS -->
-        <div class="mod-card" data-category="fps" data-downloads="2" data-rating="2.5" data-name="PlaceHolder 5" data-link="https://example.com/mod9.apk">
-            <button class="favorite-btn" onclick="event.stopPropagation(); toggleFavorite(this)">🤍</button>
-            <span class="mod-icon">❓</span>
-            <div class="mod-name">PlaceHolder 5</div>
-            <div class="mod-reason">Coming soon - Stay tuned for updates!</div>
-            <div class="mod-meta">
-                <span class="mod-size">📦 ?? MB</span>
-                <span class="mod-downloads">⬇️ <strong>2</strong> downloads</span>
-            </div>
-            <div class="mod-rating">
-                <span class="star active" data-val="1">★</span>
-                <span class="star" data-val="2">★</span>
-                <span class="star" data-val="3">★</span>
-                <span class="star" data-val="4">★</span>
-                <span class="star" data-val="5">★</span>
-            </div>
-            <div class="mod-link">🔗 Download Now →</div>
-        </div>
-
-        <!-- MOD CARD 10 - Sandbox -->
-        <div class="mod-card" data-category="sandbox" data-downloads="1" data-rating="2.0" data-name="PlaceHolder 6" data-link="https://example.com/mod10.apk">
-            <button class="favorite-btn" onclick="event.stopPropagation(); toggleFavorite(this)">🤍</button>
-            <span class="mod-icon">❓</span>
-            <div class="mod-name">PlaceHolder 6</div>
-            <div class="mod-reason">Coming soon - Stay tuned for updates!</div>
-            <div class="mod-meta">
-                <span class="mod-size">📦 ?? MB</span>
-                <span class="mod-downloads">⬇️ <strong>1</strong> downloads</span>
-            </div>
-            <div class="mod-rating">
-                <span class="star active" data-val="1">★</span>
-                <span class="star" data-val="2">★</span>
-                <span class="star" data-val="3">★</span>
-                <span class="star" data-val="4">★</span>
-                <span class="star" data-val="5">★</span>
-            </div>
-            <div class="mod-link">🔗 Download Now →</div>
-        </div>
-    </div>
-
-    <div class="footer">
-        ✦ Rainyys Modding · All mods for entertainment purposes only ✦
-    </div>
-</div>
-
-<!-- MODAL -->
-<div class="modal-overlay" id="modalOverlay">
-    <div class="modal-box">
-        <button class="modal-close" id="modalClose">✕</button>
-        <span class="mod-icon" id="modalIcon">🎮</span>
-        <div class="mod-name" id="modalName">Mod Name</div>
-        <div class="mod-reason" id="modalReason">Description here</div>
-        <div class="mod-meta">
-            <span class="mod-size" id="modalSize">📦 0 MB</span>
-            <span class="mod-downloads" id="modalDownloads">⬇️ 0 downloads</span>
-        </div>
-        <div class="mod-rating" id="modalRating"></div>
-        <a class="modal-download-btn" id="modalDownloadBtn" href="#" target="_blank">⬇️ Download Now</a>
-    </div>
-</div>
-
-<!-- BACK TO TOP -->
-<button id="backToTop">↑</button>
-
-<script>
-    // --- CUSTOM CURSOR ---
-    const cursor = document.getElementById('customCursor');
-    document.addEventListener('mousemove', (e) => {
-        cursor.style.left = e.clientX + 'px';
-        cursor.style.top = e.clientY + 'px';
-        cursor.classList.add('active');
-    });
-
-    document.addEventListener('mouseleave', () => {
-        cursor.classList.remove('active');
-    });
-
-    document.querySelectorAll('a, button, .mod-card, .tab-btn, .mod-download-btn').forEach(el => {
-        el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-        el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
-    });
-
-    // --- WELCOME PAGE ---
-    const welcomePage = document.getElementById('welcomePage');
-    const mainPage = document.getElementById('mainPage');
-
-    welcomePage.addEventListener('click', function() {
-        this.classList.add('hidden');
-        setTimeout(() => {
-            mainPage.classList.add('visible');
-            mainPage.style.display = 'block';
-            mainPage.style.animation = 'none';
-            setTimeout(() => {
-                mainPage.style.animation = 'fadeIn 0.6s ease';
-            }, 10);
-        }, 400);
-    });
-
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Enter' || e.key === ' ') {
-            if (!welcomePage.classList.contains('hidden')) {
-                welcomePage.click();
-            }
-        }
-    });
-
-    // --- DARK/LIGHT MODE ---
-    let darkMode = true;
-    const themeToggle = document.getElementById('themeToggle');
-    themeToggle.addEventListener('click', () => {
-        darkMode = !darkMode;
-        document.body.classList.toggle('light-mode', !darkMode);
-        themeToggle.textContent = darkMode ? '🌙 Dark' : '☀️ Light';
-        localStorage.setItem('theme', darkMode ? 'dark' : 'light');
-    });
-
-    if (localStorage.getItem('theme') === 'light') {
-        darkMode = false;
-        document.body.classList.add('light-mode');
-        themeToggle.textContent = '☀️ Light';
-    }
-
-    // --- BACK TO TOP ---
-    const backToTop = document.getElementById('backToTop');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 400) {
-            backToTop.classList.add('visible');
-        } else {
-            backToTop.classList.remove('visible');
-        }
-    });
-
-    backToTop.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-    // --- SHARE ---
-    document.getElementById('shareBtn').addEventListener('click', () => {
-        const url = window.location.href;
-        if (navigator.share) {
-            navigator.share({
-                title: 'Rainyys Modding',
-                text: 'Check out Rainyys Modding Website!',
-                url: url
-            });
-        } else {
-            navigator.clipboard.writeText(url).then(() => {
-                alert('✅ Link copied to clipboard!');
-            });
-        }
-    });
-
-    // --- FAVORITES ---
-    let favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
-
-    function toggleFavorite(btn) {
-        const card = btn.closest('.mod-card');
-        const name = card.dataset.name;
-        const index = favorites.indexOf(name);
-        if (index > -1) {
-            favorites.splice(index, 1);
-            btn.textContent = '🤍';
-            btn.classList.remove('favorited');
-        } else {
-            favorites.push(name);
-            btn.textContent = '❤️';
-            btn.classList.add('favorited');
-        }
-        localStorage.setItem('favorites', JSON.stringify(favorites));
-        updateStats();
-    }
-
-    // Load favorites
-    document.querySelectorAll('.mod-card').forEach(card => {
-        const name = card.dataset.name;
-        const btn = card.querySelector('.favorite-btn');
-        if (favorites.includes(name)) {
-            btn.textContent = '❤️';
-            btn.classList.add('favorited');
-        }
-    });
-
-    // --- MODAL ---
-    const modalOverlay = document.getElementById('modalOverlay');
-    const modalClose = document.getElementById('modalClose');
-
-    document.querySelectorAll('.mod-card').forEach(card => {
-        card.addEventListener('click', function(e) {
-            if (e.target.closest('.favorite-btn')) return;
-            const name = this.dataset.name;
-            const icon = this.querySelector('.mod-icon').textContent;
-            const reason = this.querySelector('.mod-reason').textContent;
-            const size = this.querySelector('.mod-size').textContent;
-            const downloads = this.querySelector('.mod-downloads').textContent;
-            const link = this.dataset.link;
-            const stars = this.querySelectorAll('.mod-rating .star');
-
-            document.getElementById('modalIcon').textContent = icon;
-            document.getElementById('modalName').textContent = name;
-            document.getElementById('modalReason').textContent = reason;
-            document.getElementById('modalSize').textContent = size;
-            document.getElementById('modalDownloads').textContent = downloads;
-            document.getElementById('modalDownloadBtn').href = link;
-
-            const ratingContainer = document.getElementById('modalRating');
-            ratingContainer.innerHTML = '';
-            stars.forEach((star) => {
-                const s = document.createElement('span');
-                s.className = 'star' + (star.classList.contains('active') ? ' active' : '');
-                s.textContent = '★';
-                ratingContainer.appendChild(s);
-            });
-
-            modalOverlay.classList.add('show');
-            document.body.style.overflow = 'hidden';
-        });
-    });
-
-    modalClose.addEventListener('click', () => {
-        modalOverlay.classList.remove('show');
-        document.body.style.overflow = '';
-    });
-
-    modalOverlay.addEventListener('click', (e) => {
-        if (e.target === modalOverlay) {
-            modalOverlay.classList.remove('show');
-            document.body.style.overflow = '';
-        }
-    });
-
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-            modalOverlay.classList.remove('show');
-            document.body.style.overflow = '';
-        }
-    });
-
-    // --- SEARCH ---
-    const searchInput = document.getElementById('searchInput');
-    searchInput.addEventListener('input', filterMods);
-
-    // --- FILTERS ---
-    let currentFilter = 'all';
-    document.querySelectorAll('.tab-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-            this.classList.add('active');
-            currentFilter = this.dataset.filter;
-            filterMods();
-        });
-    });
-
-    function filterMods() {
-        const query = searchInput.value.toLowerCase();
-        const cards = document.querySelectorAll('.mod-card');
-        cards.forEach(card => {
-            const name = card.dataset.name.toLowerCase();
-            const reason = card.querySelector('.mod-reason').textContent.toLowerCase();
-            const category = card.dataset.category;
-            const matchesSearch = name.includes(query) || reason.includes(query);
-            const matchesFilter = currentFilter === 'all' || category === currentFilter;
-            card.classList.toggle('hidden', !(matchesSearch && matchesFilter));
-        });
-    }
-
-    // --- SORT ---
-    document.getElementById('sortSelect').addEventListener('change', function() {
-        const grid = document.getElementById('modGrid');
-        const cards = Array.from(grid.querySelectorAll('.mod-card:not(.hidden)'));
-        const hidden = Array.from(grid.querySelectorAll('.mod-card.hidden'));
-
-        cards.sort((a, b) => {
-            switch(this.value) {
-                case 'downloads':
-                    return parseInt(b.dataset.downloads) - parseInt(a.dataset.downloads);
-                case 'rating':
-                    return parseFloat(b.dataset.rating) - parseFloat(a.dataset.rating);
-                case 'az':
-                    return a.dataset.name.localeCompare(b.dataset.name);
-                case 'za':
-                    return b.dataset.name.localeCompare(a.dataset.name);
-                default:
-                    return 0;
-            }
-        });
-
-        cards.forEach(card => grid.appendChild(card));
-        hidden.forEach(card => grid.appendChild(card));
-    });
-
-    // --- SPOTLIGHT (random) ---
-    function updateSpotlight() {
-        const cards = document.querySelectorAll('.mod-card');
-        const visible = Array.from(cards).filter(c => !c.classList.contains('hidden'));
-        if (visible.length === 0) return;
-        const random = visible[Math.floor(Math.random() * visible.length)];
-        document.getElementById('spotlightName').textContent = random.dataset.name;
-        document.getElementById('spotlightDesc').textContent = random.querySelector('.mod-reason').textContent;
-    }
-    updateSpotlight();
-    setInterval(updateSpotlight, 30000);
-
-    // --- STATS ---
-    function updateStats() {
-        const cards = document.querySelectorAll('.mod-card');
-        const total = cards.length;
-        let totalDownloads = 0;
-        let totalRating = 0;
-        let rated = 0;
-
-        cards.forEach(card => {
-            totalDownloads += parseInt(card.dataset.downloads) || 0;
-            const rating = parseFloat(card.dataset.rating) || 0;
-            if (rating > 0) { totalRating += rating; rated++; }
-        });
-
-        document.getElementById('totalMods').textContent = total;
-        document.getElementById('totalDownloads').textContent = totalDownloads;
-        document.getElementById('avgRating').textContent = rated > 0 ? (totalRating / rated).toFixed(1) : '0.0';
-        document.getElementById('totalFavorites').textContent = favorites.length;
-    }
-    updateStats();
-</script>
-</body>
-</html>
+        <!-- MOD CARD 6 - Itch -->
+        <div class="mod-card" data-category="itch" data-downloads="8" data-rating="3.5" data-name="PlaceHolder 2" data-link="https://example.com/mod6
