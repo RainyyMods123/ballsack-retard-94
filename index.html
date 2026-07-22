@@ -2,258 +2,139 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Friends - TikTok Buttons</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rainyys Modding</title>
     <style>
-        /* Step 1: Reset */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        /* Step 2: Dark space-like background */
         body {
+            background: #000000;
             min-height: 100vh;
-            background: #0d0d1a;
-            font-family: 'Segoe UI', Arial, sans-serif;
             display: flex;
-            flex-direction: column;
-            align-items: center;
             justify-content: center;
-            padding: 2rem 1rem;
+            align-items: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
         }
 
-        /* Step 3: Main container */
         .container {
-            background: rgba(20, 20, 40, 0.85);
-            backdrop-filter: blur(6px);
-            padding: 2.5rem 2.8rem;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9);
-            max-width: 550px;
-            width: 100%;
             text-align: center;
+            padding: 20px;
         }
 
-        /* Step 4: Header */
-        h1 {
-            font-size: 1.6rem;
-            color: #aabbff;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            font-weight: 400;
-            margin-bottom: 0.3rem;
-            text-shadow: 0 0 20px rgba(100, 130, 255, 0.3);
+        .welcome-text {
+            color: #ffffff;
+            font-size: 4rem;
+            font-weight: 900;
+            letter-spacing: 4px;
+            text-shadow: 
+                0 0 10px rgba(255, 255, 255, 0.3),
+                0 0 20px rgba(255, 255, 255, 0.2),
+                0 0 40px rgba(255, 255, 255, 0.1);
+            animation: glow 3s ease-in-out infinite;
         }
 
-        .subhead {
-            color: #6688cc;
-            font-size: 0.8rem;
-            letter-spacing: 2px;
-            margin-bottom: 1.8rem;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            padding-bottom: 0.8rem;
+        .welcome-text .highlight {
+            color: #ff6b6b;
+            text-shadow: 
+                0 0 10px rgba(255, 107, 107, 0.5),
+                0 0 20px rgba(255, 107, 107, 0.3),
+                0 0 40px rgba(255, 107, 107, 0.2);
         }
 
-        /* Step 5: Button grid - matches the style in the image */
-        .friend-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 0.6rem;
-            margin: 1.2rem 0;
-        }
-
-        /* Step 6: Individual friend button row - like clickable BTM */
-        .friend-btn {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 12px;
-            padding: 0.7rem 1.2rem;
-            text-decoration: none;
-            color: #c8d4f0;
-            transition: all 0.25s ease;
-            cursor: pointer;
-        }
-
-        .friend-btn:hover {
-            background: rgba(255, 255, 255, 0.10);
-            border-color: rgba(100, 150, 255, 0.3);
-            transform: scale(1.02);
-            box-shadow: 0 0 25px rgba(80, 120, 255, 0.15);
-        }
-
-        /* Step 7: Left side - clickable name with @ style */
-        .friend-name {
-            font-size: 1.05rem;
-            font-weight: 500;
-            color: #d0dcff;
-            letter-spacing: 0.5px;
-        }
-
-        .friend-name .at-symbol {
-            color: #6688dd;
-            margin-right: 4px;
-            font-weight: 300;
-        }
-
-        /* Step 8: Right side - arrow indicator like in the image */
-        .friend-arrow {
-            color: #445577;
+        .sub-text {
+            color: #888;
             font-size: 1.2rem;
-            transition: color 0.2s;
-        }
-
-        .friend-btn:hover .friend-arrow {
-            color: #88bbff;
-        }
-
-        /* Step 9: Special styling for "Rainyy" and "Tr4gic" (custom labels) */
-        .friend-btn .custom-label {
-            color: #ffb07c;
-            font-weight: 400;
-            font-size: 0.8rem;
-            background: rgba(255, 160, 80, 0.12);
-            padding: 0.1rem 0.7rem;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 160, 80, 0.15);
-        }
-
-        /* Step 10: "NOW PLAYING" footer like in the image */
-        .now-playing {
-            margin-top: 1.8rem;
-            padding-top: 1rem;
-            border-top: 1px solid rgba(255,255,255,0.04);
-            color: #445577;
-            font-size: 0.75rem;
-            letter-spacing: 1px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .now-playing .mute {
-            color: #334466;
-            background: rgba(255,255,255,0.03);
-            padding: 0.2rem 1rem;
-            border-radius: 20px;
-            font-size: 0.65rem;
-        }
-
-        /* Step 11: Friends label */
-        .friends-label {
-            color: #5577aa;
-            font-size: 0.7rem;
-            letter-spacing: 3px;
+            margin-top: 20px;
+            letter-spacing: 6px;
             text-transform: uppercase;
-            text-align: left;
-            margin-bottom: 0.3rem;
-            opacity: 0.6;
-        }
-
-        /* Step 12: Checkbox style (visual only) */
-        .friend-btn .check-box {
-            color: #334466;
-            font-size: 1.1rem;
-            margin-right: 0.8rem;
-            opacity: 0.3;
-        }
-
-        .friend-btn:hover .check-box {
             opacity: 0.7;
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                text-shadow: 
+                    0 0 10px rgba(255, 255, 255, 0.3),
+                    0 0 20px rgba(255, 255, 255, 0.2),
+                    0 0 40px rgba(255, 255, 255, 0.1);
+            }
+            50% {
+                text-shadow: 
+                    0 0 20px rgba(255, 255, 255, 0.5),
+                    0 0 40px rgba(255, 255, 255, 0.3),
+                    0 0 80px rgba(255, 255, 255, 0.2);
+            }
+        }
+
+        .loading-bar {
+            margin-top: 40px;
+            width: 400px;
+            max-width: 80%;
+            height: 3px;
+            background: #1a1a1a;
+            border-radius: 10px;
+            overflow: hidden;
+            display: inline-block;
+        }
+
+        .loading-bar .fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #ff6b6b, #ffffff);
+            border-radius: 10px;
+            animation: loadBar 2s ease-in-out forwards;
+        }
+
+        @keyframes loadBar {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+
+        .cursor-blink {
+            display: inline-block;
+            width: 3px;
+            height: 1em;
+            background: #ff6b6b;
+            margin-left: 5px;
+            animation: blink 1s step-end infinite;
+            vertical-align: middle;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        @media (max-width: 768px) {
+            .welcome-text {
+                font-size: 2.2rem;
+                letter-spacing: 2px;
+            }
+            .sub-text {
+                font-size: 0.8rem;
+                letter-spacing: 3px;
+            }
+            .loading-bar {
+                width: 250px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <!-- Step 13: Header like the image -->
-        <h1>@rainyy.mods</h1>
-        <div class="subhead">THE NAMES A CLICKABLE BTW</div>
-
-        <!-- Step 14: Friends label -->
-        <div class="friends-label">[ FRIENDS ]</div>
-
-        <!-- Step 15: Friend buttons with provided TikTok links -->
-        <div class="friend-grid">
-
-            <!-- @isolated_just_chillin -->
-            <a href="https://www.tiktok.com/@isolated_just_chillin" target="_blank" class="friend-btn">
-                <span>
-                    <span class="check-box">☐</span>
-                    <span class="friend-name"><span class="at-symbol">@</span>isolated_just_chillin</span>
-                </span>
-                <span class="friend-arrow">▶</span>
-            </a>
-
-            <!-- @rezzslowed -->
-            <a href="https://www.tiktok.com/@rezzslowed" target="_blank" class="friend-btn">
-                <span>
-                    <span class="check-box">☐</span>
-                    <span class="friend-name"><span class="at-symbol">@</span>rezzslowed</span>
-                </span>
-                <span class="friend-arrow">▶</span>
-            </a>
-
-            <!-- @billyyates09 → displayed as "Rainyy" -->
-            <a href="https://tiktok.com/@billyyates09" target="_blank" class="friend-btn">
-                <span>
-                    <span class="check-box">☐</span>
-                    <span class="friend-name">
-                        <span class="at-symbol">@</span>Rainyy
-                        <span class="custom-label">billyyates09</span>
-                    </span>
-                </span>
-                <span class="friend-arrow">▶</span>
-            </a>
-
-            <!-- @sonic.vr21 -->
-            <a href="https://www.tiktok.com/@sonic.vr21" target="_blank" class="friend-btn">
-                <span>
-                    <span class="check-box">☐</span>
-                    <span class="friend-name"><span class="at-symbol">@</span>sonic.vr21</span>
-                </span>
-                <span class="friend-arrow">▶</span>
-            </a>
-
-            <!-- @4xgm1 -->
-            <a href="https://www.tiktok.com/@4xgm1" target="_blank" class="friend-btn">
-                <span>
-                    <span class="check-box">☐</span>
-                    <span class="friend-name"><span class="at-symbol">@</span>4xgm1</span>
-                </span>
-                <span class="friend-arrow">▶</span>
-            </a>
-
-            <!-- @tragic.on.90hz → displayed as "Tr4gic" -->
-            <a href="https://www.tiktok.com/@tragic.on.90hz" target="_blank" class="friend-btn">
-                <span>
-                    <span class="check-box">☐</span>
-                    <span class="friend-name">
-                        <span class="at-symbol">@</span>Tr4gic
-                        <span class="custom-label">tragic.on.90hz</span>
-                    </span>
-                </span>
-                <span class="friend-arrow">▶</span>
-            </a>
-
-        </div>
-
-        <!-- Step 16: Now playing footer -->
-        <div class="now-playing">
-            <span>[ NOW PLAYING - 5matory - 5matory House ]</span>
-            <span class="mute">[ MUTE ]</span>
-        </div>
-
-        <!-- Step 17: Extra small text like in the image -->
-        <div style="margin-top:1rem; color:#223355; font-size:0.55rem; letter-spacing:1px; opacity:0.4;">
-            discord.gg/sparktag 2.1k+ = Founder
-        </div>
+<div class="container">
+    <div class="welcome-text">
+        Welcome to <span class="highlight">Rainyys</span> Modding Website<span class="cursor-blink"></span>
     </div>
+    <div class="sub-text">✦ Premium Mods & Resources ✦</div>
+    <div class="loading-bar">
+        <div class="fill"></div>
+    </div>
+</div>
 
 </body>
 </html>
