@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🔧 AMHModding Server - File Manager</title>
+    <title>📢 Community & Official Posts</title>
     <style>
         * {
             margin: 0;
@@ -20,17 +20,15 @@
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 0 auto;
             background: #13161f;
             border-radius: 20px;
             padding: 30px;
             border: 1px solid #252b3a;
             box-shadow: 0 10px 40px rgba(0,0,0,0.7);
-            position: relative;
         }
 
-        /* Header */
         .header {
             display: flex;
             justify-content: space-between;
@@ -60,109 +58,113 @@
             border: 1px solid #2a3a4a;
         }
 
-        .header .badge span {
-            color: #f0c27f;
-            font-weight: 600;
-        }
-
-        /* Stats */
-        .stats {
+        /* Tabs */
+        .tabs {
             display: flex;
-            gap: 30px;
-            flex-wrap: wrap;
-            background: #1a1d27;
-            padding: 15px 25px;
-            border-radius: 14px;
+            gap: 5px;
             margin-bottom: 25px;
-            border: 1px solid #252b3a;
-        }
-
-        .stats div {
-            font-size: 0.95rem;
-        }
-
-        .stats strong {
-            color: #b7c0d0;
-            font-weight: 600;
-        }
-
-        .stats .num {
-            color: #f0c27f;
-            font-weight: 700;
-        }
-
-        /* Upload Area */
-        .upload-area {
-            border: 2px dashed #2a3a4a;
-            border-radius: 16px;
-            padding: 40px 20px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
             background: #0d1018;
-            margin-bottom: 30px;
+            border-radius: 14px;
+            padding: 5px;
+            border: 1px solid #1a1d27;
         }
 
-        .upload-area:hover {
-            border-color: #f7971e;
-            background: #111620;
+        .tab-btn {
+            flex: 1;
+            padding: 14px 20px;
+            border: none;
+            background: transparent;
+            color: #6a7a8a;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: 0.3s;
+            text-align: center;
         }
 
-        .upload-area.dragover {
-            border-color: #ffd200;
-            background: #1a1f2a;
-            transform: scale(1.01);
+        .tab-btn:hover {
+            color: #d4dcec;
+            background: #1a1d27;
         }
 
-        .upload-area .icon {
-            font-size: 3rem;
-            margin-bottom: 10px;
+        .tab-btn.active {
+            background: #f7971e;
+            color: #0a0b0f;
         }
 
-        .upload-area p {
-            color: #8a9bb5;
-            font-size: 1.1rem;
+        .tab-btn .count {
+            background: #1a1d27;
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            margin-left: 8px;
         }
 
-        .upload-area .sub {
-            color: #4a5268;
-            font-size: 0.9rem;
-            margin-top: 5px;
+        .tab-btn.active .count {
+            background: #0a0b0f;
+            color: #f7971e;
         }
 
-        #fileInput {
+        .tab-content {
             display: none;
         }
 
-        /* Search/Filter */
-        .controls {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-            margin-bottom: 20px;
-            align-items: center;
+        .tab-content.active {
+            display: block;
         }
 
-        .controls input[type="text"] {
-            flex: 1;
-            min-width: 200px;
-            padding: 12px 18px;
-            border-radius: 30px;
+        /* Create Post */
+        .create-post {
+            background: #1a1d27;
+            border-radius: 16px;
+            padding: 25px;
+            border: 1px solid #252b3a;
+            margin-bottom: 25px;
+        }
+
+        .create-post h3 {
+            margin-bottom: 15px;
+            color: #b7c0d0;
+            font-weight: 500;
+        }
+
+        .create-post input,
+        .create-post textarea,
+        .create-post select {
+            width: 100%;
+            padding: 12px 16px;
+            border-radius: 10px;
             border: 1px solid #252b3a;
             background: #0d1018;
             color: #d4dcec;
-            font-size: 1rem;
+            font-size: 0.95rem;
+            margin-bottom: 12px;
             outline: none;
             transition: 0.3s;
+            font-family: inherit;
         }
 
-        .controls input[type="text"]:focus {
+        .create-post input:focus,
+        .create-post textarea:focus,
+        .create-post select:focus {
             border-color: #f7971e;
             box-shadow: 0 0 15px rgba(247, 151, 30, 0.1);
         }
 
-        .controls .btn {
-            padding: 12px 24px;
+        .create-post textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .create-post .btn-row {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .create-post .btn {
+            padding: 12px 28px;
             border-radius: 30px;
             border: none;
             background: #f7971e;
@@ -173,107 +175,124 @@
             font-size: 0.95rem;
         }
 
-        .controls .btn:hover {
+        .create-post .btn:hover {
             background: #ffd200;
             transform: scale(1.02);
         }
 
-        .controls .btn.danger {
-            background: #6b2a2a;
-            color: #df7d7d;
+        .create-post .btn.secondary {
+            background: #1e2a3a;
+            color: #8a9bb5;
         }
 
-        .controls .btn.danger:hover {
-            background: #8a2a2a;
+        .create-post .btn.secondary:hover {
+            background: #2a3a4a;
         }
 
-        /* File List */
-        .file-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        /* Posts List */
+        .posts-list {
+            display: flex;
+            flex-direction: column;
             gap: 15px;
-            margin-top: 10px;
         }
 
-        .file-item {
+        .post-item {
             background: #1a1d27;
             border-radius: 14px;
-            padding: 18px;
+            padding: 20px;
             border: 1px solid #252b3a;
             transition: 0.3s;
-            position: relative;
         }
 
-        .file-item:hover {
+        .post-item:hover {
             border-color: #3a4a5a;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
         }
 
-        .file-item .name {
+        .post-item.official {
+            border-left: 4px solid #f7971e;
+            background: #1a1a1a;
+        }
+
+        .post-item.community {
+            border-left: 4px solid #4a7a9a;
+        }
+
+        .post-item .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+
+        .post-item .post-title {
+            font-size: 1.2rem;
             font-weight: 600;
             color: #d4dcec;
-            word-break: break-word;
-            font-size: 0.95rem;
         }
 
-        .file-item .meta {
-            font-size: 0.8rem;
+        .post-item .post-author {
+            font-size: 0.85rem;
             color: #6a7a8a;
-            margin: 6px 0 10px 0;
         }
 
-        .file-item .actions {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
-        .file-item .actions a,
-        .file-item .actions button {
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            border: none;
-            cursor: pointer;
-            transition: 0.3s;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .file-item .actions .download {
-            background: #1e3a2a;
-            color: #7ddfa0;
-        }
-
-        .file-item .actions .download:hover {
-            background: #2a6b3f;
-        }
-
-        .file-item .actions .delete {
-            background: #3a1e1e;
-            color: #df7d7d;
-        }
-
-        .file-item .actions .delete:hover {
-            background: #6b2a2a;
-        }
-
-        .file-item .file-icon {
-            font-size: 1.8rem;
-            margin-right: 10px;
-        }
-
-        .file-item .size-badge {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            background: #0d1018;
+        .post-item .post-author .official-badge {
+            background: #f7971e;
+            color: #0a0b0f;
             padding: 2px 12px;
             border-radius: 20px;
             font-size: 0.7rem;
-            color: #6a7a8a;
-            border: 1px solid #1a2a3a;
+            font-weight: 700;
+            margin-left: 8px;
+        }
+
+        .post-item .post-author .community-badge {
+            background: #4a7a9a;
+            color: #fff;
+            padding: 2px 12px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            margin-left: 8px;
+        }
+
+        .post-item .post-content {
+            color: #b7c0d0;
+            line-height: 1.6;
+            margin: 10px 0;
+            word-break: break-word;
+        }
+
+        .post-item .post-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #1a1d27;
+        }
+
+        .post-item .post-date {
+            font-size: 0.75rem;
+            color: #4a5268;
+        }
+
+        .post-item .delete-btn {
+            background: #3a1e1e;
+            color: #df7d7d;
+            border: none;
+            padding: 4px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.75rem;
+            transition: 0.3s;
+        }
+
+        .post-item .delete-btn:hover {
+            background: #6b2a2a;
         }
 
         .empty {
@@ -305,7 +324,6 @@
             text-decoration: underline;
         }
 
-        /* Toast Notification */
         .toast {
             position: fixed;
             bottom: 30px;
@@ -343,18 +361,18 @@
             .header h1 {
                 font-size: 1.5rem;
             }
-            .stats {
-                flex-direction: column;
-                gap: 8px;
-            }
-            .controls {
+            .tabs {
                 flex-direction: column;
             }
-            .controls input[type="text"] {
+            .tab-btn {
+                padding: 10px;
+            }
+            .create-post .btn-row {
+                flex-direction: column;
+            }
+            .create-post .btn {
                 width: 100%;
-            }
-            .file-list {
-                grid-template-columns: 1fr;
+                text-align: center;
             }
         }
     </style>
@@ -364,37 +382,52 @@
 <div class="container">
     <!-- Header -->
     <div class="header">
-        <h1>🔧 AMH Modding Server</h1>
+        <h1>📢 Posts</h1>
         <div class="badge">
-            📦 <span id="fileCount">0</span> files • 💾 <span id="totalSize">0 MB</span>
+            📝 <span id="totalPosts">0</span> total posts
         </div>
     </div>
 
-    <!-- Stats -->
-    <div class="stats">
-        <div><strong>📱 Modded APKs</strong> <span class="num" id="apkCount">0</span></div>
-        <div><strong>📄 Other Files</strong> <span class="num" id="otherCount">0</span></div>
-        <div><strong>📁 Total Storage</strong> <span class="num" id="storageUsed">0 MB</span></div>
+    <!-- Tabs -->
+    <div class="tabs">
+        <button class="tab-btn active" data-tab="official">
+            🏛️ Official
+            <span class="count" id="officialCount">0</span>
+        </button>
+        <button class="tab-btn" data-tab="community">
+            👥 Community
+            <span class="count" id="communityCount">0</span>
+        </button>
     </div>
 
-    <!-- Upload Area -->
-    <div class="upload-area" id="dropZone">
-        <div class="icon">📤</div>
-        <p><strong>Drop your modded APK here</strong></p>
-        <p class="sub">or click to browse • Max 500MB per file</p>
-        <input type="file" id="fileInput" multiple>
+    <!-- Official Tab -->
+    <div class="tab-content active" id="tab-official">
+        <div class="create-post">
+            <h3>📝 Create Official Post</h3>
+            <input type="text" id="officialTitle" placeholder="Post title..." maxlength="100">
+            <textarea id="officialContent" placeholder="Post content..."></textarea>
+            <input type="text" id="officialAuthor" placeholder="Your name/username..." maxlength="50">
+            <div class="btn-row">
+                <button class="btn" id="postOfficialBtn">📤 Post Official</button>
+                <button class="btn secondary" id="clearOfficialBtn">Clear</button>
+            </div>
+        </div>
+        <div class="posts-list" id="officialPosts"></div>
     </div>
 
-    <!-- Controls -->
-    <div class="controls">
-        <input type="text" id="searchInput" placeholder="🔍 Search files...">
-        <button class="btn" id="refreshBtn">🔄 Refresh</button>
-        <button class="btn danger" id="clearAllBtn">🗑️ Clear All</button>
-    </div>
-
-    <!-- File List -->
-    <div id="fileListContainer">
-        <div class="empty">📂 No files uploaded yet. Drop your modded APKs above!</div>
+    <!-- Community Tab -->
+    <div class="tab-content" id="tab-community">
+        <div class="create-post">
+            <h3>📝 Create Community Post</h3>
+            <input type="text" id="communityTitle" placeholder="Post title..." maxlength="100">
+            <textarea id="communityContent" placeholder="Post content..."></textarea>
+            <input type="text" id="communityAuthor" placeholder="Your name/username..." maxlength="50">
+            <div class="btn-row">
+                <button class="btn" id="postCommunityBtn">📤 Post to Community</button>
+                <button class="btn secondary" id="clearCommunityBtn">Clear</button>
+            </div>
+        </div>
+        <div class="posts-list" id="communityPosts"></div>
     </div>
 
     <!-- Footer Credit -->
@@ -409,11 +442,11 @@
 <script>
     (function() {
         // ============================================================
-        // STORAGE: Uses localStorage to persist file data
+        // STORAGE
         // ============================================================
-        const STORAGE_KEY = 'modding_server_files';
+        const STORAGE_KEY = 'community_posts_data';
 
-        function getFiles() {
+        function getPosts() {
             try {
                 return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
             } catch {
@@ -421,25 +454,20 @@
             }
         }
 
-        function saveFiles(files) {
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(files));
+        function savePosts(posts) {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(posts));
         }
 
         // ============================================================
         // HELPERS
         // ============================================================
-        function formatSize(bytes) {
-            if (bytes < 1024) return bytes + ' B';
-            if (bytes < 1048576) return (bytes / 1024).toFixed(1) + ' KB';
-            return (bytes / 1048576).toFixed(2) + ' MB';
-        }
-
         function generateId() {
             return Date.now() + '_' + Math.random().toString(36).substr(2, 9);
         }
 
-        function isApk(filename) {
-            return filename.toLowerCase().endsWith('.apk');
+        function formatDate(timestamp) {
+            const date = new Date(timestamp);
+            return date.toLocaleDateString() + ' ' + date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
         }
 
         function showToast(message, type = 'info') {
@@ -454,207 +482,214 @@
         }
 
         // ============================================================
-        // RENDER FILE LIST
+        // RENDER
         // ============================================================
-        function renderFiles(searchTerm = '') {
-            const files = getFiles();
-            const container = document.getElementById('fileListContainer');
-            const search = searchTerm.toLowerCase().trim();
+        function renderPosts() {
+            const posts = getPosts();
+            const officialPosts = posts.filter(p => p.category === 'official');
+            const communityPosts = posts.filter(p => p.category === 'community');
 
-            let filtered = files;
-            if (search) {
-                filtered = files.filter(f => f.name.toLowerCase().includes(search));
-            }
+            // Update counts
+            document.getElementById('totalPosts').textContent = posts.length;
+            document.getElementById('officialCount').textContent = officialPosts.length;
+            document.getElementById('communityCount').textContent = communityPosts.length;
 
-            // Update stats
-            const apkCount = files.filter(f => isApk(f.name)).length;
-            const otherCount = files.length - apkCount;
-            const totalBytes = files.reduce((sum, f) => sum + f.size, 0);
+            // Render Official
+            renderPostList('officialPosts', officialPosts, 'official');
+            renderPostList('communityPosts', communityPosts, 'community');
+        }
 
-            document.getElementById('fileCount').textContent = files.length;
-            document.getElementById('totalSize').textContent = formatSize(totalBytes);
-            document.getElementById('apkCount').textContent = apkCount;
-            document.getElementById('otherCount').textContent = otherCount;
-            document.getElementById('storageUsed').textContent = formatSize(totalBytes);
-
-            if (filtered.length === 0) {
-                container.innerHTML = `<div class="empty">${search ? '🔍 No results found' : '📂 No files uploaded yet. Drop your modded APKs above!'}</div>`;
+        function renderPostList(containerId, posts, category) {
+            const container = document.getElementById(containerId);
+            
+            if (posts.length === 0) {
+                container.innerHTML = `<div class="empty">📭 No ${category} posts yet. Create one above!</div>`;
                 return;
             }
 
-            let html = '<div class="file-list">';
-            filtered.forEach((file, index) => {
-                const icon = isApk(file.name) ? '📱' : '📄';
-                const sizeStr = formatSize(file.size);
-                const dateStr = new Date(file.uploaded).toLocaleDateString();
+            let html = '';
+            // Sort by newest first
+            const sorted = [...posts].sort((a, b) => b.timestamp - a.timestamp);
+            
+            sorted.forEach(post => {
+                const badge = category === 'official' 
+                    ? '<span class="official-badge">OFFICIAL</span>'
+                    : '<span class="community-badge">COMMUNITY</span>';
+                
                 html += `
-                    <div class="file-item" data-index="${index}">
-                        <span class="size-badge">${sizeStr}</span>
-                        <div>
-                            <span class="file-icon">${icon}</span>
-                            <span class="name">${file.name}</span>
+                    <div class="post-item ${category}">
+                        <div class="post-header">
+                            <div class="post-title">${escapeHtml(post.title)}</div>
                         </div>
-                        <div class="meta">📅 ${dateStr} • ${isApk(file.name) ? 'APK' : 'File'}</div>
-                        <div class="actions">
-                            <a href="${file.dataUrl}" download="${file.name}" class="download">⬇️ Download</a>
-                            <button class="delete" data-id="${file.id}">🗑️ Delete</button>
+                        <div class="post-author">
+                            👤 ${escapeHtml(post.author)} ${badge}
+                        </div>
+                        <div class="post-content">${escapeHtml(post.content)}</div>
+                        <div class="post-meta">
+                            <div class="post-date">📅 ${formatDate(post.timestamp)}</div>
+                            <button class="delete-btn" data-id="${post.id}">🗑️ Delete</button>
                         </div>
                     </div>
                 `;
             });
-            html += '</div>';
+
             container.innerHTML = html;
 
             // Attach delete events
-            container.querySelectorAll('.delete').forEach(btn => {
-                btn.addEventListener('click', function(e) {
+            container.querySelectorAll('.delete-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
                     const id = this.dataset.id;
-                    deleteFile(id);
+                    deletePost(id);
                 });
             });
         }
 
+        // Simple escape to prevent XSS
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
         // ============================================================
-        // CRUD OPERATIONS
+        // CRUD
         // ============================================================
-        function addFile(file) {
-            return new Promise((resolve, reject) => {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    const files = getFiles();
-                    const newFile = {
-                        id: generateId(),
-                        name: file.name,
-                        size: file.size,
-                        type: file.type,
-                        uploaded: Date.now(),
-                        dataUrl: e.target.result
-                    };
-                    files.push(newFile);
-                    saveFiles(files);
-                    renderFiles(document.getElementById('searchInput').value);
-                    showToast(`✅ Uploaded: ${file.name}`, 'success');
-                    resolve();
-                };
-                reader.onerror = function() {
-                    reject('Failed to read file');
-                };
-                reader.readAsDataURL(file);
+        function addPost(title, content, author, category) {
+            if (!title.trim() || !content.trim() || !author.trim()) {
+                showToast('❌ Please fill in all fields', 'error');
+                return false;
+            }
+
+            const posts = getPosts();
+            const newPost = {
+                id: generateId(),
+                title: title.trim(),
+                content: content.trim(),
+                author: author.trim(),
+                category: category, // 'official' or 'community'
+                timestamp: Date.now()
+            };
+
+            posts.push(newPost);
+            savePosts(posts);
+            renderPosts();
+
+            const categoryName = category === 'official' ? 'Official' : 'Community';
+            showToast(`✅ ${categoryName} post created: ${title.trim()}`, 'success');
+            return true;
+        }
+
+        function deletePost(id) {
+            if (!confirm('Delete this post?')) return;
+            let posts = getPosts();
+            const post = posts.find(p => p.id === id);
+            posts = posts.filter(p => p.id !== id);
+            savePosts(posts);
+            renderPosts();
+            if (post) showToast(`🗑️ Deleted: ${post.title}`, 'error');
+        }
+
+        function clearAllPosts() {
+            if (!confirm('⚠️ Delete ALL posts? This cannot be undone!')) return;
+            savePosts([]);
+            renderPosts();
+            showToast('🗑️ All posts cleared', 'error');
+        }
+
+        // ============================================================
+        // TAB SWITCHING
+        // ============================================================
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabContents = {
+            official: document.getElementById('tab-official'),
+            community: document.getElementById('tab-community')
+        };
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Remove active from all
+                tabBtns.forEach(b => b.classList.remove('active'));
+                Object.values(tabContents).forEach(tc => tc.classList.remove('active'));
+
+                // Add active to clicked
+                this.classList.add('active');
+                const tab = this.dataset.tab;
+                tabContents[tab].classList.add('active');
             });
-        }
-
-        function deleteFile(id) {
-            if (!confirm('Delete this file?')) return;
-            let files = getFiles();
-            const file = files.find(f => f.id === id);
-            files = files.filter(f => f.id !== id);
-            saveFiles(files);
-            renderFiles(document.getElementById('searchInput').value);
-            if (file) showToast(`🗑️ Deleted: ${file.name}`, 'error');
-        }
-
-        function clearAllFiles() {
-            if (!confirm('⚠️ Delete ALL files? This cannot be undone!')) return;
-            saveFiles([]);
-            renderFiles('');
-            showToast('🗑️ All files cleared', 'error');
-        }
-
-        // ============================================================
-        // UPLOAD HANDLING
-        // ============================================================
-        const dropZone = document.getElementById('dropZone');
-        const fileInput = document.getElementById('fileInput');
-
-        dropZone.addEventListener('click', () => fileInput.click());
-
-        dropZone.addEventListener('dragover', (e) => {
-            e.preventDefault();
-            dropZone.classList.add('dragover');
         });
 
-        dropZone.addEventListener('dragleave', () => {
-            dropZone.classList.remove('dragover');
-        });
-
-        dropZone.addEventListener('drop', (e) => {
-            e.preventDefault();
-            dropZone.classList.remove('dragover');
-            const files = e.dataTransfer.files;
-            if (files.length > 0) {
-                handleFiles(files);
+        // ============================================================
+        // EVENT LISTENERS
+        // ============================================================
+        // Official Post
+        document.getElementById('postOfficialBtn').addEventListener('click', function() {
+            const title = document.getElementById('officialTitle').value;
+            const content = document.getElementById('officialContent').value;
+            const author = document.getElementById('officialAuthor').value;
+            if (addPost(title, content, author, 'official')) {
+                document.getElementById('officialTitle').value = '';
+                document.getElementById('officialContent').value = '';
+                document.getElementById('officialAuthor').value = '';
             }
         });
 
-        fileInput.addEventListener('change', function() {
-            if (this.files.length > 0) {
-                handleFiles(this.files);
-                this.value = '';
+        // Community Post
+        document.getElementById('postCommunityBtn').addEventListener('click', function() {
+            const title = document.getElementById('communityTitle').value;
+            const content = document.getElementById('communityContent').value;
+            const author = document.getElementById('communityAuthor').value;
+            if (addPost(title, content, author, 'community')) {
+                document.getElementById('communityTitle').value = '';
+                document.getElementById('communityContent').value = '';
+                document.getElementById('communityAuthor').value = '';
             }
         });
 
-        async function handleFiles(fileList) {
-            const maxSize = 500 * 1024 * 1024; // 500MB
-            let successCount = 0;
-
-            for (let file of fileList) {
-                if (file.size > maxSize) {
-                    showToast(`❌ ${file.name} is too large (max 500MB)`, 'error');
-                    continue;
-                }
-                try {
-                    await addFile(file);
-                    successCount++;
-                } catch (err) {
-                    showToast(`❌ Failed: ${file.name}`, 'error');
-                }
-            }
-
-            if (successCount > 0) {
-                renderFiles(document.getElementById('searchInput').value);
-            }
-        }
-
-        // ============================================================
-        // SEARCH
-        // ============================================================
-        document.getElementById('searchInput').addEventListener('input', function() {
-            renderFiles(this.value);
+        // Clear buttons
+        document.getElementById('clearOfficialBtn').addEventListener('click', function() {
+            document.getElementById('officialTitle').value = '';
+            document.getElementById('officialContent').value = '';
+            document.getElementById('officialAuthor').value = '';
         });
 
-        // ============================================================
-        // REFRESH / CLEAR
-        // ============================================================
-        document.getElementById('refreshBtn').addEventListener('click', function() {
-            renderFiles(document.getElementById('searchInput').value);
-            showToast('🔄 Refreshed', 'info');
+        document.getElementById('clearCommunityBtn').addEventListener('click', function() {
+            document.getElementById('communityTitle').value = '';
+            document.getElementById('communityContent').value = '';
+            document.getElementById('communityAuthor').value = '';
         });
-
-        document.getElementById('clearAllBtn').addEventListener('click', clearAllFiles);
 
         // ============================================================
         // INIT
         // ============================================================
-        renderFiles('');
+        renderPosts();
 
-        // If localStorage is empty, add some example files for demo
-        const existing = getFiles();
+        // Add some example posts if empty
+        const existing = getPosts();
         if (existing.length === 0) {
-            // Optionally pre-populate with nothing - users will upload
-            // Uncomment below to add example entries
-            /*
             const examples = [
-                { id: generateId(), name: 'Example_Mod_v2.3.apk', size: 45678912, type: 'application/vnd.android.package-archive', uploaded: Date.now() - 86400000, dataUrl: '#' },
-                { id: generateId(), name: 'Game_Mod_Unlimited.apk', size: 123456789, type: 'application/vnd.android.package-archive', uploaded: Date.now() - 172800000, dataUrl: '#' }
+                {
+                    id: generateId(),
+                    title: 'Welcome to the Modding Server!',
+                    content: 'This is the official announcement post. Please read the rules before posting.',
+                    author: 'Admin',
+                    category: 'official',
+                    timestamp: Date.now() - 3600000
+                },
+                {
+                    id: generateId(),
+                    title: 'New Mod Release: Game X v2.0',
+                    content: 'Just uploaded the new mod for Game X. Check the modding channel for download links!',
+                    author: 'ModMaster',
+                    category: 'community',
+                    timestamp: Date.now() - 7200000
+                }
             ];
-            saveFiles(examples);
-            renderFiles('');
-            */
+            savePosts(examples);
+            renderPosts();
         }
 
-        console.log('🔧 APK Modding Server loaded');
-        console.log('📁 Files stored in localStorage');
-        console.log('💡 Upload APKs to share with your modding community');
+        console.log('📢 Posts system loaded');
+        console.log('📁 Posts stored in localStorage');
     })();
 </script>
 
