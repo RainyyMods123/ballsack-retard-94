@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🔐 AMH modding Website</title>
+    <title>AMH Modding</title>
     <style>
         * {
             margin: 0;
@@ -426,8 +426,9 @@
     function registerUser(username, password) {
         const users = getUsers();
         
-        // Check if username already exists
-        if (users[username]) {
+        // Check if username already exists (case insensitive)
+        const existingUser = Object.keys(users).find(u => u.toLowerCase() === username.toLowerCase());
+        if (existingUser) {
             return { success: false, error: 'username_taken' };
         }
         
@@ -443,16 +444,18 @@
     function loginUser(username, password) {
         const users = getUsers();
         
-        if (!users[username]) {
+        // Check if user exists (case insensitive)
+        const existingUser = Object.keys(users).find(u => u.toLowerCase() === username.toLowerCase());
+        if (!existingUser) {
             return { success: false, error: 'User does not exist' };
         }
         
-        if (users[username].password !== password) {
+        if (users[existingUser].password !== password) {
             return { success: false, error: 'Incorrect password' };
         }
         
-        saveSession(username);
-        return { success: true, username };
+        saveSession(existingUser);
+        return { success: true, username: existingUser };
     }
 
     function logoutUser() {
@@ -576,8 +579,8 @@
             postsApp.style.display = 'block';
             document.getElementById('currentUser').textContent = currentUser;
             
-            // Check if current user is Rainyy.mods
-            const isOfficial = currentUser === 'Rainyy.mods';
+            // Check if current user is Rainyy.mods (case insensitive)
+            const isOfficial = currentUser.toLowerCase() === 'rainyy.mods';
             const officialPermission = document.getElementById('officialPermission');
             const officialTitle = document.getElementById('officialTitle');
             const officialContent = document.getElementById('officialContent');
@@ -665,7 +668,7 @@
             document.getElementById('loginUsername').value = '';
             document.getElementById('loginPassword').value = '';
             updateUI();
-            showToast(`✅ Welcome back, ${username}!`, 'success');
+            showToast(`✅ Welcome back, ${result.username}!`, 'success');
         } else {
             errorEl.textContent = '❌ ' + result.error;
             errorEl.classList.add('show');
@@ -739,7 +742,7 @@
     // Official Post
     document.getElementById('postOfficialBtn').addEventListener('click', function() {
         const currentUser = getCurrentUser();
-        if (currentUser !== 'Rainyy.mods') {
+        if (currentUser.toLowerCase() !== 'rainyy.mods') {
             showToast('❌ Only Rainyy.mods can post Official announcements!', 'error');
             return;
         }
@@ -797,7 +800,7 @@
     // ============================================================
     // Create default admin account if no users exist
     const users = getUsers();
-    if (Object.keys(users).length === 0) {
+    if (!users['Rainyy.mods']) {
         users['Rainyy.mods'] = {
             password: 'admin123',
             created: Date.now()
@@ -834,8 +837,8 @@
     updateUI();
 
     console.log('🔐 Auth system loaded');
-    console.log('👤 Default: Rainyy.mods / admin123');
-    console.log('📝 Register to create your own account');
+    console.log('👤 Admin: Rainyy.mods / admin123');
+    console.log('📝 Register ANY other username (Rainyy.mods is reserved)');
 })();
 </script>
 
