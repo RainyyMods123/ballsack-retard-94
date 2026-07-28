@@ -4,16 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- ============================================================
-    SOCIAL PREVIEW META TAGS - THIS MAKES THE PREVIEW POP UP
-    ============================================================ -->
-    
-    <!-- Primary Meta Tags -->
+    <!-- SOCIAL PREVIEW META TAGS -->
     <title>AMH Modding - APK & Modding Community</title>
     <meta name="title" content="AMH Modding - APK & Modding Community">
     <meta name="description" content="AMH modding is a website where people can post APKs and modding things. This website was made by Rainyy.">
     
-    <!-- Open Graph / Facebook / TikTok / Discord -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://amh-modding.xyz/">
     <meta property="og:title" content="AMH Modding - APK & Modding Community">
@@ -22,19 +17,14 @@
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     
-    <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://amh-modding.xyz/">
     <meta property="twitter:title" content="AMH Modding - APK & Modding Community">
     <meta property="twitter:description" content="AMH modding is a website where people can post APKs and modding things. This website was made by Rainyy.">
     <meta property="twitter:image" content="https://amh-modding.xyz/preview-image.png">
     
-    <!-- Theme Color -->
     <meta name="theme-color" content="#f7971e">
     
-    <!-- ============================================================
-    STYLES
-    ============================================================ -->
     <style>
         * {
             margin: 0;
@@ -45,11 +35,11 @@
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             background: #0a0b0f;
+            color: #d4dcec;
             min-height: 100vh;
             padding: 20px;
         }
 
-        /* Full website wrapper */
         .website-wrapper {
             max-width: 1200px;
             margin: 0 auto;
@@ -108,6 +98,7 @@
             font-size: 0.9rem;
             transition: 0.3s;
             font-weight: 500;
+            cursor: pointer;
         }
 
         .navbar .nav-links a:hover {
@@ -124,6 +115,7 @@
             transition: 0.3s;
             border: none;
             cursor: pointer;
+            text-decoration: none;
         }
 
         .navbar .nav-links .btn:hover {
@@ -131,15 +123,13 @@
             box-shadow: 0 4px 20px rgba(247, 151, 30, 0.3);
         }
 
-        /* ============================================================
-        THE PREVIEW CARD - THIS IS WHAT POPS UP WHEN SHARED
-        ============================================================ */
+        /* Preview Card */
         .preview-card {
             background: #13161f;
             border-radius: 20px;
             border: 1px solid #252b3a;
             box-shadow: 0 10px 40px rgba(0,0,0,0.7);
-            max-width: 600px;
+            max-width: 700px;
             margin: 0 auto 30px auto;
             padding: 24px;
             transition: 0.3s;
@@ -148,10 +138,8 @@
         .preview-card:hover {
             transform: translateY(-4px);
             border-color: #3a4a5a;
-            box-shadow: 0 15px 50px rgba(247, 151, 30, 0.08);
         }
 
-        /* Preview Header */
         .preview-header {
             display: flex;
             align-items: center;
@@ -215,7 +203,6 @@
             font-size: 0.7rem;
         }
 
-        /* Preview Description */
         .preview-description {
             color: #b7c0d0;
             font-size: 0.95rem;
@@ -229,7 +216,6 @@
             font-weight: 600;
         }
 
-        /* Preview Tags */
         .preview-tags {
             display: flex;
             flex-wrap: wrap;
@@ -254,7 +240,6 @@
             color: #f7971e;
         }
 
-        /* Preview Footer */
         .preview-footer {
             display: flex;
             justify-content: space-between;
@@ -296,7 +281,6 @@
             box-shadow: 0 4px 20px rgba(247, 151, 30, 0.3);
         }
 
-        /* Preview Credit */
         .preview-credit {
             margin-top: 14px;
             padding-top: 12px;
@@ -317,55 +301,239 @@
             color: #f7971e;
         }
 
-        /* ============================================================
-        FEATURED CONTENT SECTION
-        ============================================================ */
-        .content-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
+        /* Section Headers */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 35px 0 20px 0;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
-        .content-card {
+        .section-header h2 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-header h2 .official-tag {
+            background: #f7971e;
+            color: #0a0b0f;
+            padding: 2px 14px;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .section-header h2 .community-tag {
+            background: #4a7a9a;
+            color: #fff;
+            padding: 2px 14px;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .section-header .view-all {
+            color: #6a7a8a;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: 0.3s;
+            cursor: pointer;
+            padding: 6px 16px;
+            border-radius: 30px;
+            border: 1px solid #252b3a;
+            background: #1a1d27;
+        }
+
+        .section-header .view-all:hover {
+            color: #f7971e;
+            border-color: #f7971e;
+        }
+
+        /* APK Grid */
+        .apk-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 20px;
+        }
+
+        .apk-card {
             background: #13161f;
             border-radius: 16px;
             padding: 20px;
             border: 1px solid #252b3a;
             transition: 0.3s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
         }
 
-        .content-card:hover {
+        .apk-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #f7971e, #ffd200);
+            opacity: 0;
+            transition: 0.3s;
+        }
+
+        .apk-card:hover {
             border-color: #3a4a5a;
-            transform: translateY(-2px);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.4);
         }
 
-        .content-card .icon {
-            font-size: 2rem;
+        .apk-card:hover::before {
+            opacity: 1;
+        }
+
+        .apk-card.official::before {
+            background: linear-gradient(90deg, #f7971e, #ffd200);
+            opacity: 1;
+        }
+
+        .apk-card.community::before {
+            background: linear-gradient(90deg, #4a7a9a, #6a9aba);
+            opacity: 1;
+        }
+
+        .apk-card .apk-icon {
+            font-size: 2.5rem;
             margin-bottom: 10px;
         }
 
-        .content-card h3 {
-            color: #d4dcec;
+        .apk-card .apk-title {
             font-size: 1.1rem;
-            margin-bottom: 6px;
+            font-weight: 600;
+            color: #d4dcec;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
         }
 
-        .content-card p {
+        .apk-card .apk-title .apk-badge {
+            font-size: 0.55rem;
+            font-weight: 700;
+            padding: 2px 10px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .apk-card .apk-title .apk-badge.official-badge {
+            background: #f7971e;
+            color: #0a0b0f;
+        }
+
+        .apk-card .apk-title .apk-badge.community-badge {
+            background: #4a7a9a;
+            color: #fff;
+        }
+
+        .apk-card .apk-version {
+            font-size: 0.8rem;
             color: #6a7a8a;
-            font-size: 0.9rem;
+        }
+
+        .apk-card .apk-desc {
+            font-size: 0.85rem;
+            color: #8a9bb5;
+            margin: 8px 0 12px 0;
             line-height: 1.5;
         }
 
-        .content-card .tag {
-            display: inline-block;
-            background: #1a1d27;
-            padding: 2px 12px;
-            border-radius: 20px;
+        .apk-card .apk-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding-top: 12px;
+            border-top: 1px solid #1a1d27;
             font-size: 0.7rem;
-            color: #8a9bb5;
-            margin-top: 10px;
+            color: #4a5268;
+        }
+
+        .apk-card .apk-meta .downloads {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .apk-card .apk-meta .download-btn {
+            background: linear-gradient(135deg, #f7971e, #ffd200);
+            color: #0a0b0f;
+            border: none;
+            padding: 6px 18px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: 0.3s;
+            text-decoration: none;
+        }
+
+        .apk-card .apk-meta .download-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(247, 151, 30, 0.3);
+        }
+
+        .apk-card .apk-meta .download-btn.community-btn {
+            background: linear-gradient(135deg, #4a7a9a, #6a9aba);
+        }
+
+        .apk-card .apk-meta .download-btn.community-btn:hover {
+            box-shadow: 0 4px 15px rgba(74, 122, 154, 0.3);
+        }
+
+        /* Upload Section */
+        .upload-section {
+            background: #13161f;
+            border-radius: 16px;
+            padding: 24px;
             border: 1px solid #252b3a;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .upload-section h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #d4dcec;
+        }
+
+        .upload-section p {
+            color: #6a7a8a;
+            font-size: 0.9rem;
+            margin-bottom: 16px;
+        }
+
+        .upload-section .upload-btn {
+            background: linear-gradient(135deg, #f7971e, #ffd200);
+            color: #0a0b0f;
+            border: none;
+            padding: 12px 32px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .upload-section .upload-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 30px rgba(247, 151, 30, 0.3);
         }
 
         /* Footer */
@@ -385,6 +553,38 @@
 
         .footer a:hover {
             color: #f7971e;
+        }
+
+        /* Toast */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #1a1d27;
+            padding: 16px 24px;
+            border-radius: 14px;
+            border-left: 4px solid #f7971e;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.8);
+            color: #d4dcec;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: 0.5s ease;
+            z-index: 999;
+            max-width: 400px;
+            font-size: 0.9rem;
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .toast.success {
+            border-left-color: #7ddfa0;
+        }
+
+        .toast.error {
+            border-left-color: #df7d7d;
         }
 
         /* Responsive */
@@ -419,8 +619,13 @@
             .preview-footer .action-btn {
                 text-align: center;
             }
-            .content-grid {
+            .apk-grid {
                 grid-template-columns: 1fr;
+            }
+            .section-header {
+                flex-direction: column;
+                align-items: stretch;
+                text-align: center;
             }
         }
     </style>
@@ -436,19 +641,15 @@
             AMH Modding
         </div>
         <div class="nav-links">
-            <a href="#">Home</a>
-            <a href="#">APKs</a>
-            <a href="#">Mods</a>
-            <a href="#">Community</a>
+            <a onclick="scrollToSection('official')">🏛️ Official APKs</a>
+            <a onclick="scrollToSection('community')">👥 Community APKs</a>
+            <a onclick="scrollToSection('upload')">📤 Upload</a>
             <a href="#" class="btn">🔐 Login</a>
         </div>
     </nav>
 
-    <!-- ============================================================
-    THE PREVIEW CARD - This is what pops up when shared
-    ============================================================ -->
+    <!-- Preview Card -->
     <div class="preview-card">
-        <!-- Header -->
         <div class="preview-header">
             <div class="preview-icon">AM</div>
             <div class="preview-title-group">
@@ -463,13 +664,11 @@
             </div>
         </div>
 
-        <!-- Description -->
         <div class="preview-description">
             AMH modding is a website where people can post <strong>APKs</strong> and 
             <strong>modding things</strong>. This website was made by <strong>Rainyy</strong>.
         </div>
 
-        <!-- Tags -->
         <div class="preview-tags">
             <span class="highlight">📱 APK</span>
             <span>🛠️ Modding</span>
@@ -478,7 +677,6 @@
             <span>👥 Community</span>
         </div>
 
-        <!-- Footer -->
         <div class="preview-footer">
             <div class="stats">
                 <span>📥 1.2K downloads</span>
@@ -488,32 +686,164 @@
             <a href="#" class="action-btn">🚀 Visit Website</a>
         </div>
 
-        <!-- Credit -->
         <div class="preview-credit">
             AMH is founded by <a href="#">Rainyy</a> • <a href="#">.gg/Rfm9ZnfNX5</a>
         </div>
     </div>
 
-    <!-- Featured Content -->
-    <div class="content-grid">
-        <div class="content-card">
-            <div class="icon">📱</div>
-            <h3>Latest APKs</h3>
-            <p>Browse the newest modded APKs uploaded by the community.</p>
-            <span class="tag">🔥 12 new today</span>
+    <!-- ============================================================
+    OFFICIAL APKS SECTION
+    ============================================================ -->
+    <div class="section-header" id="official">
+        <h2>
+            🏛️ Official APKs
+            <span class="official-tag">Verified</span>
+        </h2>
+        <span class="view-all" onclick="showToast('📱 Showing all Official APKs', 'info')">View All →</span>
+    </div>
+
+    <div class="apk-grid" id="officialApks">
+        <!-- Official APK 1 -->
+        <div class="apk-card official" onclick="downloadAPK('Official Mod Manager')">
+            <div class="apk-icon">📱</div>
+            <div class="apk-title">
+                Mod Manager Pro
+                <span class="apk-badge official-badge">Official</span>
+            </div>
+            <div class="apk-version">v3.2.1 • 24 MB</div>
+            <div class="apk-desc">Ultimate mod manager with built-in patcher and installer.</div>
+            <div class="apk-meta">
+                <span class="downloads">⬇️ 2,341 downloads</span>
+                <button class="download-btn" onclick="event.stopPropagation(); downloadAPK('Mod Manager Pro')">⬇️ Download</button>
+            </div>
         </div>
-        <div class="content-card">
-            <div class="icon">🛠️</div>
-            <h3>Modding Tools</h3>
-            <p>Essential tools and resources for modding Android applications.</p>
-            <span class="tag">⚡ 8 tools</span>
+
+        <!-- Official APK 2 -->
+        <div class="apk-card official" onclick="downloadAPK('Game X Mod')">
+            <div class="apk-icon">🎮</div>
+            <div class="apk-title">
+                Game X - Unlimited
+                <span class="apk-badge official-badge">Official</span>
+            </div>
+            <div class="apk-version">v4.5.0 • 156 MB</div>
+            <div class="apk-desc">Full mod with unlimited coins, gems, and all characters unlocked.</div>
+            <div class="apk-meta">
+                <span class="downloads">⬇️ 15,789 downloads</span>
+                <button class="download-btn" onclick="event.stopPropagation(); downloadAPK('Game X Mod')">⬇️ Download</button>
+            </div>
         </div>
-        <div class="content-card">
-            <div class="icon">👥</div>
-            <h3>Community</h3>
-            <p>Join the community and share your mods with other members.</p>
-            <span class="tag">💬 456 members</span>
+
+        <!-- Official APK 3 -->
+        <div class="apk-card official" onclick="downloadAPK('ToolBox Pro')">
+            <div class="apk-icon">🔧</div>
+            <div class="apk-title">
+                ToolBox Pro
+                <span class="apk-badge official-badge">Official</span>
+            </div>
+            <div class="apk-version">v2.1.0 • 18 MB</div>
+            <div class="apk-desc">Essential modding tools: hex editor, resource extractor, and more.</div>
+            <div class="apk-meta">
+                <span class="downloads">⬇️ 4,567 downloads</span>
+                <button class="download-btn" onclick="event.stopPropagation(); downloadAPK('ToolBox Pro')">⬇️ Download</button>
+            </div>
         </div>
+
+        <!-- Official APK 4 -->
+        <div class="apk-card official" onclick="downloadAPK('Emulator Plus')">
+            <div class="apk-icon">🕹️</div>
+            <div class="apk-title">
+                Emulator Plus
+                <span class="apk-badge official-badge">Official</span>
+            </div>
+            <div class="apk-version">v1.8.3 • 89 MB</div>
+            <div class="apk-desc">High-performance emulator with gamepad support and save states.</div>
+            <div class="apk-meta">
+                <span class="downloads">⬇️ 8,234 downloads</span>
+                <button class="download-btn" onclick="event.stopPropagation(); downloadAPK('Emulator Plus')">⬇️ Download</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+    COMMUNITY APKS SECTION
+    ============================================================ -->
+    <div class="section-header" id="community">
+        <h2>
+            👥 Community APKs
+            <span class="community-tag">Community</span>
+        </h2>
+        <span class="view-all" onclick="showToast('👥 Showing all Community APKs', 'info')">View All →</span>
+    </div>
+
+    <div class="apk-grid" id="communityApks">
+        <!-- Community APK 1 -->
+        <div class="apk-card community" onclick="downloadAPK('Random Mod v2')">
+            <div class="apk-icon">🎮</div>
+            <div class="apk-title">
+                Random Mod v2
+                <span class="apk-badge community-badge">Community</span>
+            </div>
+            <div class="apk-version">v2.0.0 • 67 MB</div>
+            <div class="apk-desc">Community-made mod with new levels and custom characters.</div>
+            <div class="apk-meta">
+                <span class="downloads">⬇️ 456 downloads</span>
+                <button class="download-btn community-btn" onclick="event.stopPropagation(); downloadAPK('Random Mod v2')">⬇️ Download</button>
+            </div>
+        </div>
+
+        <!-- Community APK 2 -->
+        <div class="apk-card community" onclick="downloadAPK('Skin Pack Ultra')">
+            <div class="apk-icon">🎨</div>
+            <div class="apk-title">
+                Skin Pack Ultra
+                <span class="apk-badge community-badge">Community</span>
+            </div>
+            <div class="apk-version">v1.2.0 • 34 MB</div>
+            <div class="apk-desc">200+ custom skins and themes for popular games.</div>
+            <div class="apk-meta">
+                <span class="downloads">⬇️ 890 downloads</span>
+                <button class="download-btn community-btn" onclick="event.stopPropagation(); downloadAPK('Skin Pack Ultra')">⬇️ Download</button>
+            </div>
+        </div>
+
+        <!-- Community APK 3 -->
+        <div class="apk-card community" onclick="downloadAPK('Boost Mod')">
+            <div class="apk-icon">⚡</div>
+            <div class="apk-title">
+                Boost Mod
+                <span class="apk-badge community-badge">Community</span>
+            </div>
+            <div class="apk-version">v3.1.0 • 12 MB</div>
+            <div class="apk-desc">Performance booster with custom tweaks and optimizations.</div>
+            <div class="apk-meta">
+                <span class="downloads">⬇️ 1,234 downloads</span>
+                <button class="download-btn community-btn" onclick="event.stopPropagation(); downloadAPK('Boost Mod')">⬇️ Download</button>
+            </div>
+        </div>
+
+        <!-- Community APK 4 -->
+        <div class="apk-card community" onclick="downloadAPK('Retro Collection')">
+            <div class="apk-icon">🕹️</div>
+            <div class="apk-title">
+                Retro Collection
+                <span class="apk-badge community-badge">Community</span>
+            </div>
+            <div class="apk-version">v0.9.5 • 45 MB</div>
+            <div class="apk-desc">Classic games collection with modded features and enhancements.</div>
+            <div class="apk-meta">
+                <span class="downloads">⬇️ 678 downloads</span>
+                <button class="download-btn community-btn" onclick="event.stopPropagation(); downloadAPK('Retro Collection')">⬇️ Download</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+    UPLOAD SECTION
+    ============================================================ -->
+    <div class="upload-section" id="upload">
+        <h3>📤 Upload Your Modded APK</h3>
+        <p>Share your mods with the community! All uploads go to the Community section.</p>
+        <button class="upload-btn" onclick="showToast('📤 Upload feature coming soon!', 'info')">📤 Upload APK</button>
     </div>
 
     <!-- Footer -->
@@ -529,29 +859,82 @@
 
 </div>
 
-<!-- ============================================================
-TOAST NOTIFICATION - Shows when page loads
-============================================================ -->
-<div id="toast" style="position: fixed; bottom: 30px; right: 30px; background: #1a1d27; padding: 16px 24px; border-radius: 14px; border-left: 4px solid #f7971e; box-shadow: 0 8px 30px rgba(0,0,0,0.8); color: #d4dcec; transform: translateY(100px); opacity: 0; transition: 0.5s ease; z-index: 999; max-width: 400px; font-size: 0.9rem;">
-    🔗 Share this link and the preview will pop up on TikTok/Discord/Twitter!
-</div>
+<!-- Toast -->
+<div class="toast" id="toast"></div>
 
 <script>
-    // Show toast notification when page loads
-    setTimeout(() => {
+    // ============================================================
+    // TOAST SYSTEM
+    // ============================================================
+    function showToast(message, type = 'info') {
         const toast = document.getElementById('toast');
-        toast.style.transform = 'translateY(0)';
-        toast.style.opacity = '1';
-        
+        toast.textContent = message;
+        toast.className = 'toast ' + type;
+        toast.classList.add('show');
+        clearTimeout(toast._timeout);
+        toast._timeout = setTimeout(() => {
+            toast.classList.remove('show');
+        }, 3500);
+    }
+
+    // ============================================================
+    // DOWNLOAD FUNCTION
+    // ============================================================
+    function downloadAPK(name) {
+        showToast(`⬇️ Downloading: ${name}...`, 'success');
+        // Simulate download - in reality, this would trigger a file download
         setTimeout(() => {
-            toast.style.transform = 'translateY(100px)';
-            toast.style.opacity = '0';
-        }, 6000);
+            showToast(`✅ ${name} downloaded successfully!`, 'success');
+        }, 1500);
+    }
+
+    // ============================================================
+    // SCROLL TO SECTION
+    // ============================================================
+    function scrollToSection(id) {
+        const element = document.getElementById(id);
+        if (element) {
+            const offset = 80;
+            const elementPosition = element.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - offset;
+            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+        }
+    }
+
+    // ============================================================
+    // INIT
+    // ============================================================
+    // Show welcome toast
+    setTimeout(() => {
+        showToast('🔗 Welcome to AMH Modding! Click any APK to download.', 'info');
     }, 1000);
 
-    console.log('✅ AMH Modding website loaded');
-    console.log('🔗 Share this URL and the preview will pop up automatically!');
-    console.log('📱 Works on TikTok, Discord, Twitter, Facebook, etc.');
+    // Handle card clicks for downloading
+    document.querySelectorAll('.apk-card').forEach(card => {
+        card.addEventListener('click', function(e) {
+            // Check if click was on a button inside the card
+            if (e.target.closest('.download-btn')) {
+                return; // Button handles its own click
+            }
+            // Otherwise, get the title and trigger download
+            const title = this.querySelector('.apk-title').textContent.trim();
+            downloadAPK(title);
+        });
+    });
+
+    // Handle download button clicks separately
+    document.querySelectorAll('.download-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.stopPropagation(); // Prevent card click
+            const card = this.closest('.apk-card');
+            const title = card.querySelector('.apk-title').textContent.trim();
+            downloadAPK(title);
+        });
+    });
+
+    console.log('✅ AMH Modding loaded!');
+    console.log('📱 Official APKs and Community APKs are clickable.');
+    console.log('🔗 Share this site and the preview will pop up on social media!');
 </script>
 
 </body>
