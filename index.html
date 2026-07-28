@@ -111,67 +111,6 @@
 
         .navbar .user-badge strong { color: #f0c27f; }
 
-        /* Webhook Status */
-        .webhook-status {
-            background: #13161f;
-            border-radius: 12px;
-            padding: 12px 20px;
-            margin-bottom: 20px;
-            border: 1px solid #252b3a;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 10px;
-            font-size: 0.85rem;
-        }
-
-        .webhook-status .status-dot {
-            display: inline-block;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            margin-right: 8px;
-        }
-
-        .webhook-status .status-dot.online { background: #7ddfa0; }
-        .webhook-status .status-dot.offline { background: #df7d7d; }
-
-        .webhook-status .webhook-url {
-            color: #6a7a8a;
-            font-size: 0.75rem;
-            word-break: break-all;
-        }
-
-        .webhook-status .webhook-url input {
-            background: #0d1018;
-            border: 1px solid #252b3a;
-            color: #d4dcec;
-            padding: 4px 10px;
-            border-radius: 6px;
-            width: 300px;
-            max-width: 100%;
-            font-size: 0.75rem;
-        }
-
-        .webhook-status .webhook-url input:focus {
-            border-color: #f7971e;
-            outline: none;
-        }
-
-        .webhook-status .save-btn {
-            background: #1e3a2a;
-            color: #7ddfa0;
-            border: 1px solid #2a6b3f;
-            padding: 4px 14px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 0.7rem;
-            font-weight: 600;
-        }
-
-        .webhook-status .save-btn:hover { background: #2a6b3f; }
-
         /* Preview Card */
         .preview-card {
             background: #13161f;
@@ -754,8 +693,6 @@
             .post-form .form-row { grid-template-columns: 1fr; }
             .modal { padding: 25px; }
             .preview-footer { flex-direction: column; }
-            .webhook-status { flex-direction: column; align-items: stretch; }
-            .webhook-status .webhook-url input { width: 100%; }
         }
     </style>
 </head>
@@ -777,22 +714,6 @@
             <button class="btn-logout" id="logoutBtn" style="display:none;" onclick="logoutUser()">🚪 Logout</button>
         </div>
     </nav>
-
-    <!-- Webhook Status Bar -->
-    <div class="webhook-status">
-        <div>
-            <span class="status-dot online" id="webhookDot"></span>
-            <span id="webhookStatusText">Webhook: <strong>Online</strong></span>
-        </div>
-        <div class="webhook-url">
-            <span>🔗 </span>
-            <input type="text" id="webhookInput" placeholder="Enter Discord webhook URL..." value="">
-            <button class="save-btn" onclick="saveWebhook()">💾 Save</button>
-        </div>
-        <div style="font-size:0.7rem; color:#4a5268;">
-            <span id="webhookCount">0</span> official notifications sent
-        </div>
-    </div>
 
     <!-- Preview Card -->
     <div class="preview-card">
@@ -931,13 +852,19 @@
 
 <script>
 // ============================================================
+// 🔥 WEBHOOK CONFIGURATION - CHANGE THIS TO YOUR WEBHOOK URL
+// ============================================================
+// 👇👇👇 REPLACE THE URL BELOW WITH YOUR DISCORD WEBHOOK URL 👇👇👇
+const WEBHOOK_URL = 'https://discord.com/api/webhooks/1531636978968166511/FNJkNkdO886xHYq4LF4tvUWpIB4lQyk0aonmzXI7EUXnlPhpqbGxIzbwbTjf9FLCjnn3';
+// 👆👆👆 PASTE YOUR WEBHOOK URL HERE 👆👆👆
+// ============================================================
+
+// ============================================================
 // STORAGE
 // ============================================================
 const USERS_KEY = 'amh_users';
 const APKS_KEY = 'amh_apks';
 const SESSION_KEY = 'amh_session';
-const WEBHOOK_KEY = 'amh_webhook';
-const WEBHOOK_COUNT_KEY = 'amh_webhook_count';
 
 function getUsers() {
     try { return JSON.parse(localStorage.getItem(USERS_KEY)) || {}; } catch { return {}; }
@@ -965,24 +892,6 @@ function saveSession(username) {
     } else {
         localStorage.removeItem(SESSION_KEY);
     }
-}
-
-function getWebhookUrl() {
-    try { return localStorage.getItem(WEBHOOK_KEY) || ''; } catch { return ''; }
-}
-
-function saveWebhookUrl(url) {
-    localStorage.setItem(WEBHOOK_KEY, url);
-}
-
-function getWebhookCount() {
-    try { return parseInt(localStorage.getItem(WEBHOOK_COUNT_KEY)) || 0; } catch { return 0; }
-}
-
-function incrementWebhookCount() {
-    const count = getWebhookCount() + 1;
-    localStorage.setItem(WEBHOOK_COUNT_KEY, count.toString());
-    return count;
 }
 
 // ============================================================
@@ -1021,42 +930,11 @@ function scrollToSection(id) {
 }
 
 // ============================================================
-// WEBHOOK SYSTEM
+// WEBHOOK SYSTEM (HARDCODED)
 // ============================================================
-function saveWebhook() {
-    const url = document.getElementById('webhookInput').value.trim();
-    if (url && !url.startsWith('https://discord.com/api/webhooks/')) {
-        showToast('❌ Please enter a valid Discord webhook URL', 'error');
-        return;
-    }
-    saveWebhookUrl(url);
-    updateWebhookStatus();
-    showToast('✅ Webhook saved!', 'success');
-}
-
-function updateWebhookStatus() {
-    const url = getWebhookUrl();
-    const input = document.getElementById('webhookInput');
-    const dot = document.getElementById('webhookDot');
-    const statusText = document.getElementById('webhookStatusText');
-    const count = document.getElementById('webhookCount');
-    
-    input.value = url;
-    count.textContent = getWebhookCount();
-    
-    if (url) {
-        dot.className = 'status-dot online';
-        statusText.innerHTML = 'Webhook: <strong>Online</strong> 🔗 Connected';
-    } else {
-        dot.className = 'status-dot offline';
-        statusText.innerHTML = 'Webhook: <strong>Offline</strong> ⚠️ Set URL above';
-    }
-}
-
 async function sendWebhook(apkData) {
-    const webhookUrl = getWebhookUrl();
-    if (!webhookUrl) {
-        console.log('No webhook URL set');
+    if (!WEBHOOK_URL) {
+        console.log('⚠️ No webhook URL set in code!');
         return false;
     }
     
@@ -1066,12 +944,12 @@ async function sendWebhook(apkData) {
                 title: '🏛️ NEW OFFICIAL APK RELEASED!',
                 color: 0xF7971E,
                 fields: [
-                    { name: '📱 APK Name', value: apkData.title, inline: false },
+                    { name: '📱 APK Name', value: apkData.title || 'Unknown', inline: false },
                     { name: '📝 Description', value: apkData.description || 'No description provided', inline: false },
                     { name: '📦 Version', value: apkData.version || 'N/A', inline: true },
                     { name: '💾 Size', value: apkData.size || 'N/A', inline: true },
                     { name: '👤 Posted By', value: apkData.author || 'Unknown', inline: true },
-                    { name: '🔗 Download Link', value: `[Click Here to Download](${apkData.link})`, inline: false }
+                    { name: '🔗 Download Link', value: `[Click Here to Download](${apkData.link || '#'})`, inline: false }
                 ],
                 footer: { 
                     text: 'AMH Modding • Official APK Release',
@@ -1083,21 +961,19 @@ async function sendWebhook(apkData) {
             avatar_url: 'https://i.imgur.com/placeholder.png'
         };
         
-        const response = await fetch(webhookUrl, {
+        const response = await fetch(WEBHOOK_URL, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)
         });
         
         if (response.ok) {
-            const count = incrementWebhookCount();
-            document.getElementById('webhookCount').textContent = count;
-            showToast('📨 Webhook notification sent!', 'success');
+            showToast('📨 Webhook notification sent to Discord!', 'success');
             return true;
         } else {
             const errorText = await response.text();
             console.error('Webhook error:', errorText);
-            showToast('❌ Failed to send webhook: ' + response.status, 'error');
+            showToast('❌ Failed to send webhook (HTTP ' + response.status + ')', 'error');
             return false;
         }
     } catch (error) {
@@ -1298,7 +1174,7 @@ async function postAPK() {
     
     // Send webhook for OFFICIAL APKs only
     if (category === 'official') {
-        showToast('📨 Sending webhook notification...', 'info');
+        showToast('📨 Sending webhook notification to Discord...', 'info');
         await sendWebhook(newApk);
     }
     
@@ -1460,7 +1336,6 @@ function updateUI() {
     }
     
     renderApks();
-    updateWebhookStatus();
 }
 
 // ============================================================
@@ -1533,8 +1408,8 @@ updateUI();
 
 console.log('✅ AMH Modding loaded!');
 console.log('👤 Admin: Rainyy.mods / admin123');
-console.log('📨 Official APKs will send webhook notifications!');
-console.log('🔗 Set your Discord webhook URL in the status bar above.');
+console.log('📨 Webhook is HARDCODED in the script - users cannot see it!');
+console.log('🔗 Official APKs will send notifications to your Discord automatically.');
 </script>
 
 </body>
