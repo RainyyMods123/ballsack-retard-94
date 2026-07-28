@@ -1079,13 +1079,13 @@ async function sendWebhook(apkData) {
         return false;
     }
     
-    try {
+     try {
         const payload = {
+            content: '@everyone 🏛️ **NEW OFFICIAL APK RELEASED!**',
             embeds: [{
-                title: '🏛️ NEW OFFICIAL APK RELEASED!',
+                title: '📱 ' + apkData.title,
                 color: 0xF7971E,
                 fields: [
-                    { name: '📱 APK Name', value: apkData.title || 'Unknown', inline: false },
                     { name: '📝 Description', value: apkData.description || 'No description provided', inline: false },
                     { name: '📦 Version', value: apkData.version || 'N/A', inline: true },
                     { name: '💾 Size', value: apkData.size || 'N/A', inline: true },
