@@ -3,7 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AMH Modding</title>
+    
+    <!-- ============================================================
+    SOCIAL PREVIEW META TAGS - THIS MAKES THE PREVIEW POP UP
+    ============================================================ -->
+    
+    <!-- Primary Meta Tags -->
+    <title>AMH Modding - APK & Modding Community</title>
+    <meta name="title" content="AMH Modding - APK & Modding Community">
+    <meta name="description" content="AMH modding is a website where people can post APKs and modding things. This website was made by Rainyy.">
+    
+    <!-- Open Graph / Facebook / TikTok / Discord -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://amh-modding.xyz/">
+    <meta property="og:title" content="AMH Modding - APK & Modding Community">
+    <meta property="og:description" content="AMH modding is a website where people can post APKs and modding things. This website was made by Rainyy.">
+    <meta property="og:image" content="https://amh-modding.xyz/preview-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://amh-modding.xyz/">
+    <meta property="twitter:title" content="AMH Modding - APK & Modding Community">
+    <meta property="twitter:description" content="AMH modding is a website where people can post APKs and modding things. This website was made by Rainyy.">
+    <meta property="twitter:image" content="https://amh-modding.xyz/preview-image.png">
+    
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#f7971e">
+    
+    <!-- ============================================================
+    STYLES
+    ============================================================ -->
     <style>
         * {
             margin: 0;
@@ -12,834 +43,515 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             background: #0a0b0f;
-            color: #d4dcec;
             min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             padding: 20px;
         }
 
-        .auth-container {
-            background: #13161f;
-            border-radius: 20px;
-            padding: 40px;
-            border: 1px solid #252b3a;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.7);
-            max-width: 420px;
-            width: 100%;
+        /* Full website wrapper */
+        .website-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        .auth-container h1 {
-            font-size: 2rem;
+        /* Navigation */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 24px;
+            background: #13161f;
+            border-radius: 16px;
+            border: 1px solid #252b3a;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.4rem;
             font-weight: 700;
             background: linear-gradient(135deg, #f7971e, #ffd200);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            text-align: center;
-            margin-bottom: 5px;
         }
 
-        .auth-container .subtitle {
-            text-align: center;
-            color: #6a7a8a;
-            margin-bottom: 25px;
-            font-size: 0.9rem;
-        }
-
-        .auth-container .tabs {
+        .navbar .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #f7971e, #ffd200);
+            border-radius: 10px;
             display: flex;
-            gap: 5px;
-            margin-bottom: 25px;
-            background: #0d1018;
-            border-radius: 14px;
-            padding: 5px;
-            border: 1px solid #1a1d27;
-        }
-
-        .auth-container .tab-btn {
-            flex: 1;
-            padding: 12px;
-            border: none;
-            background: transparent;
-            color: #6a7a8a;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            border-radius: 10px;
-            transition: 0.3s;
-            text-align: center;
-        }
-
-        .auth-container .tab-btn:hover {
-            color: #d4dcec;
-            background: #1a1d27;
-        }
-
-        .auth-container .tab-btn.active {
-            background: #f7971e;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: 800;
             color: #0a0b0f;
+            -webkit-text-fill-color: #0a0b0f;
         }
 
-        .auth-container .tab-content {
-            display: none;
+        .navbar .nav-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            flex-wrap: wrap;
         }
 
-        .auth-container .tab-content.active {
-            display: block;
-        }
-
-        .auth-container label {
-            display: block;
-            margin-bottom: 6px;
-            color: #b7c0d0;
-            font-weight: 500;
+        .navbar .nav-links a {
+            color: #8a9bb5;
+            text-decoration: none;
             font-size: 0.9rem;
-        }
-
-        .auth-container input {
-            width: 100%;
-            padding: 14px 16px;
-            border-radius: 10px;
-            border: 1px solid #252b3a;
-            background: #0d1018;
-            color: #d4dcec;
-            font-size: 1rem;
-            margin-bottom: 16px;
-            outline: none;
             transition: 0.3s;
+            font-weight: 500;
         }
 
-        .auth-container input:focus {
-            border-color: #f7971e;
-            box-shadow: 0 0 15px rgba(247, 151, 30, 0.1);
-        }
-
-        .auth-container .btn {
-            width: 100%;
-            padding: 14px;
-            border-radius: 30px;
-            border: none;
-            background: #f7971e;
-            color: #0a0b0f;
-            font-weight: 700;
-            font-size: 1.05rem;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .auth-container .btn:hover {
-            background: #ffd200;
-            transform: scale(1.02);
-        }
-
-        .auth-container .error {
-            background: #3a1e1e;
-            color: #df7d7d;
-            padding: 12px;
-            border-radius: 10px;
-            margin-bottom: 16px;
-            text-align: center;
-            border: 1px solid #6b2a2a;
-            display: none;
-        }
-
-        .auth-container .error.show {
-            display: block;
-        }
-
-        .auth-container .success {
-            background: #1e3a2a;
-            color: #7ddfa0;
-            padding: 12px;
-            border-radius: 10px;
-            margin-bottom: 16px;
-            text-align: center;
-            border: 1px solid #2a6b3f;
-            display: none;
-        }
-
-        .auth-container .success.show {
-            display: block;
-        }
-
-        .auth-container .info {
-            text-align: center;
-            margin-top: 15px;
-            font-size: 0.8rem;
-            color: #4a5268;
-        }
-
-        .auth-container .info strong {
+        .navbar .nav-links a:hover {
             color: #f7971e;
         }
 
-        .footer-credit {
-            margin-top: 25px;
-            padding-top: 20px;
-            border-top: 1px solid #1a1d27;
-            text-align: center;
-            font-size: 0.75rem;
-            color: #3a4258;
+        .navbar .nav-links .btn {
+            background: linear-gradient(135deg, #f7971e, #ffd200);
+            color: #0a0b0f;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
         }
 
-        .footer-credit a {
+        .navbar .nav-links .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 20px rgba(247, 151, 30, 0.3);
+        }
+
+        /* ============================================================
+        THE PREVIEW CARD - THIS IS WHAT POPS UP WHEN SHARED
+        ============================================================ */
+        .preview-card {
+            background: #13161f;
+            border-radius: 20px;
+            border: 1px solid #252b3a;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.7);
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+            padding: 24px;
+            transition: 0.3s;
+        }
+
+        .preview-card:hover {
+            transform: translateY(-4px);
+            border-color: #3a4a5a;
+            box-shadow: 0 15px 50px rgba(247, 151, 30, 0.08);
+        }
+
+        /* Preview Header */
+        .preview-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 14px;
+        }
+
+        .preview-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, #f7971e, #ffd200);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #0a0b0f;
+            flex-shrink: 0;
+            box-shadow: 0 4px 15px rgba(247, 151, 30, 0.25);
+        }
+
+        .preview-title-group {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .preview-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #d4dcec;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .preview-title .badge {
+            background: #1e2a3a;
+            padding: 2px 12px;
+            border-radius: 20px;
+            font-size: 0.6rem;
+            font-weight: 600;
+            color: #8a9bb5;
+            border: 1px solid #2a3a4a;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .preview-domain {
+            font-size: 0.8rem;
+            color: #6a7a8a;
+            margin-top: 3px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .preview-domain .verified {
+            color: #7ddfa0;
+            font-size: 0.7rem;
+        }
+
+        /* Preview Description */
+        .preview-description {
+            color: #b7c0d0;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 16px;
+            padding-left: 4px;
+        }
+
+        .preview-description strong {
+            color: #f7971e;
+            font-weight: 600;
+        }
+
+        /* Preview Tags */
+        .preview-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 16px;
+            padding-left: 4px;
+        }
+
+        .preview-tags span {
+            background: #1a1d27;
+            padding: 4px 14px;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            color: #8a9bb5;
+            border: 1px solid #252b3a;
+            font-weight: 500;
+        }
+
+        .preview-tags span.highlight {
+            background: #1e2a3a;
+            border-color: #f7971e;
+            color: #f7971e;
+        }
+
+        /* Preview Footer */
+        .preview-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding-top: 14px;
+            border-top: 1px solid #1a1d27;
+        }
+
+        .preview-footer .stats {
+            display: flex;
+            gap: 16px;
+            font-size: 0.75rem;
+            color: #4a5268;
+        }
+
+        .preview-footer .stats span {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .preview-footer .action-btn {
+            background: linear-gradient(135deg, #f7971e, #ffd200);
+            color: #0a0b0f;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: 0.3s;
+            text-decoration: none;
+        }
+
+        .preview-footer .action-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 20px rgba(247, 151, 30, 0.3);
+        }
+
+        /* Preview Credit */
+        .preview-credit {
+            margin-top: 14px;
+            padding-top: 12px;
+            border-top: 1px solid #1a1d27;
+            font-size: 0.65rem;
+            color: #3a4258;
+            text-align: center;
+            letter-spacing: 0.3px;
+        }
+
+        .preview-credit a {
             color: #5a6a8a;
             text-decoration: none;
             transition: 0.3s;
         }
 
-        .footer-credit a:hover {
+        .preview-credit a:hover {
             color: #f7971e;
-            text-decoration: underline;
         }
 
-        .toast {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: #1a1d27;
-            padding: 16px 28px;
-            border-radius: 14px;
-            border-left: 4px solid #f7971e;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.8);
+        /* ============================================================
+        FEATURED CONTENT SECTION
+        ============================================================ */
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .content-card {
+            background: #13161f;
+            border-radius: 16px;
+            padding: 20px;
+            border: 1px solid #252b3a;
+            transition: 0.3s;
+        }
+
+        .content-card:hover {
+            border-color: #3a4a5a;
+            transform: translateY(-2px);
+        }
+
+        .content-card .icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .content-card h3 {
             color: #d4dcec;
-            transform: translateY(100px);
-            opacity: 0;
-            transition: 0.4s ease;
-            z-index: 999;
-            max-width: 400px;
+            font-size: 1.1rem;
+            margin-bottom: 6px;
         }
 
-        .toast.show {
-            transform: translateY(0);
-            opacity: 1;
+        .content-card p {
+            color: #6a7a8a;
+            font-size: 0.9rem;
+            line-height: 1.5;
         }
 
-        .toast.success {
-            border-left-color: #7ddfa0;
+        .content-card .tag {
+            display: inline-block;
+            background: #1a1d27;
+            padding: 2px 12px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            color: #8a9bb5;
+            margin-top: 10px;
+            border: 1px solid #252b3a;
         }
 
-        .toast.error {
-            border-left-color: #df7d7d;
+        /* Footer */
+        .footer {
+            margin-top: 40px;
+            padding: 20px;
+            text-align: center;
+            border-top: 1px solid #1a1d27;
+            font-size: 0.75rem;
+            color: #3a4258;
         }
 
-        @media (max-width: 500px) {
-            .auth-container {
-                padding: 25px;
+        .footer a {
+            color: #5a6a8a;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            color: #f7971e;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .navbar {
+                padding: 12px 16px;
+                flex-direction: column;
+                align-items: stretch;
+                text-align: center;
+            }
+            .navbar .nav-links {
+                justify-content: center;
+            }
+            .preview-card {
+                padding: 16px;
+            }
+            .preview-title {
+                font-size: 1rem;
+            }
+            .preview-description {
+                font-size: 0.85rem;
+            }
+            .preview-icon {
+                width: 44px;
+                height: 44px;
+                font-size: 1.4rem;
+            }
+            .preview-footer {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .preview-footer .action-btn {
+                text-align: center;
+            }
+            .content-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
 
-<!-- Auth Container -->
-<div class="auth-container" id="authContainer">
-    <h1>🔐 AMH Modding</h1>
-    <div class="subtitle">Register or sign in to access the modding server</div>
+<div class="website-wrapper">
     
-    <!-- Tabs -->
-    <div class="tabs">
-        <button class="tab-btn active" data-tab="login">🔑 Login</button>
-        <button class="tab-btn" data-tab="register">📝 Register</button>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">
+            <span class="logo-icon">AM</span>
+            AMH Modding
+        </div>
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">APKs</a>
+            <a href="#">Mods</a>
+            <a href="#">Community</a>
+            <a href="#" class="btn">🔐 Login</a>
+        </div>
+    </nav>
+
+    <!-- ============================================================
+    THE PREVIEW CARD - This is what pops up when shared
+    ============================================================ -->
+    <div class="preview-card">
+        <!-- Header -->
+        <div class="preview-header">
+            <div class="preview-icon">AM</div>
+            <div class="preview-title-group">
+                <div class="preview-title">
+                    AMH Modding
+                    <span class="badge">🔗 Official</span>
+                </div>
+                <div class="preview-domain">
+                    🌐 amh-modding.xyz
+                    <span class="verified">✓ Verified</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Description -->
+        <div class="preview-description">
+            AMH modding is a website where people can post <strong>APKs</strong> and 
+            <strong>modding things</strong>. This website was made by <strong>Rainyy</strong>.
+        </div>
+
+        <!-- Tags -->
+        <div class="preview-tags">
+            <span class="highlight">📱 APK</span>
+            <span>🛠️ Modding</span>
+            <span>🎮 Games</span>
+            <span>🔧 Tools</span>
+            <span>👥 Community</span>
+        </div>
+
+        <!-- Footer -->
+        <div class="preview-footer">
+            <div class="stats">
+                <span>📥 1.2K downloads</span>
+                <span>👤 456 members</span>
+                <span>📝 89 posts</span>
+            </div>
+            <a href="#" class="action-btn">🚀 Visit Website</a>
+        </div>
+
+        <!-- Credit -->
+        <div class="preview-credit">
+            AMH is founded by <a href="#">Rainyy</a> • <a href="#">.gg/Rfm9ZnfNX5</a>
+        </div>
     </div>
 
-    <!-- Login Tab -->
-    <div class="tab-content active" id="tab-login">
-        <div class="error" id="loginError">❌ Invalid username or password</div>
-        <label for="loginUsername">👤 Username</label>
-        <input type="text" id="loginUsername" placeholder="Enter your username..." autocomplete="off">
-        <label for="loginPassword">🔑 Password</label>
-        <input type="password" id="loginPassword" placeholder="Enter your password..." autocomplete="off">
-        <button class="btn" id="loginBtn">🚀 Login</button>
+    <!-- Featured Content -->
+    <div class="content-grid">
+        <div class="content-card">
+            <div class="icon">📱</div>
+            <h3>Latest APKs</h3>
+            <p>Browse the newest modded APKs uploaded by the community.</p>
+            <span class="tag">🔥 12 new today</span>
+        </div>
+        <div class="content-card">
+            <div class="icon">🛠️</div>
+            <h3>Modding Tools</h3>
+            <p>Essential tools and resources for modding Android applications.</p>
+            <span class="tag">⚡ 8 tools</span>
+        </div>
+        <div class="content-card">
+            <div class="icon">👥</div>
+            <h3>Community</h3>
+            <p>Join the community and share your mods with other members.</p>
+            <span class="tag">💬 456 members</span>
+        </div>
     </div>
 
-    <!-- Register Tab -->
-    <div class="tab-content" id="tab-register">
-        <div class="error" id="registerError">❌ That username is already taken</div>
-        <div class="success" id="registerSuccess">✅ Account created! Please login.</div>
-        <label for="registerUsername">👤 Username</label>
-        <input type="text" id="registerUsername" placeholder="Choose a username..." autocomplete="off">
-        <label for="registerPassword">🔑 Password</label>
-        <input type="password" id="registerPassword" placeholder="Choose a password..." autocomplete="off">
-        <label for="registerConfirm">🔑 Confirm Password</label>
-        <input type="password" id="registerConfirm" placeholder="Confirm your password..." autocomplete="off">
-        <button class="btn" id="registerBtn">📝 Create Account</button>
+    <!-- Footer -->
+    <div class="footer">
+        <p>
+            AMH Modding • Founded by <a href="#">Rainyy</a> • 
+            <a href="#">.gg/Rfm9ZnfNX5</a>
+        </p>
+        <p style="margin-top: 6px; color: #2a3248;">
+            © 2026 AMH Modding • Made with ❤️ by Rainyy
+        </p>
     </div>
 
-    <div class="info">
-        Only <strong>Rainyy.mods</strong> can post Official announcements
-    </div>
-    
-    <div class="footer-credit">
-        AMH is founded by Rainyy .gg/Rfm9ZnfNX5
-    </div>
 </div>
 
-<!-- Posts System (hidden until login) -->
-<div class="container" id="postsApp" style="display: none; max-width: 1000px; margin: 0 auto; background: #13161f; border-radius: 20px; padding: 30px; border: 1px solid #252b3a; box-shadow: 0 10px 40px rgba(0,0,0,0.7);">
-    <div class="header" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; border-bottom: 2px solid #252b3a; padding-bottom: 20px; margin-bottom: 25px;">
-        <h1 style="font-size: 2rem; font-weight: 700; background: linear-gradient(135deg, #f7971e, #ffd200); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">📢 Posts</h1>
-        <div style="display: flex; gap: 15px; align-items: center; flex-wrap: wrap;">
-            <span style="background: #1e2a3a; padding: 8px 16px; border-radius: 30px; font-size: 0.85rem; color: #8a9bb5; border: 1px solid #2a3a4a;">
-                👤 Logged in as: <strong id="currentUser" style="color: #f0c27f;">User</strong>
-            </span>
-            <button class="btn-logout" id="logoutBtn" style="background: #3a1e1e; color: #df7d7d; border: none; padding: 8px 20px; border-radius: 30px; cursor: pointer; font-weight: 600; transition: 0.3s;">🚪 Logout</button>
-        </div>
-    </div>
-
-    <!-- Tabs -->
-    <div class="tabs" style="display: flex; gap: 5px; margin-bottom: 25px; background: #0d1018; border-radius: 14px; padding: 5px; border: 1px solid #1a1d27;">
-        <button class="tab-btn active" data-tab="official" style="flex: 1; padding: 14px 20px; border: none; background: transparent; color: #6a7a8a; font-size: 1rem; font-weight: 600; cursor: pointer; border-radius: 10px; transition: 0.3s; text-align: center;">
-            🏛️ Official <span class="count" style="background: #1a1d27; padding: 2px 10px; border-radius: 20px; font-size: 0.75rem; margin-left: 8px;" id="officialCount">0</span>
-        </button>
-        <button class="tab-btn" data-tab="community" style="flex: 1; padding: 14px 20px; border: none; background: transparent; color: #6a7a8a; font-size: 1rem; font-weight: 600; cursor: pointer; border-radius: 10px; transition: 0.3s; text-align: center;">
-            👥 Community <span class="count" style="background: #1a1d27; padding: 2px 10px; border-radius: 20px; font-size: 0.75rem; margin-left: 8px;" id="communityCount">0</span>
-        </button>
-    </div>
-
-    <!-- Official Tab -->
-    <div class="tab-content active" id="tab-official">
-        <div class="create-post" style="background: #1a1d27; border-radius: 16px; padding: 25px; border: 1px solid #252b3a; margin-bottom: 25px;">
-            <h3 style="margin-bottom: 15px; color: #b7c0d0; font-weight: 500;">📝 Create Official Post</h3>
-            <div id="officialPermission" style="background: #1e2a3a; padding: 12px; border-radius: 10px; margin-bottom: 15px; color: #8a9bb5; text-align: center; border: 1px solid #2a3a4a;">
-                ⚠️ Only <strong style="color: #f7971e;">Rainyy.mods</strong> can post Official announcements
-            </div>
-            <input type="text" id="officialTitle" placeholder="Post title..." maxlength="100" style="width: 100%; padding: 12px 16px; border-radius: 10px; border: 1px solid #252b3a; background: #0d1018; color: #d4dcec; font-size: 0.95rem; margin-bottom: 12px; outline: none; transition: 0.3s; font-family: inherit;">
-            <textarea id="officialContent" placeholder="Post content..." style="width: 100%; padding: 12px 16px; border-radius: 10px; border: 1px solid #252b3a; background: #0d1018; color: #d4dcec; font-size: 0.95rem; margin-bottom: 12px; outline: none; transition: 0.3s; font-family: inherit; min-height: 100px; resize: vertical;"></textarea>
-            <input type="text" id="officialAuthor" placeholder="Your name/username..." maxlength="50" style="width: 100%; padding: 12px 16px; border-radius: 10px; border: 1px solid #252b3a; background: #0d1018; color: #d4dcec; font-size: 0.95rem; margin-bottom: 12px; outline: none; transition: 0.3s; font-family: inherit;">
-            <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-                <button class="btn" id="postOfficialBtn" style="padding: 12px 28px; border-radius: 30px; border: none; background: #f7971e; color: #0a0b0f; font-weight: 600; cursor: pointer; transition: 0.3s; font-size: 0.95rem;">📤 Post Official</button>
-                <button class="btn secondary" id="clearOfficialBtn" style="padding: 12px 28px; border-radius: 30px; border: none; background: #1e2a3a; color: #8a9bb5; font-weight: 600; cursor: pointer; transition: 0.3s; font-size: 0.95rem;">Clear</button>
-            </div>
-        </div>
-        <div class="posts-list" id="officialPosts" style="display: flex; flex-direction: column; gap: 15px;"></div>
-    </div>
-
-    <!-- Community Tab -->
-    <div class="tab-content" id="tab-community">
-        <div class="create-post" style="background: #1a1d27; border-radius: 16px; padding: 25px; border: 1px solid #252b3a; margin-bottom: 25px;">
-            <h3 style="margin-bottom: 15px; color: #b7c0d0; font-weight: 500;">📝 Create Community Post</h3>
-            <input type="text" id="communityTitle" placeholder="Post title..." maxlength="100" style="width: 100%; padding: 12px 16px; border-radius: 10px; border: 1px solid #252b3a; background: #0d1018; color: #d4dcec; font-size: 0.95rem; margin-bottom: 12px; outline: none; transition: 0.3s; font-family: inherit;">
-            <textarea id="communityContent" placeholder="Post content..." style="width: 100%; padding: 12px 16px; border-radius: 10px; border: 1px solid #252b3a; background: #0d1018; color: #d4dcec; font-size: 0.95rem; margin-bottom: 12px; outline: none; transition: 0.3s; font-family: inherit; min-height: 100px; resize: vertical;"></textarea>
-            <input type="text" id="communityAuthor" placeholder="Your name/username..." maxlength="50" style="width: 100%; padding: 12px 16px; border-radius: 10px; border: 1px solid #252b3a; background: #0d1018; color: #d4dcec; font-size: 0.95rem; margin-bottom: 12px; outline: none; transition: 0.3s; font-family: inherit;">
-            <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-                <button class="btn" id="postCommunityBtn" style="padding: 12px 28px; border-radius: 30px; border: none; background: #4a7a9a; color: #fff; font-weight: 600; cursor: pointer; transition: 0.3s; font-size: 0.95rem;">📤 Post to Community</button>
-                <button class="btn secondary" id="clearCommunityBtn" style="padding: 12px 28px; border-radius: 30px; border: none; background: #1e2a3a; color: #8a9bb5; font-weight: 600; cursor: pointer; transition: 0.3s; font-size: 0.95rem;">Clear</button>
-            </div>
-        </div>
-        <div class="posts-list" id="communityPosts" style="display: flex; flex-direction: column; gap: 15px;"></div>
-    </div>
-
-    <div class="footer-credit" style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #1a1d27; text-align: center; font-size: 0.75rem; color: #3a4258;">
-        AMH is founded by Rainyy .gg/Rfm9ZnfNX5
-    </div>
+<!-- ============================================================
+TOAST NOTIFICATION - Shows when page loads
+============================================================ -->
+<div id="toast" style="position: fixed; bottom: 30px; right: 30px; background: #1a1d27; padding: 16px 24px; border-radius: 14px; border-left: 4px solid #f7971e; box-shadow: 0 8px 30px rgba(0,0,0,0.8); color: #d4dcec; transform: translateY(100px); opacity: 0; transition: 0.5s ease; z-index: 999; max-width: 400px; font-size: 0.9rem;">
+    🔗 Share this link and the preview will pop up on TikTok/Discord/Twitter!
 </div>
-
-<!-- Toast -->
-<div class="toast" id="toast"></div>
 
 <script>
-(function() {
-    // ============================================================
-    // STORAGE
-    // ============================================================
-    const USERS_KEY = 'amh_users';
-    const POSTS_KEY = 'amh_posts';
-    const SESSION_KEY = 'amh_session';
-
-    function getUsers() {
-        try {
-            return JSON.parse(localStorage.getItem(USERS_KEY)) || {};
-        } catch {
-            return {};
-        }
-    }
-
-    function saveUsers(users) {
-        localStorage.setItem(USERS_KEY, JSON.stringify(users));
-    }
-
-    function getPosts() {
-        try {
-            return JSON.parse(localStorage.getItem(POSTS_KEY)) || [];
-        } catch {
-            return [];
-        }
-    }
-
-    function savePosts(posts) {
-        localStorage.setItem(POSTS_KEY, JSON.stringify(posts));
-    }
-
-    function getSession() {
-        try {
-            return JSON.parse(localStorage.getItem(SESSION_KEY)) || null;
-        } catch {
-            return null;
-        }
-    }
-
-    function saveSession(username) {
-        if (username) {
-            localStorage.setItem(SESSION_KEY, JSON.stringify({ username, timestamp: Date.now() }));
-        } else {
-            localStorage.removeItem(SESSION_KEY);
-        }
-    }
-
-    // ============================================================
-    // HELPERS
-    // ============================================================
-    function generateId() {
-        return Date.now() + '_' + Math.random().toString(36).substr(2, 9);
-    }
-
-    function formatDate(timestamp) {
-        const date = new Date(timestamp);
-        return date.toLocaleDateString() + ' ' + date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-    }
-
-    function escapeHtml(text) {
-        const div = document.createElement('div');
-        div.textContent = text;
-        return div.innerHTML;
-    }
-
-    function showToast(message, type = 'info') {
+    // Show toast notification when page loads
+    setTimeout(() => {
         const toast = document.getElementById('toast');
-        toast.textContent = message;
-        toast.className = 'toast ' + type;
-        toast.classList.add('show');
-        clearTimeout(toast._timeout);
-        toast._timeout = setTimeout(() => {
-            toast.classList.remove('show');
-        }, 3500);
-    }
-
-    // ============================================================
-    // AUTH SYSTEM
-    // ============================================================
-    function registerUser(username, password) {
-        const users = getUsers();
+        toast.style.transform = 'translateY(0)';
+        toast.style.opacity = '1';
         
-        // Check if username already exists (case insensitive)
-        const existingUser = Object.keys(users).find(u => u.toLowerCase() === username.toLowerCase());
-        if (existingUser) {
-            return { success: false, error: 'username_taken' };
-        }
-        
-        // Create account
-        users[username] = {
-            password: password,
-            created: Date.now()
-        };
-        saveUsers(users);
-        return { success: true };
-    }
+        setTimeout(() => {
+            toast.style.transform = 'translateY(100px)';
+            toast.style.opacity = '0';
+        }, 6000);
+    }, 1000);
 
-    function loginUser(username, password) {
-        const users = getUsers();
-        
-        // Check if user exists (case insensitive)
-        const existingUser = Object.keys(users).find(u => u.toLowerCase() === username.toLowerCase());
-        if (!existingUser) {
-            return { success: false, error: 'User does not exist' };
-        }
-        
-        if (users[existingUser].password !== password) {
-            return { success: false, error: 'Incorrect password' };
-        }
-        
-        saveSession(existingUser);
-        return { success: true, username: existingUser };
-    }
-
-    function logoutUser() {
-        saveSession(null);
-    }
-
-    function getCurrentUser() {
-        const session = getSession();
-        if (session && session.username) {
-            const users = getUsers();
-            if (users[session.username]) {
-                return session.username;
-            }
-        }
-        return null;
-    }
-
-    // ============================================================
-    // POSTS SYSTEM
-    // ============================================================
-    function addPost(title, content, author, category) {
-        if (!title.trim() || !content.trim() || !author.trim()) {
-            showToast('❌ Please fill in all fields', 'error');
-            return false;
-        }
-
-        const posts = getPosts();
-        const newPost = {
-            id: generateId(),
-            title: title.trim(),
-            content: content.trim(),
-            author: author.trim(),
-            category: category,
-            timestamp: Date.now()
-        };
-
-        posts.push(newPost);
-        savePosts(posts);
-        renderPosts();
-        showToast(`✅ ${category === 'official' ? 'Official' : 'Community'} post created!`, 'success');
-        return true;
-    }
-
-    function deletePost(id) {
-        if (!confirm('Delete this post?')) return;
-        let posts = getPosts();
-        const post = posts.find(p => p.id === id);
-        posts = posts.filter(p => p.id !== id);
-        savePosts(posts);
-        renderPosts();
-        if (post) showToast(`🗑️ Deleted: ${post.title}`, 'error');
-    }
-
-    // ============================================================
-    // RENDER
-    // ============================================================
-    function renderPosts() {
-        const posts = getPosts();
-        const officialPosts = posts.filter(p => p.category === 'official');
-        const communityPosts = posts.filter(p => p.category === 'community');
-
-        document.getElementById('officialCount').textContent = officialPosts.length;
-        document.getElementById('communityCount').textContent = communityPosts.length;
-
-        renderPostList('officialPosts', officialPosts, 'official');
-        renderPostList('communityPosts', communityPosts, 'community');
-    }
-
-    function renderPostList(containerId, posts, category) {
-        const container = document.getElementById(containerId);
-        
-        if (posts.length === 0) {
-            container.innerHTML = `<div style="text-align: center; color: #4a5268; padding: 60px 20px; font-size: 1.1rem;">📭 No ${category} posts yet.</div>`;
-            return;
-        }
-
-        let html = '';
-        const sorted = [...posts].sort((a, b) => b.timestamp - a.timestamp);
-        
-        sorted.forEach(post => {
-            const badge = category === 'official' 
-                ? '<span style="background: #f7971e; color: #0a0b0f; padding: 2px 12px; border-radius: 20px; font-size: 0.7rem; font-weight: 700; margin-left: 8px;">OFFICIAL</span>'
-                : '<span style="background: #4a7a9a; color: #fff; padding: 2px 12px; border-radius: 20px; font-size: 0.7rem; font-weight: 700; margin-left: 8px;">COMMUNITY</span>';
-            
-            html += `
-                <div style="background: #1a1d27; border-radius: 14px; padding: 20px; border: 1px solid #252b3a; transition: 0.3s; border-left: 4px solid ${category === 'official' ? '#f7971e' : '#4a7a9a'};">
-                    <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 10px; margin-bottom: 8px;">
-                        <div style="font-size: 1.2rem; font-weight: 600; color: #d4dcec;">${escapeHtml(post.title)}</div>
-                    </div>
-                    <div style="font-size: 0.85rem; color: #6a7a8a;">
-                        👤 ${escapeHtml(post.author)} ${badge}
-                    </div>
-                    <div style="color: #b7c0d0; line-height: 1.6; margin: 10px 0; word-break: break-word;">${escapeHtml(post.content)}</div>
-                    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-top: 10px; padding-top: 10px; border-top: 1px solid #1a1d27;">
-                        <div style="font-size: 0.75rem; color: #4a5268;">📅 ${formatDate(post.timestamp)}</div>
-                        <button class="delete-btn" data-id="${post.id}" style="background: #3a1e1e; color: #df7d7d; border: none; padding: 4px 16px; border-radius: 20px; cursor: pointer; font-size: 0.75rem; transition: 0.3s;">🗑️ Delete</button>
-                    </div>
-                </div>
-            `;
-        });
-
-        container.innerHTML = html;
-
-        container.querySelectorAll('.delete-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                deletePost(this.dataset.id);
-            });
-        });
-    }
-
-    // ============================================================
-    // UI UPDATES
-    // ============================================================
-    function updateUI() {
-        const currentUser = getCurrentUser();
-        const authContainer = document.getElementById('authContainer');
-        const postsApp = document.getElementById('postsApp');
-        
-        if (currentUser) {
-            authContainer.style.display = 'none';
-            postsApp.style.display = 'block';
-            document.getElementById('currentUser').textContent = currentUser;
-            
-            // Check if current user is Rainyy.mods (case insensitive)
-            const isOfficial = currentUser.toLowerCase() === 'rainyy.mods';
-            const officialPermission = document.getElementById('officialPermission');
-            const officialTitle = document.getElementById('officialTitle');
-            const officialContent = document.getElementById('officialContent');
-            const officialAuthor = document.getElementById('officialAuthor');
-            const postOfficialBtn = document.getElementById('postOfficialBtn');
-            
-            if (isOfficial) {
-                officialPermission.innerHTML = '✅ You have permission to post Official announcements';
-                officialPermission.style.background = '#1e3a2a';
-                officialPermission.style.border = '1px solid #2a6b3f';
-                officialPermission.style.color = '#7ddfa0';
-                officialTitle.disabled = false;
-                officialContent.disabled = false;
-                officialAuthor.disabled = false;
-                postOfficialBtn.disabled = false;
-                postOfficialBtn.style.opacity = '1';
-                postOfficialBtn.style.cursor = 'pointer';
-            } else {
-                officialPermission.innerHTML = '⚠️ Only <strong style="color: #f7971e;">Rainyy.mods</strong> can post Official announcements';
-                officialPermission.style.background = '#1e2a3a';
-                officialPermission.style.border = '1px solid #2a3a4a';
-                officialPermission.style.color = '#8a9bb5';
-                officialTitle.disabled = true;
-                officialContent.disabled = true;
-                officialAuthor.disabled = true;
-                postOfficialBtn.disabled = true;
-                postOfficialBtn.style.opacity = '0.5';
-                postOfficialBtn.style.cursor = 'not-allowed';
-            }
-            
-            renderPosts();
-        } else {
-            authContainer.style.display = 'block';
-            postsApp.style.display = 'none';
-        }
-    }
-
-    // ============================================================
-    // TAB SWITCHING (Auth)
-    // ============================================================
-    document.querySelectorAll('#authContainer .tab-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            document.querySelectorAll('#authContainer .tab-btn').forEach(b => b.classList.remove('active'));
-            document.querySelectorAll('#authContainer .tab-content').forEach(tc => tc.classList.remove('active'));
-            this.classList.add('active');
-            document.getElementById('tab-' + this.dataset.tab).classList.add('active');
-            
-            // Clear errors
-            document.getElementById('loginError').classList.remove('show');
-            document.getElementById('registerError').classList.remove('show');
-            document.getElementById('registerSuccess').classList.remove('show');
-        });
-    });
-
-    // ============================================================
-    // TAB SWITCHING (Posts)
-    // ============================================================
-    document.querySelectorAll('#postsApp .tab-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            document.querySelectorAll('#postsApp .tab-btn').forEach(b => b.classList.remove('active'));
-            document.querySelectorAll('#postsApp .tab-content').forEach(tc => tc.classList.remove('active'));
-            this.classList.add('active');
-            document.getElementById('tab-' + this.dataset.tab).classList.add('active');
-        });
-    });
-
-    // ============================================================
-    // AUTH EVENTS
-    // ============================================================
-    // Login
-    document.getElementById('loginBtn').addEventListener('click', function() {
-        const username = document.getElementById('loginUsername').value.trim();
-        const password = document.getElementById('loginPassword').value.trim();
-        const errorEl = document.getElementById('loginError');
-        
-        if (!username || !password) {
-            errorEl.textContent = '❌ Please fill in all fields';
-            errorEl.classList.add('show');
-            return;
-        }
-        
-        const result = loginUser(username, password);
-        if (result.success) {
-            errorEl.classList.remove('show');
-            document.getElementById('loginUsername').value = '';
-            document.getElementById('loginPassword').value = '';
-            updateUI();
-            showToast(`✅ Welcome back, ${result.username}!`, 'success');
-        } else {
-            errorEl.textContent = '❌ ' + result.error;
-            errorEl.classList.add('show');
-        }
-    });
-
-    // Register
-    document.getElementById('registerBtn').addEventListener('click', function() {
-        const username = document.getElementById('registerUsername').value.trim();
-        const password = document.getElementById('registerPassword').value.trim();
-        const confirm = document.getElementById('registerConfirm').value.trim();
-        const errorEl = document.getElementById('registerError');
-        const successEl = document.getElementById('registerSuccess');
-        
-        errorEl.classList.remove('show');
-        successEl.classList.remove('show');
-        
-        if (!username || !password || !confirm) {
-            errorEl.textContent = '❌ Please fill in all fields';
-            errorEl.classList.add('show');
-            return;
-        }
-        
-        if (password !== confirm) {
-            errorEl.textContent = '❌ Passwords do not match';
-            errorEl.classList.add('show');
-            return;
-        }
-        
-        if (password.length < 4) {
-            errorEl.textContent = '❌ Password must be at least 4 characters';
-            errorEl.classList.add('show');
-            return;
-        }
-        
-        const result = registerUser(username, password);
-        if (result.success) {
-            successEl.classList.add('show');
-            document.getElementById('registerUsername').value = '';
-            document.getElementById('registerPassword').value = '';
-            document.getElementById('registerConfirm').value = '';
-            
-            // Switch to login tab after 1.5 seconds
-            setTimeout(() => {
-                document.querySelector('#authContainer .tab-btn[data-tab="login"]').click();
-                document.getElementById('loginUsername').value = username;
-                successEl.classList.remove('show');
-                showToast('✅ Account created! Please login.', 'success');
-            }, 1500);
-        } else {
-            if (result.error === 'username_taken') {
-                errorEl.textContent = '❌ That username is already taken';
-            } else {
-                errorEl.textContent = '❌ Registration failed';
-            }
-            errorEl.classList.add('show');
-        }
-    });
-
-    // Enter key support
-    document.getElementById('loginPassword').addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') document.getElementById('loginBtn').click();
-    });
-    document.getElementById('registerConfirm').addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') document.getElementById('registerBtn').click();
-    });
-
-    // ============================================================
-    // POST EVENTS
-    // ============================================================
-    // Official Post
-    document.getElementById('postOfficialBtn').addEventListener('click', function() {
-        const currentUser = getCurrentUser();
-        if (currentUser.toLowerCase() !== 'rainyy.mods') {
-            showToast('❌ Only Rainyy.mods can post Official announcements!', 'error');
-            return;
-        }
-        
-        const title = document.getElementById('officialTitle').value;
-        const content = document.getElementById('officialContent').value;
-        const author = document.getElementById('officialAuthor').value;
-        
-        if (addPost(title, content, author, 'official')) {
-            document.getElementById('officialTitle').value = '';
-            document.getElementById('officialContent').value = '';
-            document.getElementById('officialAuthor').value = '';
-        }
-    });
-
-    // Community Post (anyone can post)
-    document.getElementById('postCommunityBtn').addEventListener('click', function() {
-        const title = document.getElementById('communityTitle').value;
-        const content = document.getElementById('communityContent').value;
-        const author = document.getElementById('communityAuthor').value;
-        
-        if (addPost(title, content, author, 'community')) {
-            document.getElementById('communityTitle').value = '';
-            document.getElementById('communityContent').value = '';
-            document.getElementById('communityAuthor').value = '';
-        }
-    });
-
-    // Clear buttons
-    document.getElementById('clearOfficialBtn').addEventListener('click', function() {
-        document.getElementById('officialTitle').value = '';
-        document.getElementById('officialContent').value = '';
-        document.getElementById('officialAuthor').value = '';
-    });
-
-    document.getElementById('clearCommunityBtn').addEventListener('click', function() {
-        document.getElementById('communityTitle').value = '';
-        document.getElementById('communityContent').value = '';
-        document.getElementById('communityAuthor').value = '';
-    });
-
-    // ============================================================
-    // LOGOUT
-    // ============================================================
-    document.getElementById('logoutBtn').addEventListener('click', function() {
-        if (confirm('Logout?')) {
-            logoutUser();
-            updateUI();
-            showToast('👋 Logged out', 'info');
-        }
-    });
-
-    // ============================================================
-    // INIT
-    // ============================================================
-    // Create default admin account if no users exist
-    const users = getUsers();
-    if (!users['Rainyy.mods']) {
-        users['Rainyy.mods'] = {
-            password: 'admin123',
-            created: Date.now()
-        };
-        saveUsers(users);
-        console.log('✅ Default admin account created: Rainyy.mods / admin123');
-    }
-
-    // Add some example posts if empty
-    const posts = getPosts();
-    if (posts.length === 0) {
-        const examples = [
-            {
-                id: generateId(),
-                title: 'Welcome to AMH Modding Server!',
-                content: 'This is the official announcement. Please read the rules and enjoy the community!',
-                author: 'Rainyy.mods',
-                category: 'official',
-                timestamp: Date.now() - 3600000
-            },
-            {
-                id: generateId(),
-                title: 'New Mod Release: Game X v2.0',
-                content: 'Just uploaded the new mod for Game X. Check the modding channel for download links!',
-                author: 'CommunityMember',
-                category: 'community',
-                timestamp: Date.now() - 7200000
-            }
-        ];
-        savePosts(examples);
-    }
-
-    // Check session and update UI
-    updateUI();
-
-    console.log('🔐 Auth system loaded');
-    console.log('👤 Admin: Rainyy.mods / admin123');
-    console.log('📝 Register ANY other username (Rainyy.mods is reserved)');
-})();
+    console.log('✅ AMH Modding website loaded');
+    console.log('🔗 Share this URL and the preview will pop up automatically!');
+    console.log('📱 Works on TikTok, Discord, Twitter, Facebook, etc.');
 </script>
 
 </body>
