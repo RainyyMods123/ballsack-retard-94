@@ -123,6 +123,35 @@
             box-shadow: 0 4px 20px rgba(247, 151, 30, 0.3);
         }
 
+        .navbar .nav-links .btn-logout {
+            background: #3a1e1e;
+            color: #df7d7d;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            transition: 0.3s;
+            border: 1px solid #6b2a2a;
+            cursor: pointer;
+        }
+
+        .navbar .nav-links .btn-logout:hover {
+            background: #6b2a2a;
+        }
+
+        .navbar .user-badge {
+            background: #1e2a3a;
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            color: #8a9bb5;
+            border: 1px solid #2a3a4a;
+        }
+
+        .navbar .user-badge strong {
+            color: #f0c27f;
+        }
+
         /* Preview Card */
         .preview-card {
             background: #13161f;
@@ -359,7 +388,7 @@
         /* APK Grid */
         .apk-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 20px;
         }
 
@@ -497,6 +526,152 @@
             box-shadow: 0 4px 15px rgba(74, 122, 154, 0.3);
         }
 
+        .apk-card .apk-delete {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #3a1e1e;
+            color: #df7d7d;
+            border: none;
+            border-radius: 50%;
+            width: 28px;
+            height: 28px;
+            font-size: 0.7rem;
+            cursor: pointer;
+            transition: 0.3s;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .apk-card:hover .apk-delete {
+            display: flex;
+        }
+
+        .apk-card .apk-delete:hover {
+            background: #6b2a2a;
+        }
+
+        .apk-card .apk-link {
+            font-size: 0.7rem;
+            color: #4a7a9a;
+            margin-top: 6px;
+            word-break: break-all;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        .apk-card .apk-link:hover {
+            color: #6a9aba;
+        }
+
+        /* Post Form */
+        .post-form {
+            background: #13161f;
+            border-radius: 16px;
+            padding: 24px;
+            border: 1px solid #252b3a;
+            margin: 20px 0 30px 0;
+        }
+
+        .post-form h3 {
+            font-size: 1.2rem;
+            margin-bottom: 16px;
+            color: #d4dcec;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .post-form .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .post-form input,
+        .post-form textarea,
+        .post-form select {
+            width: 100%;
+            padding: 12px 16px;
+            border-radius: 10px;
+            border: 1px solid #252b3a;
+            background: #0d1018;
+            color: #d4dcec;
+            font-size: 0.95rem;
+            outline: none;
+            transition: 0.3s;
+            font-family: inherit;
+        }
+
+        .post-form input:focus,
+        .post-form textarea:focus,
+        .post-form select:focus {
+            border-color: #f7971e;
+            box-shadow: 0 0 15px rgba(247, 151, 30, 0.1);
+        }
+
+        .post-form textarea {
+            min-height: 80px;
+            resize: vertical;
+        }
+
+        .post-form .full-width {
+            grid-column: 1 / -1;
+        }
+
+        .post-form .btn-row {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 12px;
+        }
+
+        .post-form .btn-row .btn {
+            padding: 12px 28px;
+            border-radius: 30px;
+            border: none;
+            background: linear-gradient(135deg, #f7971e, #ffd200);
+            color: #0a0b0f;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .post-form .btn-row .btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 20px rgba(247, 151, 30, 0.3);
+        }
+
+        .post-form .btn-row .btn.secondary {
+            background: #1e2a3a;
+            color: #8a9bb5;
+        }
+
+        .post-form .btn-row .btn.secondary:hover {
+            background: #2a3a4a;
+        }
+
+        .post-form .btn-row .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .post-form .warning {
+            background: #1e2a3a;
+            padding: 12px;
+            border-radius: 10px;
+            margin-bottom: 16px;
+            color: #8a9bb5;
+            text-align: center;
+            border: 1px solid #2a3a4a;
+        }
+
+        .post-form .warning strong {
+            color: #f7971e;
+        }
+
         /* Upload Section */
         .upload-section {
             background: #13161f;
@@ -517,23 +692,6 @@
             color: #6a7a8a;
             font-size: 0.9rem;
             margin-bottom: 16px;
-        }
-
-        .upload-section .upload-btn {
-            background: linear-gradient(135deg, #f7971e, #ffd200);
-            color: #0a0b0f;
-            border: none;
-            padding: 12px 32px;
-            border-radius: 30px;
-            font-weight: 700;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .upload-section .upload-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 30px rgba(247, 151, 30, 0.3);
         }
 
         /* Footer */
@@ -587,6 +745,175 @@
             border-left-color: #df7d7d;
         }
 
+        /* Login Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 20px;
+            backdrop-filter: blur(4px);
+        }
+
+        .modal-overlay.hidden {
+            display: none;
+        }
+
+        .modal {
+            background: #13161f;
+            border-radius: 20px;
+            padding: 40px;
+            border: 1px solid #252b3a;
+            max-width: 420px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.9);
+        }
+
+        .modal h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-align: center;
+            background: linear-gradient(135deg, #f7971e, #ffd200);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 5px;
+        }
+
+        .modal .subtitle {
+            text-align: center;
+            color: #6a7a8a;
+            font-size: 0.9rem;
+            margin-bottom: 25px;
+        }
+
+        .modal .tab-btns {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 20px;
+            background: #0d1018;
+            border-radius: 14px;
+            padding: 5px;
+            border: 1px solid #1a1d27;
+        }
+
+        .modal .tab-btns button {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            background: transparent;
+            color: #6a7a8a;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+
+        .modal .tab-btns button.active {
+            background: #f7971e;
+            color: #0a0b0f;
+        }
+
+        .modal .tab-content {
+            display: none;
+        }
+
+        .modal .tab-content.active {
+            display: block;
+        }
+
+        .modal label {
+            display: block;
+            margin-bottom: 6px;
+            color: #b7c0d0;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .modal input {
+            width: 100%;
+            padding: 12px 16px;
+            border-radius: 10px;
+            border: 1px solid #252b3a;
+            background: #0d1018;
+            color: #d4dcec;
+            font-size: 1rem;
+            margin-bottom: 16px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .modal input:focus {
+            border-color: #f7971e;
+            box-shadow: 0 0 15px rgba(247, 151, 30, 0.1);
+        }
+
+        .modal .btn {
+            width: 100%;
+            padding: 14px;
+            border-radius: 30px;
+            border: none;
+            background: linear-gradient(135deg, #f7971e, #ffd200);
+            color: #0a0b0f;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .modal .btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 20px rgba(247, 151, 30, 0.3);
+        }
+
+        .modal .error {
+            background: #3a1e1e;
+            color: #df7d7d;
+            padding: 12px;
+            border-radius: 10px;
+            margin-bottom: 16px;
+            text-align: center;
+            border: 1px solid #6b2a2a;
+            display: none;
+        }
+
+        .modal .error.show {
+            display: block;
+        }
+
+        .modal .success {
+            background: #1e3a2a;
+            color: #7ddfa0;
+            padding: 12px;
+            border-radius: 10px;
+            margin-bottom: 16px;
+            text-align: center;
+            border: 1px solid #2a6b3f;
+            display: none;
+        }
+
+        .modal .success.show {
+            display: block;
+        }
+
+        .modal .info-text {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 0.8rem;
+            color: #4a5268;
+        }
+
+        .modal .info-text strong {
+            color: #f7971e;
+        }
+
         /* Responsive */
         @media (max-width: 600px) {
             .navbar {
@@ -627,6 +954,12 @@
                 align-items: stretch;
                 text-align: center;
             }
+            .post-form .form-row {
+                grid-template-columns: 1fr;
+            }
+            .modal {
+                padding: 25px;
+            }
         }
     </style>
 </head>
@@ -640,11 +973,13 @@
             <span class="logo-icon">AM</span>
             AMH Modding
         </div>
-        <div class="nav-links">
+        <div class="nav-links" id="navLinks">
             <a onclick="scrollToSection('official')">🏛️ Official APKs</a>
             <a onclick="scrollToSection('community')">👥 Community APKs</a>
             <a onclick="scrollToSection('upload')">📤 Upload</a>
-            <a href="#" class="btn">🔐 Login</a>
+            <span class="user-badge" id="userBadge" style="display:none;">👤 <strong id="currentUserDisplay">User</strong></span>
+            <button class="btn" id="loginBtn" onclick="openModal()">🔐 Login</button>
+            <button class="btn-logout" id="logoutBtn" style="display:none;" onclick="logoutUser()">🚪 Logout</button>
         </div>
     </nav>
 
@@ -679,9 +1014,9 @@
 
         <div class="preview-footer">
             <div class="stats">
-                <span>📥 1.2K downloads</span>
-                <span>👤 456 members</span>
-                <span>📝 89 posts</span>
+                <span>📥 <span id="totalDownloads">1.2K</span> downloads</span>
+                <span>👤 <span id="totalMembers">456</span> members</span>
+                <span>📝 <span id="totalPosts">89</span> posts</span>
             </div>
             <a href="#" class="action-btn">🚀 Visit Website</a>
         </div>
@@ -702,67 +1037,7 @@
         <span class="view-all" onclick="showToast('📱 Showing all Official APKs', 'info')">View All →</span>
     </div>
 
-    <div class="apk-grid" id="officialApks">
-        <!-- Official APK 1 -->
-        <div class="apk-card official" onclick="downloadAPK('Official Mod Manager')">
-            <div class="apk-icon">📱</div>
-            <div class="apk-title">
-                Mod Manager Pro
-                <span class="apk-badge official-badge">Official</span>
-            </div>
-            <div class="apk-version">v3.2.1 • 24 MB</div>
-            <div class="apk-desc">Ultimate mod manager with built-in patcher and installer.</div>
-            <div class="apk-meta">
-                <span class="downloads">⬇️ 2,341 downloads</span>
-                <button class="download-btn" onclick="event.stopPropagation(); downloadAPK('Mod Manager Pro')">⬇️ Download</button>
-            </div>
-        </div>
-
-        <!-- Official APK 2 -->
-        <div class="apk-card official" onclick="downloadAPK('Game X Mod')">
-            <div class="apk-icon">🎮</div>
-            <div class="apk-title">
-                Game X - Unlimited
-                <span class="apk-badge official-badge">Official</span>
-            </div>
-            <div class="apk-version">v4.5.0 • 156 MB</div>
-            <div class="apk-desc">Full mod with unlimited coins, gems, and all characters unlocked.</div>
-            <div class="apk-meta">
-                <span class="downloads">⬇️ 15,789 downloads</span>
-                <button class="download-btn" onclick="event.stopPropagation(); downloadAPK('Game X Mod')">⬇️ Download</button>
-            </div>
-        </div>
-
-        <!-- Official APK 3 -->
-        <div class="apk-card official" onclick="downloadAPK('ToolBox Pro')">
-            <div class="apk-icon">🔧</div>
-            <div class="apk-title">
-                ToolBox Pro
-                <span class="apk-badge official-badge">Official</span>
-            </div>
-            <div class="apk-version">v2.1.0 • 18 MB</div>
-            <div class="apk-desc">Essential modding tools: hex editor, resource extractor, and more.</div>
-            <div class="apk-meta">
-                <span class="downloads">⬇️ 4,567 downloads</span>
-                <button class="download-btn" onclick="event.stopPropagation(); downloadAPK('ToolBox Pro')">⬇️ Download</button>
-            </div>
-        </div>
-
-        <!-- Official APK 4 -->
-        <div class="apk-card official" onclick="downloadAPK('Emulator Plus')">
-            <div class="apk-icon">🕹️</div>
-            <div class="apk-title">
-                Emulator Plus
-                <span class="apk-badge official-badge">Official</span>
-            </div>
-            <div class="apk-version">v1.8.3 • 89 MB</div>
-            <div class="apk-desc">High-performance emulator with gamepad support and save states.</div>
-            <div class="apk-meta">
-                <span class="downloads">⬇️ 8,234 downloads</span>
-                <button class="download-btn" onclick="event.stopPropagation(); downloadAPK('Emulator Plus')">⬇️ Download</button>
-            </div>
-        </div>
-    </div>
+    <div class="apk-grid" id="officialApks"></div>
 
     <!-- ============================================================
     COMMUNITY APKS SECTION
@@ -775,75 +1050,50 @@
         <span class="view-all" onclick="showToast('👥 Showing all Community APKs', 'info')">View All →</span>
     </div>
 
-    <div class="apk-grid" id="communityApks">
-        <!-- Community APK 1 -->
-        <div class="apk-card community" onclick="downloadAPK('Random Mod v2')">
-            <div class="apk-icon">🎮</div>
-            <div class="apk-title">
-                Random Mod v2
-                <span class="apk-badge community-badge">Community</span>
-            </div>
-            <div class="apk-version">v2.0.0 • 67 MB</div>
-            <div class="apk-desc">Community-made mod with new levels and custom characters.</div>
-            <div class="apk-meta">
-                <span class="downloads">⬇️ 456 downloads</span>
-                <button class="download-btn community-btn" onclick="event.stopPropagation(); downloadAPK('Random Mod v2')">⬇️ Download</button>
-            </div>
-        </div>
-
-        <!-- Community APK 2 -->
-        <div class="apk-card community" onclick="downloadAPK('Skin Pack Ultra')">
-            <div class="apk-icon">🎨</div>
-            <div class="apk-title">
-                Skin Pack Ultra
-                <span class="apk-badge community-badge">Community</span>
-            </div>
-            <div class="apk-version">v1.2.0 • 34 MB</div>
-            <div class="apk-desc">200+ custom skins and themes for popular games.</div>
-            <div class="apk-meta">
-                <span class="downloads">⬇️ 890 downloads</span>
-                <button class="download-btn community-btn" onclick="event.stopPropagation(); downloadAPK('Skin Pack Ultra')">⬇️ Download</button>
-            </div>
-        </div>
-
-        <!-- Community APK 3 -->
-        <div class="apk-card community" onclick="downloadAPK('Boost Mod')">
-            <div class="apk-icon">⚡</div>
-            <div class="apk-title">
-                Boost Mod
-                <span class="apk-badge community-badge">Community</span>
-            </div>
-            <div class="apk-version">v3.1.0 • 12 MB</div>
-            <div class="apk-desc">Performance booster with custom tweaks and optimizations.</div>
-            <div class="apk-meta">
-                <span class="downloads">⬇️ 1,234 downloads</span>
-                <button class="download-btn community-btn" onclick="event.stopPropagation(); downloadAPK('Boost Mod')">⬇️ Download</button>
-            </div>
-        </div>
-
-        <!-- Community APK 4 -->
-        <div class="apk-card community" onclick="downloadAPK('Retro Collection')">
-            <div class="apk-icon">🕹️</div>
-            <div class="apk-title">
-                Retro Collection
-                <span class="apk-badge community-badge">Community</span>
-            </div>
-            <div class="apk-version">v0.9.5 • 45 MB</div>
-            <div class="apk-desc">Classic games collection with modded features and enhancements.</div>
-            <div class="apk-meta">
-                <span class="downloads">⬇️ 678 downloads</span>
-                <button class="download-btn community-btn" onclick="event.stopPropagation(); downloadAPK('Retro Collection')">⬇️ Download</button>
-            </div>
-        </div>
-    </div>
+    <div class="apk-grid" id="communityApks"></div>
 
     <!-- ============================================================
-    UPLOAD SECTION
+    POST FORM - Upload Section
     ============================================================ -->
-    <div class="upload-section" id="upload">
-        <h3>📤 Upload Your Modded APK</h3>
-        <p>Share your mods with the community! All uploads go to the Community section.</p>
-        <button class="upload-btn" onclick="showToast('📤 Upload feature coming soon!', 'info')">📤 Upload APK</button>
+    <div class="post-form" id="upload">
+        <h3>📤 Post an APK</h3>
+        <div id="postPermission" class="warning">
+            ⚠️ Please <strong>login</strong> to post APKs. Only <strong>Rainyy.mods</strong> can post Official APKs.
+        </div>
+        
+        <div class="form-row">
+            <div class="full-width">
+                <label>APK Title</label>
+                <input type="text" id="apkTitle" placeholder="Enter APK name..." maxlength="100">
+            </div>
+            <div class="full-width">
+                <label>Description</label>
+                <textarea id="apkDesc" placeholder="Describe your mod/APK..."></textarea>
+            </div>
+            <div>
+                <label>Version</label>
+                <input type="text" id="apkVersion" placeholder="v1.0.0">
+            </div>
+            <div>
+                <label>File Size</label>
+                <input type="text" id="apkSize" placeholder="50 MB">
+            </div>
+            <div class="full-width">
+                <label>Download Link</label>
+                <input type="url" id="apkLink" placeholder="https://example.com/download.apk">
+            </div>
+            <div class="full-width">
+                <label>Category</label>
+                <select id="apkCategory">
+                    <option value="community">👥 Community</option>
+                    <option value="official">🏛️ Official (Rainyy.mods only)</option>
+                </select>
+            </div>
+        </div>
+        <div class="btn-row">
+            <button class="btn" id="postBtn" onclick="postAPK()">📤 Post APK</button>
+            <button class="btn secondary" onclick="clearForm()">🗑️ Clear</button>
+        </div>
     </div>
 
     <!-- Footer -->
@@ -859,82 +1109,506 @@
 
 </div>
 
+<!-- ============================================================
+LOGIN MODAL
+============================================================ -->
+<div class="modal-overlay hidden" id="loginModal">
+    <div class="modal">
+        <h2>🔐 AMH Modding</h2>
+        <div class="subtitle">Login or register to post APKs</div>
+        
+        <div class="tab-btns">
+            <button class="active" onclick="switchAuthTab('login')">🔑 Login</button>
+            <button onclick="switchAuthTab('register')">📝 Register</button>
+        </div>
+
+        <!-- Login Tab -->
+        <div class="tab-content active" id="auth-login">
+            <div class="error" id="loginError">❌ Invalid username or password</div>
+            <label>👤 Username</label>
+            <input type="text" id="loginUsername" placeholder="Enter your username...">
+            <label>🔑 Password</label>
+            <input type="password" id="loginPassword" placeholder="Enter your password...">
+            <button class="btn" onclick="loginUser()">🚀 Login</button>
+        </div>
+
+        <!-- Register Tab -->
+        <div class="tab-content" id="auth-register">
+            <div class="error" id="registerError">❌ That username is already taken</div>
+            <div class="success" id="registerSuccess">✅ Account created! Please login.</div>
+            <label>👤 Username</label>
+            <input type="text" id="registerUsername" placeholder="Choose a username...">
+            <label>🔑 Password</label>
+            <input type="password" id="registerPassword" placeholder="Choose a password...">
+            <label>🔑 Confirm Password</label>
+            <input type="password" id="registerConfirm" placeholder="Confirm your password...">
+            <button class="btn" onclick="registerUser()">📝 Create Account</button>
+        </div>
+
+        <div class="info-text">
+            Only <strong>Rainyy.mods</strong> can post Official APKs
+        </div>
+    </div>
+</div>
+
 <!-- Toast -->
 <div class="toast" id="toast"></div>
 
 <script>
-    // ============================================================
-    // TOAST SYSTEM
-    // ============================================================
-    function showToast(message, type = 'info') {
-        const toast = document.getElementById('toast');
-        toast.textContent = message;
-        toast.className = 'toast ' + type;
-        toast.classList.add('show');
-        clearTimeout(toast._timeout);
-        toast._timeout = setTimeout(() => {
-            toast.classList.remove('show');
-        }, 3500);
-    }
+// ============================================================
+// STORAGE
+// ============================================================
+const USERS_KEY = 'amh_users';
+const APKS_KEY = 'amh_apks';
+const SESSION_KEY = 'amh_session';
 
-    // ============================================================
-    // DOWNLOAD FUNCTION
-    // ============================================================
-    function downloadAPK(name) {
-        showToast(`⬇️ Downloading: ${name}...`, 'success');
-        // Simulate download - in reality, this would trigger a file download
-        setTimeout(() => {
-            showToast(`✅ ${name} downloaded successfully!`, 'success');
-        }, 1500);
-    }
+function getUsers() {
+    try { return JSON.parse(localStorage.getItem(USERS_KEY)) || {}; } catch { return {}; }
+}
 
-    // ============================================================
-    // SCROLL TO SECTION
-    // ============================================================
-    function scrollToSection(id) {
-        const element = document.getElementById(id);
-        if (element) {
-            const offset = 80;
-            const elementPosition = element.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.pageYOffset - offset;
-            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+function saveUsers(users) {
+    localStorage.setItem(USERS_KEY, JSON.stringify(users));
+}
+
+function getApks() {
+    try { return JSON.parse(localStorage.getItem(APKS_KEY)) || []; } catch { return []; }
+}
+
+function saveApks(apks) {
+    localStorage.setItem(APKS_KEY, JSON.stringify(apks));
+}
+
+function getSession() {
+    try { return JSON.parse(localStorage.getItem(SESSION_KEY)) || null; } catch { return null; }
+}
+
+function saveSession(username) {
+    if (username) {
+        localStorage.setItem(SESSION_KEY, JSON.stringify({ username, timestamp: Date.now() }));
+    } else {
+        localStorage.removeItem(SESSION_KEY);
+    }
+}
+
+// ============================================================
+// HELPERS
+// ============================================================
+function generateId() {
+    return Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+}
+
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
+function showToast(message, type = 'info') {
+    const toast = document.getElementById('toast');
+    toast.textContent = message;
+    toast.className = 'toast ' + type;
+    toast.classList.add('show');
+    clearTimeout(toast._timeout);
+    toast._timeout = setTimeout(() => {
+        toast.classList.remove('show');
+    }, 3500);
+}
+
+function scrollToSection(id) {
+    const element = document.getElementById(id);
+    if (element) {
+        const offset = 80;
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - offset;
+        window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+    }
+}
+
+// ============================================================
+// AUTH SYSTEM
+// ============================================================
+function getCurrentUser() {
+    const session = getSession();
+    if (session && session.username) {
+        const users = getUsers();
+        if (users[session.username]) {
+            return session.username;
         }
     }
+    return null;
+}
 
-    // ============================================================
-    // INIT
-    // ============================================================
-    // Show welcome toast
+function registerUser() {
+    const username = document.getElementById('registerUsername').value.trim();
+    const password = document.getElementById('registerPassword').value.trim();
+    const confirm = document.getElementById('registerConfirm').value.trim();
+    const errorEl = document.getElementById('registerError');
+    const successEl = document.getElementById('registerSuccess');
+    
+    errorEl.classList.remove('show');
+    successEl.classList.remove('show');
+    
+    if (!username || !password || !confirm) {
+        errorEl.textContent = '❌ Please fill in all fields';
+        errorEl.classList.add('show');
+        return;
+    }
+    
+    if (password !== confirm) {
+        errorEl.textContent = '❌ Passwords do not match';
+        errorEl.classList.add('show');
+        return;
+    }
+    
+    if (password.length < 4) {
+        errorEl.textContent = '❌ Password must be at least 4 characters';
+        errorEl.classList.add('show');
+        return;
+    }
+    
+    const users = getUsers();
+    const existing = Object.keys(users).find(u => u.toLowerCase() === username.toLowerCase());
+    if (existing) {
+        errorEl.textContent = '❌ That username is already taken';
+        errorEl.classList.add('show');
+        return;
+    }
+    
+    users[username] = { password, created: Date.now() };
+    saveUsers(users);
+    
+    successEl.classList.add('show');
+    document.getElementById('registerUsername').value = '';
+    document.getElementById('registerPassword').value = '';
+    document.getElementById('registerConfirm').value = '';
+    
     setTimeout(() => {
-        showToast('🔗 Welcome to AMH Modding! Click any APK to download.', 'info');
-    }, 1000);
+        switchAuthTab('login');
+        document.getElementById('loginUsername').value = username;
+        successEl.classList.remove('show');
+        showToast('✅ Account created! Please login.', 'success');
+    }, 1500);
+}
 
-    // Handle card clicks for downloading
-    document.querySelectorAll('.apk-card').forEach(card => {
-        card.addEventListener('click', function(e) {
-            // Check if click was on a button inside the card
-            if (e.target.closest('.download-btn')) {
-                return; // Button handles its own click
+function loginUser() {
+    const username = document.getElementById('loginUsername').value.trim();
+    const password = document.getElementById('loginPassword').value.trim();
+    const errorEl = document.getElementById('loginError');
+    
+    errorEl.classList.remove('show');
+    
+    if (!username || !password) {
+        errorEl.textContent = '❌ Please fill in all fields';
+        errorEl.classList.add('show');
+        return;
+    }
+    
+    const users = getUsers();
+    const existing = Object.keys(users).find(u => u.toLowerCase() === username.toLowerCase());
+    
+    if (!existing) {
+        errorEl.textContent = '❌ User does not exist';
+        errorEl.classList.add('show');
+        return;
+    }
+    
+    if (users[existing].password !== password) {
+        errorEl.textContent = '❌ Incorrect password';
+        errorEl.classList.add('show');
+        return;
+    }
+    
+    saveSession(existing);
+    document.getElementById('loginModal').classList.add('hidden');
+    document.getElementById('loginUsername').value = '';
+    document.getElementById('loginPassword').value = '';
+    updateUI();
+    showToast(`✅ Welcome back, ${existing}!`, 'success');
+}
+
+function logoutUser() {
+    if (!confirm('Logout?')) return;
+    saveSession(null);
+    updateUI();
+    showToast('👋 Logged out', 'info');
+}
+
+function openModal() {
+    document.getElementById('loginModal').classList.remove('hidden');
+}
+
+function switchAuthTab(tab) {
+    document.querySelectorAll('.tab-btns button').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
+    
+    if (tab === 'login') {
+        document.querySelector('.tab-btns button:first-child').classList.add('active');
+        document.getElementById('auth-login').classList.add('active');
+    } else {
+        document.querySelector('.tab-btns button:last-child').classList.add('active');
+        document.getElementById('auth-register').classList.add('active');
+    }
+    
+    document.getElementById('loginError').classList.remove('show');
+    document.getElementById('registerError').classList.remove('show');
+    document.getElementById('registerSuccess').classList.remove('show');
+}
+
+// Enter key support
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') {
+        const modal = document.getElementById('loginModal');
+        if (!modal.classList.contains('hidden')) {
+            if (document.getElementById('auth-login').classList.contains('active')) {
+                loginUser();
+            } else {
+                registerUser();
             }
-            // Otherwise, get the title and trigger download
-            const title = this.querySelector('.apk-title').textContent.trim();
-            downloadAPK(title);
-        });
-    });
+        }
+    }
+});
 
-    // Handle download button clicks separately
-    document.querySelectorAll('.download-btn').forEach(btn => {
-        btn.addEventListener('click', function(e) {
-            e.stopPropagation(); // Prevent card click
-            const card = this.closest('.apk-card');
-            const title = card.querySelector('.apk-title').textContent.trim();
-            downloadAPK(title);
-        });
-    });
+// ============================================================
+// APK SYSTEM
+// ============================================================
+function postAPK() {
+    const currentUser = getCurrentUser();
+    if (!currentUser) {
+        showToast('❌ Please login first!', 'error');
+        return;
+    }
+    
+    const title = document.getElementById('apkTitle').value.trim();
+    const desc = document.getElementById('apkDesc').value.trim();
+    const version = document.getElementById('apkVersion').value.trim();
+    const size = document.getElementById('apkSize').value.trim();
+    const link = document.getElementById('apkLink').value.trim();
+    const category = document.getElementById('apkCategory').value;
+    
+    if (!title || !desc || !version || !size || !link) {
+        showToast('❌ Please fill in all fields', 'error');
+        return;
+    }
+    
+    // Check if official category is allowed
+    if (category === 'official' && currentUser.toLowerCase() !== 'rainyy.mods') {
+        showToast('❌ Only Rainyy.mods can post Official APKs!', 'error');
+        return;
+    }
+    
+    const apks = getApks();
+    const newApk = {
+        id: generateId(),
+        title,
+        description: desc,
+        version,
+        size,
+        link,
+        category,
+        author: currentUser,
+        timestamp: Date.now(),
+        downloads: 0
+    };
+    
+    apks.push(newApk);
+    saveApks(apks);
+    renderApks();
+    clearForm();
+    showToast(`✅ ${category === 'official' ? 'Official' : 'Community'} APK posted!`, 'success');
+}
 
-    console.log('✅ AMH Modding loaded!');
-    console.log('📱 Official APKs and Community APKs are clickable.');
-    console.log('🔗 Share this site and the preview will pop up on social media!');
+function deleteApk(id) {
+    if (!confirm('Delete this APK?')) return;
+    let apks = getApks();
+    apks = apks.filter(a => a.id !== id);
+    saveApks(apks);
+    renderApks();
+    showToast('🗑️ APK deleted', 'error');
+}
+
+function clearForm() {
+    document.getElementById('apkTitle').value = '';
+    document.getElementById('apkDesc').value = '';
+    document.getElementById('apkVersion').value = '';
+    document.getElementById('apkSize').value = '';
+    document.getElementById('apkLink').value = '';
+    document.getElementById('apkCategory').value = 'community';
+}
+
+function downloadApk(link, title) {
+    if (link) {
+        // Increment download count
+        let apks = getApks();
+        const apk = apks.find(a => a.link === link);
+        if (apk) {
+            apk.downloads = (apk.downloads || 0) + 1;
+            saveApks(apks);
+            renderApks();
+        }
+        window.open(link, '_blank');
+        showToast(`⬇️ Downloading: ${title}...`, 'success');
+    } else {
+        showToast('❌ No download link available', 'error');
+    }
+}
+
+// ============================================================
+// RENDER APKS
+// ============================================================
+function renderApks() {
+    const apks = getApks();
+    const officialApks = apks.filter(a => a.category === 'official');
+    const communityApks = apks.filter(a => a.category === 'community');
+    
+    // Update stats
+    document.getElementById('totalPosts').textContent = apks.length;
+    const totalDownloads = apks.reduce((sum, a) => sum + (a.downloads || 0), 0);
+    document.getElementById('totalDownloads').textContent = totalDownloads > 1000 ? (totalDownloads/1000).toFixed(1) + 'K' : totalDownloads;
+    
+    renderApkList('officialApks', officialApks, 'official');
+    renderApkList('communityApks', communityApks, 'community');
+}
+
+function renderApkList(containerId, apks, category) {
+    const container = document.getElementById(containerId);
+    
+    if (apks.length === 0) {
+        container.innerHTML = `<div style="grid-column: 1/-1; text-align: center; color: #4a5268; padding: 40px; font-size: 1rem;">📭 No ${category} APKs yet.</div>`;
+        return;
+    }
+    
+    const sorted = [...apks].sort((a, b) => b.timestamp - a.timestamp);
+    const currentUser = getCurrentUser();
+    const isAdmin = currentUser && currentUser.toLowerCase() === 'rainyy.mods';
+    
+    let html = '';
+    sorted.forEach(apk => {
+        const badge = category === 'official' 
+            ? '<span class="apk-badge official-badge">Official</span>'
+            : '<span class="apk-badge community-badge">Community</span>';
+        
+        const isAuthor = currentUser === apk.author || isAdmin;
+        const icon = category === 'official' ? '🏛️' : '👥';
+        const downloads = apk.downloads || 0;
+        
+        html += `
+            <div class="apk-card ${category}" onclick="downloadApk('${apk.link}', '${escapeHtml(apk.title)}')">
+                <button class="apk-delete" onclick="event.stopPropagation(); deleteApk('${apk.id}')" ${isAuthor ? '' : 'style="display:none;"'}>✕</button>
+                <div class="apk-icon">📱</div>
+                <div class="apk-title">
+                    ${escapeHtml(apk.title)}
+                    ${badge}
+                </div>
+                <div class="apk-version">${escapeHtml(apk.version)} • ${escapeHtml(apk.size)}</div>
+                <div class="apk-desc">${escapeHtml(apk.description)}</div>
+                <div style="font-size:0.7rem; color:#4a5268; margin-bottom:4px;">👤 ${escapeHtml(apk.author)}</div>
+                <div class="apk-link" onclick="event.stopPropagation(); window.open('${apk.link}', '_blank')">🔗 ${escapeHtml(apk.link)}</div>
+                <div class="apk-meta">
+                    <span class="downloads">⬇️ ${downloads} downloads</span>
+                    <button class="download-btn ${category === 'official' ? '' : 'community-btn'}" onclick="event.stopPropagation(); downloadApk('${apk.link}', '${escapeHtml(apk.title)}')">⬇️ Download</button>
+                </div>
+            </div>
+        `;
+    });
+    
+    container.innerHTML = html;
+}
+
+// ============================================================
+// UI UPDATE
+// ============================================================
+function updateUI() {
+    const currentUser = getCurrentUser();
+    const loginBtn = document.getElementById('loginBtn');
+    const logoutBtn = document.getElementById('logoutBtn');
+    const userBadge = document.getElementById('userBadge');
+    const userDisplay = document.getElementById('currentUserDisplay');
+    const postPermission = document.getElementById('postPermission');
+    const categorySelect = document.getElementById('apkCategory');
+    const postBtn = document.getElementById('postBtn');
+    
+    if (currentUser) {
+        loginBtn.style.display = 'none';
+        logoutBtn.style.display = 'inline-block';
+        userBadge.style.display = 'inline';
+        userDisplay.textContent = currentUser;
+        
+        const isAdmin = currentUser.toLowerCase() === 'rainyy.mods';
+        
+        if (isAdmin) {
+            postPermission.innerHTML = '✅ You are <strong>Rainyy.mods</strong> - you can post <strong>Official</strong> and <strong>Community</strong> APKs!';
+            postPermission.style.background = '#1e3a2a';
+            postPermission.style.border = '1px solid #2a6b3f';
+            postPermission.style.color = '#7ddfa0';
+            categorySelect.disabled = false;
+            postBtn.disabled = false;
+            postBtn.style.opacity = '1';
+            postBtn.style.cursor = 'pointer';
+        } else {
+            postPermission.innerHTML = `✅ Logged in as <strong>${currentUser}</strong> - you can post <strong>Community</strong> APKs. Only <strong>Rainyy.mods</strong> can post Official APKs.`;
+            postPermission.style.background = '#1e2a3a';
+            postPermission.style.border = '1px solid #2a3a4a';
+            postPermission.style.color = '#8a9bb5';
+            categorySelect.value = 'community';
+            categorySelect.disabled = true;
+            postBtn.disabled = false;
+            postBtn.style.opacity = '1';
+            postBtn.style.cursor = 'pointer';
+        }
+    } else {
+        loginBtn.style.display = 'inline-block';
+        logoutBtn.style.display = 'none';
+        userBadge.style.display = 'none';
+        userDisplay.textContent = '';
+        
+        postPermission.innerHTML = '⚠️ Please <strong>login</strong> to post APKs. Only <strong>Rainyy.mods</strong> can post Official APKs.';
+        postPermission.style.background = '#1e2a3a';
+        postPermission.style.border = '1px solid #2a3a4a';
+        postPermission.style.color = '#8a9bb5';
+        categorySelect.disabled = true;
+        postBtn.disabled = true;
+        postBtn.style.opacity = '0.5';
+        postBtn.style.cursor = 'not-allowed';
+    }
+    
+    renderApks();
+}
+
+// ============================================================
+// INIT
+// ============================================================
+// Create default admin account
+const users = getUsers();
+if (!users['Rainyy.mods']) {
+    users['Rainyy.mods'] = { password: 'admin123', created: Date.now() };
+    saveUsers(users);
+}
+
+// Add example APKs if empty
+const apks = getApks();
+if (apks.length === 0) {
+    const examples = [
+        {
+            id: generateId(),
+            title: 'Winter Tag',
+            description: 'Winter Tag modded by Rainyy bc they called me a nigger and told a staff to kill their selves.',
+            version: '1.0.0',
+            size: '24 MB',
+            link: 'https://gofile.io/d/AOX12z',
+            category: 'official',
+            author: 'Rainyy.mods',
+            timestamp: Date.now() - 3600000,
+            downloads: ???
+        },
+    saveApks(examples);
+}
+
+// Update UI
+updateUI();
+
+console.log('✅ AMH Modding loaded!');
+console.log('📝 Log in to post APKs with download links!');
+console.log('🔗 Click any APK card to open the download link.');
 </script>
 
 </body>
