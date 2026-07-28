@@ -17,7 +17,6 @@
 
         .website-wrapper { max-width: 1200px; margin: 0 auto; }
 
-        /* Navigation */
         .navbar {
             display: flex;
             justify-content: space-between;
@@ -110,6 +109,53 @@
         }
 
         .navbar .user-badge strong { color: #f0c27f; }
+
+        /* Share Bar */
+        .share-bar {
+            background: #13161f;
+            border-radius: 12px;
+            padding: 12px 20px;
+            margin-bottom: 20px;
+            border: 1px solid #252b3a;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .share-bar .share-btn {
+            background: linear-gradient(135deg, #4a7a9a, #6a9aba);
+            color: #fff;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            cursor: pointer;
+        }
+
+        .share-bar .share-btn:hover { transform: scale(1.05); }
+
+        .share-bar .import-btn {
+            background: #1e3a2a;
+            color: #7ddfa0;
+            border: 1px solid #2a6b3f;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            cursor: pointer;
+        }
+
+        .share-bar .import-btn:hover { background: #2a6b3f; }
+
+        .share-bar .share-info {
+            color: #6a7a8a;
+            font-size: 0.8rem;
+        }
+
+        .share-bar .share-info strong { color: #f7971e; }
 
         /* Preview Card */
         .preview-card {
@@ -684,6 +730,9 @@
 
         .modal .info-text strong { color: #f7971e; }
 
+        /* Hidden import input */
+        #importInput { display: none; }
+
         @media (max-width: 600px) {
             .navbar { flex-direction: column; text-align: center; }
             .navbar .nav-links { justify-content: center; }
@@ -693,6 +742,7 @@
             .post-form .form-row { grid-template-columns: 1fr; }
             .modal { padding: 25px; }
             .preview-footer { flex-direction: column; }
+            .share-bar { flex-direction: column; align-items: stretch; text-align: center; }
         }
     </style>
 </head>
@@ -714,6 +764,19 @@
             <button class="btn-logout" id="logoutBtn" style="display:none;" onclick="logoutUser()">🚪 Logout</button>
         </div>
     </nav>
+
+    <!-- SHARE BAR - NEW -->
+    <div class="share-bar">
+        <div class="share-info">
+            📦 <strong id="apkCount">0</strong> APKs • 
+            🔗 Share your APKs with friends!
+        </div>
+        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+            <button class="share-btn" onclick="generateShareLink()">📤 Share APKs</button>
+            <button class="import-btn" onclick="document.getElementById('importInput').click()">📥 Import APKs</button>
+            <input type="file" id="importInput" accept=".json" onchange="importApks(event)">
+        </div>
+    </div>
 
     <!-- Preview Card -->
     <div class="preview-card">
@@ -852,12 +915,9 @@
 
 <script>
 // ============================================================
-// 🔥 WEBHOOK CONFIGURATION - CHANGE THIS TO YOUR WEBHOOK URL
+// WEBHOOK URL - CHANGE THIS TO YOUR DISCORD WEBHOOK
 // ============================================================
-// 👇👇👇 REPLACE THE URL BELOW WITH YOUR DISCORD WEBHOOK URL 👇👇👇
 const WEBHOOK_URL = 'https://discord.com/api/webhooks/1531636978968166511/FNJkNkdO886xHYq4LF4tvUWpIB4lQyk0aonmzXI7EUXnlPhpqbGxIzbwbTjf9FLCjnn3';
-// 👆👆👆 PASTE YOUR WEBHOOK URL HERE 👆👆👆
-// ============================================================
 
 // ============================================================
 // STORAGE
@@ -930,11 +990,92 @@ function scrollToSection(id) {
 }
 
 // ============================================================
-// WEBHOOK SYSTEM (HARDCODED)
+// SHARE / EXPORT SYSTEM
+// ============================================================
+function generateShareLink() {
+    const apks = getApks();
+    if (apks.length === 0) {
+        showToast('❌ No APKs to share!', 'error');
+        return;
+    }
+    
+    // Create a shareable JSON file
+    const data = {
+        version: '1.0',
+        exported: new Date().toISOString(),
+        apks: apks,
+        total: apks.length
+    };
+    
+    const json = JSON.stringify(data, null, 2);
+    const blob = new Blob([json], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    
+    // Create download link
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `amh_apks_${new Date().toISOString().slice(0,10)}.json`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    
+    showToast(`📤 Exported ${apks.length} APKs to JSON file!`, 'success');
+}
+
+function importApks(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        try {
+            const data = JSON.parse(e.target.result);
+            
+            if (!data.apks || !Array.isArray(data.apks)) {
+                showToast('❌ Invalid file format', 'error');
+                return;
+            }
+            
+            const currentApks = getApks();
+            const newApks = data.apks;
+            
+            // Merge - check for duplicates by link
+            const existingLinks = new Set(currentApks.map(a => a.link));
+            let added = 0;
+            let skipped = 0;
+            
+            newApks.forEach(apk => {
+                if (!existingLinks.has(apk.link)) {
+                    // Generate new ID to avoid conflicts
+                    apk.id = generateId();
+                    currentApks.push(apk);
+                    existingLinks.add(apk.link);
+                    added++;
+                } else {
+                    skipped++;
+                }
+            });
+            
+            saveApks(currentApks);
+            renderApks();
+            updateUI();
+            
+            showToast(`📥 Imported ${added} APKs (${skipped} skipped - duplicates)`, 'success');
+        } catch (error) {
+            showToast('❌ Error reading file: ' + error.message, 'error');
+        }
+    };
+    reader.readAsText(file);
+    event.target.value = ''; // Reset input
+}
+
+// ============================================================
+// WEBHOOK SYSTEM
 // ============================================================
 async function sendWebhook(apkData) {
     if (!WEBHOOK_URL) {
-        console.log('⚠️ No webhook URL set in code!');
+        console.log('⚠️ No webhook URL set');
         return false;
     }
     
@@ -951,14 +1092,10 @@ async function sendWebhook(apkData) {
                     { name: '👤 Posted By', value: apkData.author || 'Unknown', inline: true },
                     { name: '🔗 Download Link', value: `[Click Here to Download](${apkData.link || '#'})`, inline: false }
                 ],
-                footer: { 
-                    text: 'AMH Modding • Official APK Release',
-                    icon_url: 'https://i.imgur.com/placeholder.png'
-                },
+                footer: { text: 'AMH Modding • Official APK Release' },
                 timestamp: new Date().toISOString()
             }],
-            username: 'AMH Modding',
-            avatar_url: 'https://i.imgur.com/placeholder.png'
+            username: 'AMH Modding'
         };
         
         const response = await fetch(WEBHOOK_URL, {
@@ -968,12 +1105,11 @@ async function sendWebhook(apkData) {
         });
         
         if (response.ok) {
-            showToast('📨 Webhook notification sent to Discord!', 'success');
+            showToast('📨 Webhook sent to Discord!', 'success');
             return true;
         } else {
-            const errorText = await response.text();
-            console.error('Webhook error:', errorText);
-            showToast('❌ Failed to send webhook (HTTP ' + response.status + ')', 'error');
+            console.error('Webhook error:', await response.text());
+            showToast('❌ Webhook failed (HTTP ' + response.status + ')', 'error');
             return false;
         }
     } catch (error) {
@@ -1171,10 +1307,10 @@ async function postAPK() {
     saveApks(apks);
     renderApks();
     clearForm();
+    updateUI();
     
-    // Send webhook for OFFICIAL APKs only
     if (category === 'official') {
-        showToast('📨 Sending webhook notification to Discord...', 'info');
+        showToast('📨 Sending webhook...', 'info');
         await sendWebhook(newApk);
     }
     
@@ -1187,6 +1323,7 @@ function deleteApk(id) {
     apks = apks.filter(a => a.id !== id);
     saveApks(apks);
     renderApks();
+    updateUI();
     showToast('🗑️ APK deleted', 'error');
 }
 
@@ -1224,6 +1361,7 @@ function renderApks() {
     const communityApks = apks.filter(a => a.category === 'community');
     
     document.getElementById('totalPosts').textContent = apks.length;
+    document.getElementById('apkCount').textContent = apks.length;
     const totalDownloads = apks.reduce((sum, a) => sum + (a.downloads || 0), 0);
     document.getElementById('totalDownloads').textContent = totalDownloads > 1000 ? (totalDownloads/1000).toFixed(1) + 'K' : totalDownloads;
     
@@ -1407,9 +1545,7 @@ if (apks.length === 0) {
 updateUI();
 
 console.log('✅ AMH Modding loaded!');
-console.log('👤 Admin: Rainyy.mods / admin123');
-console.log('📨 Webhook is HARDCODED in the script - users cannot see it!');
-console.log('🔗 Official APKs will send notifications to your Discord automatically.');
+console.log('📤 Use "Share APKs" to export and "Import APKs" to share with friends!');
 </script>
 
 </body>
