@@ -3,34 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- SOCIAL PREVIEW META TAGS -->
     <title>AMH Modding - APK & Modding Community</title>
-    <meta name="title" content="AMH Modding - APK & Modding Community">
-    <meta name="description" content="AMH modding is a website where people can post APKs and modding things. This website was made by Rainyy.">
-    
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://amh-modding.xyz/">
-    <meta property="og:title" content="AMH Modding - APK & Modding Community">
-    <meta property="og:description" content="AMH modding is a website where people can post APKs and modding things. This website was made by Rainyy.">
-    <meta property="og:image" content="https://amh-modding.xyz/preview-image.png">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://amh-modding.xyz/">
-    <meta property="twitter:title" content="AMH Modding - APK & Modding Community">
-    <meta property="twitter:description" content="AMH modding is a website where people can post APKs and modding things. This website was made by Rainyy.">
-    <meta property="twitter:image" content="https://amh-modding.xyz/preview-image.png">
-    
-    <meta name="theme-color" content="#f7971e">
-    
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
@@ -40,10 +15,7 @@
             padding: 20px;
         }
 
-        .website-wrapper {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+        .website-wrapper { max-width: 1200px; margin: 0 auto; }
 
         /* Navigation */
         .navbar {
@@ -68,7 +40,6 @@
             background: linear-gradient(135deg, #f7971e, #ffd200);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
         }
 
         .navbar .logo-icon {
@@ -87,7 +58,7 @@
 
         .navbar .nav-links {
             display: flex;
-            gap: 20px;
+            gap: 15px;
             align-items: center;
             flex-wrap: wrap;
         }
@@ -101,9 +72,7 @@
             cursor: pointer;
         }
 
-        .navbar .nav-links a:hover {
-            color: #f7971e;
-        }
+        .navbar .nav-links a:hover { color: #f7971e; }
 
         .navbar .nav-links .btn {
             background: linear-gradient(135deg, #f7971e, #ffd200);
@@ -112,16 +81,11 @@
             border-radius: 30px;
             font-weight: 700;
             font-size: 0.85rem;
-            transition: 0.3s;
             border: none;
             cursor: pointer;
-            text-decoration: none;
         }
 
-        .navbar .nav-links .btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 20px rgba(247, 151, 30, 0.3);
-        }
+        .navbar .nav-links .btn:hover { transform: scale(1.05); }
 
         .navbar .nav-links .btn-logout {
             background: #3a1e1e;
@@ -130,14 +94,11 @@
             border-radius: 30px;
             font-weight: 700;
             font-size: 0.85rem;
-            transition: 0.3s;
             border: 1px solid #6b2a2a;
             cursor: pointer;
         }
 
-        .navbar .nav-links .btn-logout:hover {
-            background: #6b2a2a;
-        }
+        .navbar .nav-links .btn-logout:hover { background: #6b2a2a; }
 
         .navbar .user-badge {
             background: #1e2a3a;
@@ -148,25 +109,16 @@
             border: 1px solid #2a3a4a;
         }
 
-        .navbar .user-badge strong {
-            color: #f0c27f;
-        }
+        .navbar .user-badge strong { color: #f0c27f; }
 
         /* Preview Card */
         .preview-card {
             background: #13161f;
             border-radius: 20px;
             border: 1px solid #252b3a;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.7);
             max-width: 700px;
             margin: 0 auto 30px auto;
             padding: 24px;
-            transition: 0.3s;
-        }
-
-        .preview-card:hover {
-            transform: translateY(-4px);
-            border-color: #3a4a5a;
         }
 
         .preview-header {
@@ -188,12 +140,6 @@
             font-weight: 800;
             color: #0a0b0f;
             flex-shrink: 0;
-            box-shadow: 0 4px 15px rgba(247, 151, 30, 0.25);
-        }
-
-        .preview-title-group {
-            flex: 1;
-            min-width: 0;
         }
 
         .preview-title {
@@ -211,46 +157,32 @@
             padding: 2px 12px;
             border-radius: 20px;
             font-size: 0.6rem;
-            font-weight: 600;
             color: #8a9bb5;
             border: 1px solid #2a3a4a;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
         }
 
         .preview-domain {
             font-size: 0.8rem;
             color: #6a7a8a;
             margin-top: 3px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
         }
 
-        .preview-domain .verified {
-            color: #7ddfa0;
-            font-size: 0.7rem;
-        }
+        .preview-domain .verified { color: #7ddfa0; }
 
         .preview-description {
             color: #b7c0d0;
             font-size: 0.95rem;
             line-height: 1.7;
             margin-bottom: 16px;
-            padding-left: 4px;
         }
 
-        .preview-description strong {
-            color: #f7971e;
-            font-weight: 600;
-        }
+        .preview-description strong { color: #f7971e; }
 
         .preview-tags {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
             margin-bottom: 16px;
-            padding-left: 4px;
         }
 
         .preview-tags span {
@@ -260,7 +192,6 @@
             font-size: 0.7rem;
             color: #8a9bb5;
             border: 1px solid #252b3a;
-            font-weight: 500;
         }
 
         .preview-tags span.highlight {
@@ -286,12 +217,6 @@
             color: #4a5268;
         }
 
-        .preview-footer .stats span {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-
         .preview-footer .action-btn {
             background: linear-gradient(135deg, #f7971e, #ffd200);
             color: #0a0b0f;
@@ -301,13 +226,7 @@
             font-weight: 700;
             font-size: 0.85rem;
             cursor: pointer;
-            transition: 0.3s;
             text-decoration: none;
-        }
-
-        .preview-footer .action-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 20px rgba(247, 151, 30, 0.3);
         }
 
         .preview-credit {
@@ -317,18 +236,10 @@
             font-size: 0.65rem;
             color: #3a4258;
             text-align: center;
-            letter-spacing: 0.3px;
         }
 
-        .preview-credit a {
-            color: #5a6a8a;
-            text-decoration: none;
-            transition: 0.3s;
-        }
-
-        .preview-credit a:hover {
-            color: #f7971e;
-        }
+        .preview-credit a { color: #5a6a8a; text-decoration: none; }
+        .preview-credit a:hover { color: #f7971e; }
 
         /* Section Headers */
         .section-header {
@@ -355,7 +266,6 @@
             border-radius: 30px;
             font-size: 0.7rem;
             font-weight: 700;
-            text-transform: uppercase;
         }
 
         .section-header h2 .community-tag {
@@ -365,24 +275,6 @@
             border-radius: 30px;
             font-size: 0.7rem;
             font-weight: 700;
-            text-transform: uppercase;
-        }
-
-        .section-header .view-all {
-            color: #6a7a8a;
-            text-decoration: none;
-            font-size: 0.85rem;
-            transition: 0.3s;
-            cursor: pointer;
-            padding: 6px 16px;
-            border-radius: 30px;
-            border: 1px solid #252b3a;
-            background: #1a1d27;
-        }
-
-        .section-header .view-all:hover {
-            color: #f7971e;
-            border-color: #f7971e;
         }
 
         /* APK Grid */
@@ -400,19 +292,6 @@
             transition: 0.3s;
             cursor: pointer;
             position: relative;
-            overflow: hidden;
-        }
-
-        .apk-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #f7971e, #ffd200);
-            opacity: 0;
-            transition: 0.3s;
         }
 
         .apk-card:hover {
@@ -421,24 +300,10 @@
             box-shadow: 0 8px 30px rgba(0,0,0,0.4);
         }
 
-        .apk-card:hover::before {
-            opacity: 1;
-        }
+        .apk-card.official { border-top: 3px solid #f7971e; }
+        .apk-card.community { border-top: 3px solid #4a7a9a; }
 
-        .apk-card.official::before {
-            background: linear-gradient(90deg, #f7971e, #ffd200);
-            opacity: 1;
-        }
-
-        .apk-card.community::before {
-            background: linear-gradient(90deg, #4a7a9a, #6a9aba);
-            opacity: 1;
-        }
-
-        .apk-card .apk-icon {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
+        .apk-card .apk-icon { font-size: 2.5rem; margin-bottom: 10px; }
 
         .apk-card .apk-title {
             font-size: 1.1rem;
@@ -457,7 +322,6 @@
             padding: 2px 10px;
             border-radius: 20px;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
         }
 
         .apk-card .apk-title .apk-badge.official-badge {
@@ -482,6 +346,23 @@
             line-height: 1.5;
         }
 
+        .apk-card .apk-author {
+            font-size: 0.7rem;
+            color: #4a5268;
+            margin-bottom: 4px;
+        }
+
+        .apk-card .apk-link {
+            font-size: 0.7rem;
+            color: #4a7a9a;
+            word-break: break-all;
+            cursor: pointer;
+            text-decoration: underline;
+            margin-bottom: 10px;
+        }
+
+        .apk-card .apk-link:hover { color: #6a9aba; }
+
         .apk-card .apk-meta {
             display: flex;
             justify-content: space-between;
@@ -494,12 +375,6 @@
             color: #4a5268;
         }
 
-        .apk-card .apk-meta .downloads {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-
         .apk-card .apk-meta .download-btn {
             background: linear-gradient(135deg, #f7971e, #ffd200);
             color: #0a0b0f;
@@ -509,21 +384,13 @@
             font-weight: 700;
             font-size: 0.75rem;
             cursor: pointer;
-            transition: 0.3s;
-            text-decoration: none;
         }
 
-        .apk-card .apk-meta .download-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 15px rgba(247, 151, 30, 0.3);
-        }
+        .apk-card .apk-meta .download-btn:hover { transform: scale(1.05); }
 
         .apk-card .apk-meta .download-btn.community-btn {
             background: linear-gradient(135deg, #4a7a9a, #6a9aba);
-        }
-
-        .apk-card .apk-meta .download-btn.community-btn:hover {
-            box-shadow: 0 4px 15px rgba(74, 122, 154, 0.3);
+            color: #fff;
         }
 
         .apk-card .apk-delete {
@@ -538,32 +405,13 @@
             height: 28px;
             font-size: 0.7rem;
             cursor: pointer;
-            transition: 0.3s;
             display: none;
             align-items: center;
             justify-content: center;
         }
 
-        .apk-card:hover .apk-delete {
-            display: flex;
-        }
-
-        .apk-card .apk-delete:hover {
-            background: #6b2a2a;
-        }
-
-        .apk-card .apk-link {
-            font-size: 0.7rem;
-            color: #4a7a9a;
-            margin-top: 6px;
-            word-break: break-all;
-            cursor: pointer;
-            text-decoration: underline;
-        }
-
-        .apk-card .apk-link:hover {
-            color: #6a9aba;
-        }
+        .apk-card:hover .apk-delete { display: flex; }
+        .apk-card .apk-delete:hover { background: #6b2a2a; }
 
         /* Post Form */
         .post-form {
@@ -578,9 +426,6 @@
             font-size: 1.2rem;
             margin-bottom: 16px;
             color: #d4dcec;
-            display: flex;
-            align-items: center;
-            gap: 12px;
         }
 
         .post-form .form-row {
@@ -600,7 +445,6 @@
             color: #d4dcec;
             font-size: 0.95rem;
             outline: none;
-            transition: 0.3s;
             font-family: inherit;
         }
 
@@ -608,7 +452,6 @@
         .post-form textarea:focus,
         .post-form select:focus {
             border-color: #f7971e;
-            box-shadow: 0 0 15px rgba(247, 151, 30, 0.1);
         }
 
         .post-form textarea {
@@ -616,9 +459,7 @@
             resize: vertical;
         }
 
-        .post-form .full-width {
-            grid-column: 1 / -1;
-        }
+        .post-form .full-width { grid-column: 1 / -1; }
 
         .post-form .btn-row {
             display: flex;
@@ -636,21 +477,13 @@
             font-weight: 700;
             font-size: 0.95rem;
             cursor: pointer;
-            transition: 0.3s;
         }
 
-        .post-form .btn-row .btn:hover {
-            transform: scale(1.02);
-            box-shadow: 0 4px 20px rgba(247, 151, 30, 0.3);
-        }
+        .post-form .btn-row .btn:hover { transform: scale(1.02); }
 
         .post-form .btn-row .btn.secondary {
             background: #1e2a3a;
             color: #8a9bb5;
-        }
-
-        .post-form .btn-row .btn.secondary:hover {
-            background: #2a3a4a;
         }
 
         .post-form .btn-row .btn:disabled {
@@ -668,31 +501,7 @@
             border: 1px solid #2a3a4a;
         }
 
-        .post-form .warning strong {
-            color: #f7971e;
-        }
-
-        /* Upload Section */
-        .upload-section {
-            background: #13161f;
-            border-radius: 16px;
-            padding: 24px;
-            border: 1px solid #252b3a;
-            margin: 30px 0;
-            text-align: center;
-        }
-
-        .upload-section h3 {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            color: #d4dcec;
-        }
-
-        .upload-section p {
-            color: #6a7a8a;
-            font-size: 0.9rem;
-            margin-bottom: 16px;
-        }
+        .post-form .warning strong { color: #f7971e; }
 
         /* Footer */
         .footer {
@@ -704,14 +513,8 @@
             color: #3a4258;
         }
 
-        .footer a {
-            color: #5a6a8a;
-            text-decoration: none;
-        }
-
-        .footer a:hover {
-            color: #f7971e;
-        }
+        .footer a { color: #5a6a8a; text-decoration: none; }
+        .footer a:hover { color: #f7971e; }
 
         /* Toast */
         .toast {
@@ -732,18 +535,9 @@
             font-size: 0.9rem;
         }
 
-        .toast.show {
-            transform: translateY(0);
-            opacity: 1;
-        }
-
-        .toast.success {
-            border-left-color: #7ddfa0;
-        }
-
-        .toast.error {
-            border-left-color: #df7d7d;
-        }
+        .toast.show { transform: translateY(0); opacity: 1; }
+        .toast.success { border-left-color: #7ddfa0; }
+        .toast.error { border-left-color: #df7d7d; }
 
         /* Login Modal */
         .modal-overlay {
@@ -758,12 +552,9 @@
             justify-content: center;
             z-index: 1000;
             padding: 20px;
-            backdrop-filter: blur(4px);
         }
 
-        .modal-overlay.hidden {
-            display: none;
-        }
+        .modal-overlay.hidden { display: none; }
 
         .modal {
             background: #13161f;
@@ -772,7 +563,6 @@
             border: 1px solid #252b3a;
             max-width: 420px;
             width: 100%;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.9);
         }
 
         .modal h2 {
@@ -782,7 +572,6 @@
             background: linear-gradient(135deg, #f7971e, #ffd200);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
             margin-bottom: 5px;
         }
 
@@ -821,13 +610,8 @@
             color: #0a0b0f;
         }
 
-        .modal .tab-content {
-            display: none;
-        }
-
-        .modal .tab-content.active {
-            display: block;
-        }
+        .modal .tab-content { display: none; }
+        .modal .tab-content.active { display: block; }
 
         .modal label {
             display: block;
@@ -847,13 +631,9 @@
             font-size: 1rem;
             margin-bottom: 16px;
             outline: none;
-            transition: 0.3s;
         }
 
-        .modal input:focus {
-            border-color: #f7971e;
-            box-shadow: 0 0 15px rgba(247, 151, 30, 0.1);
-        }
+        .modal input:focus { border-color: #f7971e; }
 
         .modal .btn {
             width: 100%;
@@ -865,13 +645,9 @@
             font-weight: 700;
             font-size: 1rem;
             cursor: pointer;
-            transition: 0.3s;
         }
 
-        .modal .btn:hover {
-            transform: scale(1.02);
-            box-shadow: 0 4px 20px rgba(247, 151, 30, 0.3);
-        }
+        .modal .btn:hover { transform: scale(1.02); }
 
         .modal .error {
             background: #3a1e1e;
@@ -884,9 +660,7 @@
             display: none;
         }
 
-        .modal .error.show {
-            display: block;
-        }
+        .modal .error.show { display: block; }
 
         .modal .success {
             background: #1e3a2a;
@@ -899,9 +673,7 @@
             display: none;
         }
 
-        .modal .success.show {
-            display: block;
-        }
+        .modal .success.show { display: block; }
 
         .modal .info-text {
             text-align: center;
@@ -910,56 +682,17 @@
             color: #4a5268;
         }
 
-        .modal .info-text strong {
-            color: #f7971e;
-        }
+        .modal .info-text strong { color: #f7971e; }
 
-        /* Responsive */
         @media (max-width: 600px) {
-            .navbar {
-                padding: 12px 16px;
-                flex-direction: column;
-                align-items: stretch;
-                text-align: center;
-            }
-            .navbar .nav-links {
-                justify-content: center;
-            }
-            .preview-card {
-                padding: 16px;
-            }
-            .preview-title {
-                font-size: 1rem;
-            }
-            .preview-description {
-                font-size: 0.85rem;
-            }
-            .preview-icon {
-                width: 44px;
-                height: 44px;
-                font-size: 1.4rem;
-            }
-            .preview-footer {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            .preview-footer .action-btn {
-                text-align: center;
-            }
-            .apk-grid {
-                grid-template-columns: 1fr;
-            }
-            .section-header {
-                flex-direction: column;
-                align-items: stretch;
-                text-align: center;
-            }
-            .post-form .form-row {
-                grid-template-columns: 1fr;
-            }
-            .modal {
-                padding: 25px;
-            }
+            .navbar { flex-direction: column; text-align: center; }
+            .navbar .nav-links { justify-content: center; }
+            .preview-card { padding: 16px; }
+            .preview-title { font-size: 1rem; }
+            .apk-grid { grid-template-columns: 1fr; }
+            .post-form .form-row { grid-template-columns: 1fr; }
+            .modal { padding: 25px; }
+            .preview-footer { flex-direction: column; }
         }
     </style>
 </head>
@@ -974,9 +707,8 @@
             AMH Modding
         </div>
         <div class="nav-links" id="navLinks">
-            <a onclick="scrollToSection('official')">🏛️ Official APKs</a>
-            <a onclick="scrollToSection('community')">👥 Community APKs</a>
-            <a onclick="scrollToSection('upload')">📤 Upload</a>
+            <a onclick="scrollToSection('official')">🏛️ Official</a>
+            <a onclick="scrollToSection('community')">👥 Community</a>
             <span class="user-badge" id="userBadge" style="display:none;">👤 <strong id="currentUserDisplay">User</strong></span>
             <button class="btn" id="loginBtn" onclick="openModal()">🔐 Login</button>
             <button class="btn-logout" id="logoutBtn" style="display:none;" onclick="logoutUser()">🚪 Logout</button>
@@ -987,23 +719,18 @@
     <div class="preview-card">
         <div class="preview-header">
             <div class="preview-icon">AM</div>
-            <div class="preview-title-group">
+            <div>
                 <div class="preview-title">
                     AMH Modding
                     <span class="badge">🔗 Official</span>
                 </div>
-                <div class="preview-domain">
-                    🌐 amh-modding.xyz
-                    <span class="verified">✓ Verified</span>
-                </div>
+                <div class="preview-domain">🌐 amh-modding.xyz <span class="verified">✓ Verified</span></div>
             </div>
         </div>
-
         <div class="preview-description">
             AMH modding is a website where people can post <strong>APKs</strong> and 
             <strong>modding things</strong>. This website was made by <strong>Rainyy</strong>.
         </div>
-
         <div class="preview-tags">
             <span class="highlight">📱 APK</span>
             <span>🛠️ Modding</span>
@@ -1011,50 +738,32 @@
             <span>🔧 Tools</span>
             <span>👥 Community</span>
         </div>
-
         <div class="preview-footer">
             <div class="stats">
-                <span>📥 <span id="totalDownloads">1.2K</span> downloads</span>
-                <span>👤 <span id="totalMembers">456</span> members</span>
-                <span>📝 <span id="totalPosts">89</span> posts</span>
+                <span>📥 <span id="totalDownloads">0</span> downloads</span>
+                <span>👤 <span id="totalMembers">0</span> members</span>
+                <span>📝 <span id="totalPosts">0</span> posts</span>
             </div>
             <a href="#" class="action-btn">🚀 Visit Website</a>
         </div>
-
         <div class="preview-credit">
             AMH is founded by <a href="#">Rainyy</a> • <a href="#">.gg/Rfm9ZnfNX5</a>
         </div>
     </div>
 
-    <!-- ============================================================
-    OFFICIAL APKS SECTION
-    ============================================================ -->
+    <!-- OFFICIAL APKS -->
     <div class="section-header" id="official">
-        <h2>
-            🏛️ Official APKs
-            <span class="official-tag">Verified</span>
-        </h2>
-        <span class="view-all" onclick="showToast('📱 Showing all Official APKs', 'info')">View All →</span>
+        <h2>🏛️ Official APKs <span class="official-tag">Verified</span></h2>
     </div>
-
     <div class="apk-grid" id="officialApks"></div>
 
-    <!-- ============================================================
-    COMMUNITY APKS SECTION
-    ============================================================ -->
+    <!-- COMMUNITY APKS -->
     <div class="section-header" id="community">
-        <h2>
-            👥 Community APKs
-            <span class="community-tag">Community</span>
-        </h2>
-        <span class="view-all" onclick="showToast('👥 Showing all Community APKs', 'info')">View All →</span>
+        <h2>👥 Community APKs <span class="community-tag">Community</span></h2>
     </div>
-
     <div class="apk-grid" id="communityApks"></div>
 
-    <!-- ============================================================
-    POST FORM - Upload Section
-    ============================================================ -->
+    <!-- POST FORM -->
     <div class="post-form" id="upload">
         <h3>📤 Post an APK</h3>
         <div id="postPermission" class="warning">
@@ -1063,23 +772,23 @@
         
         <div class="form-row">
             <div class="full-width">
-                <label>APK Title</label>
+                <label>APK Title *</label>
                 <input type="text" id="apkTitle" placeholder="Enter APK name..." maxlength="100">
             </div>
             <div class="full-width">
-                <label>Description</label>
+                <label>Description *</label>
                 <textarea id="apkDesc" placeholder="Describe your mod/APK..."></textarea>
             </div>
             <div>
-                <label>Version</label>
+                <label>Version *</label>
                 <input type="text" id="apkVersion" placeholder="v1.0.0">
             </div>
             <div>
-                <label>File Size</label>
+                <label>File Size *</label>
                 <input type="text" id="apkSize" placeholder="50 MB">
             </div>
             <div class="full-width">
-                <label>Download Link</label>
+                <label>Download Link *</label>
                 <input type="url" id="apkLink" placeholder="https://example.com/download.apk">
             </div>
             <div class="full-width">
@@ -1096,22 +805,13 @@
         </div>
     </div>
 
-    <!-- Footer -->
     <div class="footer">
-        <p>
-            AMH Modding • Founded by <a href="#">Rainyy</a> • 
-            <a href="#">.gg/Rfm9ZnfNX5</a>
-        </p>
-        <p style="margin-top: 6px; color: #2a3248;">
-            © 2026 AMH Modding • Made with ❤️ by Rainyy
-        </p>
+        <p>AMH Modding • Founded by <a href="#">Rainyy</a> • <a href="#">.gg/Rfm9ZnfNX5</a></p>
+        <p style="margin-top: 6px; color: #2a3248;">© 2026 AMH Modding • Made with ❤️ by Rainyy</p>
     </div>
-
 </div>
 
-<!-- ============================================================
-LOGIN MODAL
-============================================================ -->
+<!-- LOGIN MODAL -->
 <div class="modal-overlay hidden" id="loginModal">
     <div class="modal">
         <h2>🔐 AMH Modding</h2>
@@ -1122,7 +822,6 @@ LOGIN MODAL
             <button onclick="switchAuthTab('register')">📝 Register</button>
         </div>
 
-        <!-- Login Tab -->
         <div class="tab-content active" id="auth-login">
             <div class="error" id="loginError">❌ Invalid username or password</div>
             <label>👤 Username</label>
@@ -1132,7 +831,6 @@ LOGIN MODAL
             <button class="btn" onclick="loginUser()">🚀 Login</button>
         </div>
 
-        <!-- Register Tab -->
         <div class="tab-content" id="auth-register">
             <div class="error" id="registerError">❌ That username is already taken</div>
             <div class="success" id="registerSuccess">✅ Account created! Please login.</div>
@@ -1145,9 +843,7 @@ LOGIN MODAL
             <button class="btn" onclick="registerUser()">📝 Create Account</button>
         </div>
 
-        <div class="info-text">
-            Only <strong>Rainyy.mods</strong> can post Official APKs
-        </div>
+        <div class="info-text">Only <strong>Rainyy.mods</strong> can post Official APKs</div>
     </div>
 </div>
 
@@ -1198,6 +894,7 @@ function generateId() {
 }
 
 function escapeHtml(text) {
+    if (!text) return '';
     const div = document.createElement('div');
     div.textContent = text;
     return div.innerHTML;
@@ -1354,7 +1051,7 @@ function switchAuthTab(tab) {
     document.getElementById('registerSuccess').classList.remove('show');
 }
 
-// Enter key support
+// Enter key support for login
 document.addEventListener('keydown', function(e) {
     if (e.key === 'Enter') {
         const modal = document.getElementById('loginModal');
@@ -1399,12 +1096,12 @@ function postAPK() {
     const apks = getApks();
     const newApk = {
         id: generateId(),
-        title,
+        title: title,
         description: desc,
-        version,
-        size,
-        link,
-        category,
+        version: version,
+        size: size,
+        link: link,
+        category: category,
         author: currentUser,
         timestamp: Date.now(),
         downloads: 0
@@ -1436,7 +1133,7 @@ function clearForm() {
 }
 
 function downloadApk(link, title) {
-    if (link) {
+    if (link && link.startsWith('http')) {
         // Increment download count
         let apks = getApks();
         const apk = apks.find(a => a.link === link);
@@ -1446,9 +1143,9 @@ function downloadApk(link, title) {
             renderApks();
         }
         window.open(link, '_blank');
-        showToast(`⬇️ Downloading: ${title}...`, 'success');
+        showToast(`⬇️ Opening: ${title}...`, 'success');
     } else {
-        showToast('❌ No download link available', 'error');
+        showToast('❌ Invalid download link', 'error');
     }
 }
 
@@ -1464,6 +1161,10 @@ function renderApks() {
     document.getElementById('totalPosts').textContent = apks.length;
     const totalDownloads = apks.reduce((sum, a) => sum + (a.downloads || 0), 0);
     document.getElementById('totalDownloads').textContent = totalDownloads > 1000 ? (totalDownloads/1000).toFixed(1) + 'K' : totalDownloads;
+    
+    // Update members count
+    const users = getUsers();
+    document.getElementById('totalMembers').textContent = Object.keys(users).length;
     
     renderApkList('officialApks', officialApks, 'official');
     renderApkList('communityApks', communityApks, 'community');
@@ -1488,12 +1189,11 @@ function renderApkList(containerId, apks, category) {
             : '<span class="apk-badge community-badge">Community</span>';
         
         const isAuthor = currentUser === apk.author || isAdmin;
-        const icon = category === 'official' ? '🏛️' : '👥';
         const downloads = apk.downloads || 0;
         
         html += `
-            <div class="apk-card ${category}" onclick="downloadApk('${apk.link}', '${escapeHtml(apk.title)}')">
-                <button class="apk-delete" onclick="event.stopPropagation(); deleteApk('${apk.id}')" ${isAuthor ? '' : 'style="display:none;"'}>✕</button>
+            <div class="apk-card ${category}">
+                <button class="apk-delete" onclick="deleteApk('${apk.id}')" ${isAuthor ? '' : 'style="display:none;"'}>✕</button>
                 <div class="apk-icon">📱</div>
                 <div class="apk-title">
                     ${escapeHtml(apk.title)}
@@ -1501,11 +1201,11 @@ function renderApkList(containerId, apks, category) {
                 </div>
                 <div class="apk-version">${escapeHtml(apk.version)} • ${escapeHtml(apk.size)}</div>
                 <div class="apk-desc">${escapeHtml(apk.description)}</div>
-                <div style="font-size:0.7rem; color:#4a5268; margin-bottom:4px;">👤 ${escapeHtml(apk.author)}</div>
-                <div class="apk-link" onclick="event.stopPropagation(); window.open('${apk.link}', '_blank')">🔗 ${escapeHtml(apk.link)}</div>
+                <div class="apk-author">👤 ${escapeHtml(apk.author)}</div>
+                <div class="apk-link" onclick="window.open('${apk.link}', '_blank')">🔗 ${escapeHtml(apk.link)}</div>
                 <div class="apk-meta">
-                    <span class="downloads">⬇️ ${downloads} downloads</span>
-                    <button class="download-btn ${category === 'official' ? '' : 'community-btn'}" onclick="event.stopPropagation(); downloadApk('${apk.link}', '${escapeHtml(apk.title)}')">⬇️ Download</button>
+                    <span>⬇️ ${downloads} downloads</span>
+                    <button class="download-btn ${category === 'official' ? '' : 'community-btn'}" onclick="downloadApk('${apk.link}', '${escapeHtml(apk.title)}')">⬇️ Download</button>
                 </div>
             </div>
         `;
@@ -1590,16 +1290,53 @@ if (apks.length === 0) {
     const examples = [
         {
             id: generateId(),
-            title: 'Winter Tag',
-            description: 'Winter Tag modded by Rainyy bc they called me a nigger and told a staff to kill their selves.',
-            version: '1.0.0',
+            title: 'Mod Manager Pro',
+            description: 'Ultimate mod manager with built-in patcher and installer.',
+            version: 'v3.2.1',
             size: '24 MB',
-            link: 'https://gofile.io/d/AOX12z',
+            link: 'https://example.com/mod-manager.apk',
             category: 'official',
             author: 'Rainyy.mods',
             timestamp: Date.now() - 3600000,
-            downloads: ???
+            downloads: 2341
         },
+        {
+            id: generateId(),
+            title: 'Game X - Unlimited',
+            description: 'Full mod with unlimited coins, gems, and all characters unlocked.',
+            version: 'v4.5.0',
+            size: '156 MB',
+            link: 'https://example.com/game-x-mod.apk',
+            category: 'official',
+            author: 'Rainyy.mods',
+            timestamp: Date.now() - 7200000,
+            downloads: 15789
+        },
+        {
+            id: generateId(),
+            title: 'Random Mod v2',
+            description: 'Community-made mod with new levels and custom characters.',
+            version: 'v2.0.0',
+            size: '67 MB',
+            link: 'https://example.com/random-mod.apk',
+            category: 'community',
+            author: 'CommunityMember',
+            timestamp: Date.now() - 1800000,
+            downloads: 456
+        },
+        {
+            id: generateId(),
+            title: 'Skin Pack Ultra',
+            description: '200+ custom skins and themes for popular games.',
+            version: 'v1.2.0',
+            size: '34 MB',
+            link: 'https://example.com/skin-pack.apk',
+            category: 'community',
+            author: 'SkinMaker',
+            timestamp: Date.now() - 2400000,
+            downloads: 890
+        }
+    ];
     saveApks(examples);
 }
 
@@ -1607,6 +1344,7 @@ if (apks.length === 0) {
 updateUI();
 
 console.log('✅ AMH Modding loaded!');
+console.log('👤 Admin: Rainyy.mods / admin123');
 console.log('📝 Log in to post APKs with download links!');
 console.log('🔗 Click any APK card to open the download link.');
 </script>
