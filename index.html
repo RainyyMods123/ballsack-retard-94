@@ -3,1550 +3,479 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AMH Modding - APK & Modding Community</title>
+    <title>Rainyy · g's</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        /* ─── Reset & Base ─── */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background: #0a0b0f;
-            color: #d4dcec;
             min-height: 100vh;
-            padding: 20px;
-        }
-
-        .website-wrapper { max-width: 1200px; margin: 0 auto; }
-
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 16px 24px;
-            background: #13161f;
-            border-radius: 16px;
-            border: 1px solid #252b3a;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-
-        .navbar .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 1.4rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #f7971e, #ffd200);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .navbar .logo-icon {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, #f7971e, #ffd200);
-            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
-            font-weight: 800;
-            color: #0a0b0f;
-            -webkit-text-fill-color: #0a0b0f;
-        }
-
-        .navbar .nav-links {
-            display: flex;
-            gap: 15px;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .navbar .nav-links a {
-            color: #8a9bb5;
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: 0.3s;
-            font-weight: 500;
-            cursor: pointer;
-        }
-
-        .navbar .nav-links a:hover { color: #f7971e; }
-
-        .navbar .nav-links .btn {
-            background: linear-gradient(135deg, #f7971e, #ffd200);
-            color: #0a0b0f;
-            padding: 8px 20px;
-            border-radius: 30px;
-            font-weight: 700;
-            font-size: 0.85rem;
-            border: none;
-            cursor: pointer;
-        }
-
-        .navbar .nav-links .btn:hover { transform: scale(1.05); }
-
-        .navbar .nav-links .btn-logout {
-            background: #3a1e1e;
-            color: #df7d7d;
-            padding: 8px 20px;
-            border-radius: 30px;
-            font-weight: 700;
-            font-size: 0.85rem;
-            border: 1px solid #6b2a2a;
-            cursor: pointer;
-        }
-
-        .navbar .nav-links .btn-logout:hover { background: #6b2a2a; }
-
-        .navbar .user-badge {
-            background: #1e2a3a;
-            padding: 6px 16px;
-            border-radius: 30px;
-            font-size: 0.8rem;
-            color: #8a9bb5;
-            border: 1px solid #2a3a4a;
-        }
-
-        .navbar .user-badge strong { color: #f0c27f; }
-
-        /* Share Bar */
-        .share-bar {
-            background: #13161f;
-            border-radius: 12px;
-            padding: 12px 20px;
-            margin-bottom: 20px;
-            border: 1px solid #252b3a;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .share-bar .share-btn {
-            background: linear-gradient(135deg, #4a7a9a, #6a9aba);
-            color: #fff;
-            border: none;
-            padding: 8px 20px;
-            border-radius: 30px;
-            font-weight: 700;
-            font-size: 0.85rem;
-            cursor: pointer;
-        }
-
-        .share-bar .share-btn:hover { transform: scale(1.05); }
-
-        .share-bar .import-btn {
-            background: #1e3a2a;
-            color: #7ddfa0;
-            border: 1px solid #2a6b3f;
-            padding: 8px 20px;
-            border-radius: 30px;
-            font-weight: 700;
-            font-size: 0.85rem;
-            cursor: pointer;
-        }
-
-        .share-bar .import-btn:hover { background: #2a6b3f; }
-
-        .share-bar .share-info {
-            color: #6a7a8a;
-            font-size: 0.8rem;
-        }
-
-        .share-bar .share-info strong { color: #f7971e; }
-
-        /* Preview Card */
-        .preview-card {
-            background: #13161f;
-            border-radius: 20px;
-            border: 1px solid #252b3a;
-            max-width: 700px;
-            margin: 0 auto 30px auto;
-            padding: 24px;
-        }
-
-        .preview-header {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            margin-bottom: 14px;
-        }
-
-        .preview-icon {
-            width: 56px;
-            height: 56px;
-            background: linear-gradient(135deg, #f7971e, #ffd200);
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: #0a0b0f;
-            flex-shrink: 0;
-        }
-
-        .preview-title {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: #d4dcec;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-
-        .preview-title .badge {
-            background: #1e2a3a;
-            padding: 2px 12px;
-            border-radius: 20px;
-            font-size: 0.6rem;
-            color: #8a9bb5;
-            border: 1px solid #2a3a4a;
-        }
-
-        .preview-domain {
-            font-size: 0.8rem;
-            color: #6a7a8a;
-            margin-top: 3px;
-        }
-
-        .preview-domain .verified { color: #7ddfa0; }
-
-        .preview-description {
-            color: #b7c0d0;
-            font-size: 0.95rem;
-            line-height: 1.7;
-            margin-bottom: 16px;
-        }
-
-        .preview-description strong { color: #f7971e; }
-
-        .preview-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 16px;
-        }
-
-        .preview-tags span {
-            background: #1a1d27;
-            padding: 4px 14px;
-            border-radius: 30px;
-            font-size: 0.7rem;
-            color: #8a9bb5;
-            border: 1px solid #252b3a;
-        }
-
-        .preview-tags span.highlight {
-            background: #1e2a3a;
-            border-color: #f7971e;
-            color: #f7971e;
-        }
-
-        .preview-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 10px;
-            padding-top: 14px;
-            border-top: 1px solid #1a1d27;
-        }
-
-        .preview-footer .stats {
-            display: flex;
-            gap: 16px;
-            font-size: 0.75rem;
-            color: #4a5268;
-        }
-
-        .preview-footer .action-btn {
-            background: linear-gradient(135deg, #f7971e, #ffd200);
-            color: #0a0b0f;
-            border: none;
-            padding: 10px 24px;
-            border-radius: 30px;
-            font-weight: 700;
-            font-size: 0.85rem;
-            cursor: pointer;
-            text-decoration: none;
-        }
-
-        .preview-credit {
-            margin-top: 14px;
-            padding-top: 12px;
-            border-top: 1px solid #1a1d27;
-            font-size: 0.65rem;
-            color: #3a4258;
-            text-align: center;
-        }
-
-        .preview-credit a { color: #5a6a8a; text-decoration: none; }
-        .preview-credit a:hover { color: #f7971e; }
-
-        /* Section Headers */
-        .section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin: 35px 0 20px 0;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .section-header h2 {
-            font-size: 1.6rem;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .section-header h2 .official-tag {
-            background: #f7971e;
-            color: #0a0b0f;
-            padding: 2px 14px;
-            border-radius: 30px;
-            font-size: 0.7rem;
-            font-weight: 700;
-        }
-
-        .section-header h2 .community-tag {
-            background: #4a7a9a;
-            color: #fff;
-            padding: 2px 14px;
-            border-radius: 30px;
-            font-size: 0.7rem;
-            font-weight: 700;
-        }
-
-        /* APK Grid */
-        .apk-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
-        }
-
-        .apk-card {
-            background: #13161f;
-            border-radius: 16px;
-            padding: 20px;
-            border: 1px solid #252b3a;
-            transition: 0.3s;
-            cursor: pointer;
+            background: #0a0a0f;
+            font-family: 'Share Tech Mono', monospace;
+            padding: 1.5rem;
+            background-image:
+                linear-gradient(rgba(255, 0, 85, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 0, 85, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
             position: relative;
         }
 
-        .apk-card:hover {
-            border-color: #3a4a5a;
-            transform: translateY(-4px);
-            box-shadow: 0 8px 30px rgba(0,0,0,0.4);
-        }
-
-        .apk-card.official { border-top: 3px solid #f7971e; }
-        .apk-card.community { border-top: 3px solid #4a7a9a; }
-
-        .apk-card .apk-icon { font-size: 2.5rem; margin-bottom: 10px; }
-
-        .apk-card .apk-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #d4dcec;
-            margin-bottom: 4px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-
-        .apk-card .apk-title .apk-badge {
-            font-size: 0.55rem;
-            font-weight: 700;
-            padding: 2px 10px;
-            border-radius: 20px;
-            text-transform: uppercase;
-        }
-
-        .apk-card .apk-title .apk-badge.official-badge {
-            background: #f7971e;
-            color: #0a0b0f;
-        }
-
-        .apk-card .apk-title .apk-badge.community-badge {
-            background: #4a7a9a;
-            color: #fff;
-        }
-
-        .apk-card .apk-version {
-            font-size: 0.8rem;
-            color: #6a7a8a;
-        }
-
-        .apk-card .apk-desc {
-            font-size: 0.85rem;
-            color: #8a9bb5;
-            margin: 8px 0 12px 0;
-            line-height: 1.5;
-        }
-
-        .apk-card .apk-author {
-            font-size: 0.7rem;
-            color: #4a5268;
-            margin-bottom: 4px;
-        }
-
-        .apk-card .apk-link {
-            font-size: 0.7rem;
-            color: #4a7a9a;
-            word-break: break-all;
-            cursor: pointer;
-            text-decoration: underline;
-            margin-bottom: 10px;
-        }
-
-        .apk-card .apk-link:hover { color: #6a9aba; }
-
-        .apk-card .apk-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 8px;
-            padding-top: 12px;
-            border-top: 1px solid #1a1d27;
-            font-size: 0.7rem;
-            color: #4a5268;
-        }
-
-        .apk-card .apk-meta .download-btn {
-            background: linear-gradient(135deg, #f7971e, #ffd200);
-            color: #0a0b0f;
-            border: none;
-            padding: 6px 18px;
-            border-radius: 30px;
-            font-weight: 700;
-            font-size: 0.75rem;
-            cursor: pointer;
-        }
-
-        .apk-card .apk-meta .download-btn:hover { transform: scale(1.05); }
-
-        .apk-card .apk-meta .download-btn.community-btn {
-            background: linear-gradient(135deg, #4a7a9a, #6a9aba);
-            color: #fff;
-        }
-
-        .apk-card .apk-delete {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: #3a1e1e;
-            color: #df7d7d;
-            border: none;
-            border-radius: 50%;
-            width: 28px;
-            height: 28px;
-            font-size: 0.7rem;
-            cursor: pointer;
-            display: none;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .apk-card:hover .apk-delete { display: flex; }
-        .apk-card .apk-delete:hover { background: #6b2a2a; }
-
-        /* Post Form */
-        .post-form {
-            background: #13161f;
-            border-radius: 16px;
-            padding: 24px;
-            border: 1px solid #252b3a;
-            margin: 20px 0 30px 0;
-        }
-
-        .post-form h3 {
-            font-size: 1.2rem;
-            margin-bottom: 16px;
-            color: #d4dcec;
-        }
-
-        .post-form .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-        }
-
-        .post-form input,
-        .post-form textarea,
-        .post-form select {
-            width: 100%;
-            padding: 12px 16px;
-            border-radius: 10px;
-            border: 1px solid #252b3a;
-            background: #0d1018;
-            color: #d4dcec;
-            font-size: 0.95rem;
-            outline: none;
-            font-family: inherit;
-        }
-
-        .post-form input:focus,
-        .post-form textarea:focus,
-        .post-form select:focus {
-            border-color: #f7971e;
-        }
-
-        .post-form textarea {
-            min-height: 80px;
-            resize: vertical;
-        }
-
-        .post-form .full-width { grid-column: 1 / -1; }
-
-        .post-form .btn-row {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-            margin-top: 12px;
-        }
-
-        .post-form .btn-row .btn {
-            padding: 12px 28px;
-            border-radius: 30px;
-            border: none;
-            background: linear-gradient(135deg, #f7971e, #ffd200);
-            color: #0a0b0f;
-            font-weight: 700;
-            font-size: 0.95rem;
-            cursor: pointer;
-        }
-
-        .post-form .btn-row .btn:hover { transform: scale(1.02); }
-
-        .post-form .btn-row .btn.secondary {
-            background: #1e2a3a;
-            color: #8a9bb5;
-        }
-
-        .post-form .btn-row .btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        .post-form .warning {
-            background: #1e2a3a;
-            padding: 12px;
-            border-radius: 10px;
-            margin-bottom: 16px;
-            color: #8a9bb5;
-            text-align: center;
-            border: 1px solid #2a3a4a;
-        }
-
-        .post-form .warning strong { color: #f7971e; }
-
-        /* Footer */
-        .footer {
-            margin-top: 40px;
-            padding: 20px;
-            text-align: center;
-            border-top: 1px solid #1a1d27;
-            font-size: 0.75rem;
-            color: #3a4258;
-        }
-
-        .footer a { color: #5a6a8a; text-decoration: none; }
-        .footer a:hover { color: #f7971e; }
-
-        /* Toast */
-        .toast {
+        /* scanline overlay */
+        body::after {
+            content: '';
             position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: #1a1d27;
-            padding: 16px 24px;
-            border-radius: 14px;
-            border-left: 4px solid #f7971e;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.8);
-            color: #d4dcec;
-            transform: translateY(100px);
-            opacity: 0;
-            transition: 0.5s ease;
-            z-index: 999;
-            max-width: 400px;
-            font-size: 0.9rem;
+            inset: 0;
+            background: repeating-linear-gradient(0deg,
+                    rgba(0, 0, 0, 0.15) 0px,
+                    rgba(0, 0, 0, 0.15) 2px,
+                    transparent 2px,
+                    transparent 6px);
+            pointer-events: none;
+            z-index: 10;
         }
 
-        .toast.show { transform: translateY(0); opacity: 1; }
-        .toast.success { border-left-color: #7ddfa0; }
-        .toast.error { border-left-color: #df7d7d; }
-
-        /* Login Modal */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0,0,0,0.8);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-            padding: 20px;
-        }
-
-        .modal-overlay.hidden { display: none; }
-
-        .modal {
-            background: #13161f;
-            border-radius: 20px;
-            padding: 40px;
-            border: 1px solid #252b3a;
-            max-width: 420px;
+        /* ─── Main Card ─── */
+        .container {
+            max-width: 780px;
             width: 100%;
+            background: rgba(10, 10, 20, 0.85);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 0, 85, 0.25);
+            box-shadow: 0 0 60px rgba(255, 0, 85, 0.15), inset 0 0 60px rgba(255, 0, 85, 0.03);
+            padding: 3rem 2.5rem;
+            border-radius: 28px;
+            text-align: center;
+            position: relative;
+            z-index: 5;
+            transition: box-shadow 0.3s ease;
         }
 
-        .modal h2 {
-            font-size: 1.8rem;
-            font-weight: 700;
-            text-align: center;
-            background: linear-gradient(135deg, #f7971e, #ffd200);
+        .container:hover {
+            box-shadow: 0 0 80px rgba(255, 0, 85, 0.25), inset 0 0 80px rgba(255, 0, 85, 0.05);
+        }
+
+        /* ─── Header: RAINYY + g's ─── */
+        .header {
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            padding-bottom: 1.5rem;
+        }
+
+        .main-link {
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            transition: transform 0.2s ease;
+        }
+        .main-link:hover {
+            transform: scale(1.03);
+        }
+        .main-link:active {
+            transform: scale(0.97);
+        }
+
+        .federal {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            font-size: clamp(3.8rem, 15vw, 5.8rem);
+            letter-spacing: 0.12em;
+            background: linear-gradient(135deg, #ff0055, #ff3366);
             -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 5px;
-        }
-
-        .modal .subtitle {
-            text-align: center;
-            color: #6a7a8a;
-            font-size: 0.9rem;
-            margin-bottom: 25px;
-        }
-
-        .modal .tab-btns {
-            display: flex;
-            gap: 5px;
-            margin-bottom: 20px;
-            background: #0d1018;
-            border-radius: 14px;
-            padding: 5px;
-            border: 1px solid #1a1d27;
-        }
-
-        .modal .tab-btns button {
-            flex: 1;
-            padding: 10px;
-            border: none;
-            background: transparent;
-            color: #6a7a8a;
-            font-size: 0.95rem;
-            font-weight: 600;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 30px rgba(255, 0, 85, 0.4), 0 0 60px rgba(255, 0, 85, 0.15);
+            line-height: 1;
+            position: relative;
             cursor: pointer;
-            border-radius: 10px;
-            transition: 0.3s;
         }
 
-        .modal .tab-btns button.active {
-            background: #f7971e;
-            color: #0a0b0f;
+        .federal::before {
+            content: 'RAINYY';
+            position: absolute;
+            top: 0;
+            left: -2px;
+            color: #00f0ff;
+            opacity: 0.3;
+            z-index: -1;
+            clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+            transform: translateX(-3px);
+        }
+        .federal::after {
+            content: 'RAINYY';
+            position: absolute;
+            top: 0;
+            left: 2px;
+            color: #ffcc00;
+            opacity: 0.2;
+            z-index: -1;
+            clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
+            transform: translateX(3px);
         }
 
-        .modal .tab-content { display: none; }
-        .modal .tab-content.active { display: block; }
-
-        .modal label {
-            display: block;
-            margin-bottom: 6px;
-            color: #b7c0d0;
-            font-weight: 500;
-            font-size: 0.9rem;
-        }
-
-        .modal input {
-            width: 100%;
-            padding: 12px 16px;
-            border-radius: 10px;
-            border: 1px solid #252b3a;
-            background: #0d1018;
-            color: #d4dcec;
-            font-size: 1rem;
-            margin-bottom: 16px;
-            outline: none;
-        }
-
-        .modal input:focus { border-color: #f7971e; }
-
-        .modal .btn {
-            width: 100%;
-            padding: 14px;
-            border-radius: 30px;
-            border: none;
-            background: linear-gradient(135deg, #f7971e, #ffd200);
-            color: #0a0b0f;
+        .gs {
+            font-family: 'Orbitron', sans-serif;
             font-weight: 700;
-            font-size: 1rem;
+            font-size: clamp(1.8rem, 6vw, 2.8rem);
+            color: #c0c0d0;
+            letter-spacing: 0.3em;
+            text-shadow: 0 0 20px rgba(192, 192, 208, 0.2);
+            padding-left: 0.2rem;
+        }
+
+        /* ─── Names ─── */
+        .names {
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            color: #e0e0f0;
+            letter-spacing: 0.04em;
+            margin-bottom: 0.6rem;
+            line-height: 1.7;
+        }
+
+        .names span {
+            font-weight: 700;
+            color: #00f0ff;
+            text-shadow: 0 0 20px rgba(0, 240, 255, 0.25);
+            transition: color 0.2s;
+        }
+
+        .names span:hover {
+            color: #ffcc00;
+        }
+
+        .names .slash {
+            color: rgba(255, 255, 255, 0.2);
+            font-weight: 300;
+            margin: 0 0.1rem;
+        }
+
+        .second-line {
+            margin-bottom: 1.8rem;
+        }
+        .second-line span {
+            color: #ff7b9c;
+            text-shadow: 0 0 20px rgba(255, 123, 156, 0.2);
+        }
+
+        /* ─── AKA ─── */
+        .aka {
+            font-size: clamp(1.2rem, 3vw, 1.6rem);
+            color: #b0b0c8;
+            margin-bottom: 1rem;
+            letter-spacing: 0.1em;
+        }
+
+        .aka span {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            color: #ffcc00;
+            text-shadow: 0 0 30px rgba(255, 204, 0, 0.3);
+            background: rgba(255, 204, 0, 0.06);
+            padding: 0.1rem 0.8rem;
+            border-radius: 40px;
+            border: 1px solid rgba(255, 204, 0, 0.15);
+            display: inline-block;
+            margin-top: 0.2rem;
+        }
+
+        /* ─── Discord Handle ─── */
+        .discord-handle {
+            font-size: clamp(1rem, 2.2vw, 1.3rem);
+            color: #b8b8d0;
+            margin-bottom: 2rem;
+            padding: 0.4rem 1rem;
+            display: inline-block;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 40px;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .discord-handle span {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            color: #5865F2;
+            text-shadow: 0 0 30px rgba(88, 101, 242, 0.3);
+            letter-spacing: 0.05em;
+        }
+
+        /* ─── Buttons / Links ─── */
+        .links {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.2rem 1.8rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn-discord {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+            background: linear-gradient(135deg, #5865F2, #4752c4);
+            color: #fff;
+            padding: 0.8rem 2.2rem;
+            border-radius: 60px;
+            text-decoration: none;
+            letter-spacing: 0.08em;
+            box-shadow: 0 0 30px rgba(88, 101, 242, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.25s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-discord:hover {
+            transform: scale(1.04);
+            box-shadow: 0 0 50px rgba(88, 101, 242, 0.45);
+            background: linear-gradient(135deg, #6c7af5, #5865F2);
+            border-color: rgba(255, 255, 255, 0.25);
+        }
+
+        .btn-discord::before {
+            content: '▶';
+            font-size: 0.7rem;
+            opacity: 0.8;
+        }
+
+        .telegram {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 400;
+            font-size: clamp(0.8rem, 1.6vw, 1rem);
+            color: #7a7a9a;
+            letter-spacing: 0.15em;
+            padding: 0.5rem 1.2rem;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 40px;
+            background: rgba(255, 255, 255, 0.02);
+            transition: all 0.2s;
+            cursor: default;
+        }
+
+        .telegram:hover {
+            color: #26A5E4;
+            border-color: rgba(38, 165, 228, 0.2);
+            background: rgba(38, 165, 228, 0.04);
+        }
+
+        /* ─── Sound Button (song player) ─── */
+        .btn-sound {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            font-size: clamp(0.8rem, 1.6vw, 1rem);
+            background: linear-gradient(135deg, #00c8b0, #009688);
+            color: #fff;
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 60px;
+            letter-spacing: 0.08em;
+            box-shadow: 0 0 30px rgba(0, 200, 176, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.25s ease;
             cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
         }
 
-        .modal .btn:hover { transform: scale(1.02); }
-
-        .modal .error {
-            background: #3a1e1e;
-            color: #df7d7d;
-            padding: 12px;
-            border-radius: 10px;
-            margin-bottom: 16px;
-            text-align: center;
-            border: 1px solid #6b2a2a;
-            display: none;
+        .btn-sound:hover {
+            transform: scale(1.04);
+            box-shadow: 0 0 50px rgba(0, 200, 176, 0.4);
+            background: linear-gradient(135deg, #00e6cc, #00b8a0);
+            border-color: rgba(255, 255, 255, 0.25);
         }
 
-        .modal .error.show { display: block; }
-
-        .modal .success {
-            background: #1e3a2a;
-            color: #7ddfa0;
-            padding: 12px;
-            border-radius: 10px;
-            margin-bottom: 16px;
-            text-align: center;
-            border: 1px solid #2a6b3f;
-            display: none;
+        .btn-sound.playing {
+            background: linear-gradient(135deg, #ff8a00, #e65c00);
+            box-shadow: 0 0 40px rgba(255, 138, 0, 0.4);
+        }
+        .btn-sound.playing:hover {
+            background: linear-gradient(135deg, #ffa033, #ff6a00);
+            box-shadow: 0 0 60px rgba(255, 138, 0, 0.6);
         }
 
-        .modal .success.show { display: block; }
-
-        .modal .info-text {
-            text-align: center;
-            margin-top: 15px;
-            font-size: 0.8rem;
-            color: #4a5268;
+        /* ─── Invite Link ─── */
+        .invite-link {
+            margin-top: 0.5rem;
+            padding-top: 1.8rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
         }
 
-        .modal .info-text strong { color: #f7971e; }
+        .invite-link a {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: clamp(0.75rem, 1.6vw, 0.95rem);
+            color: #6a6a8a;
+            text-decoration: none;
+            letter-spacing: 0.06em;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+            word-break: break-all;
+        }
 
-        /* Hidden import input */
-        #importInput { display: none; }
+        .invite-link a:hover {
+            color: #00f0ff;
+            text-shadow: 0 0 30px rgba(0, 240, 255, 0.2);
+        }
 
-        @media (max-width: 600px) {
-            .navbar { flex-direction: column; text-align: center; }
-            .navbar .nav-links { justify-content: center; }
-            .preview-card { padding: 16px; }
-            .preview-title { font-size: 1rem; }
-            .apk-grid { grid-template-columns: 1fr; }
-            .post-form .form-row { grid-template-columns: 1fr; }
-            .modal { padding: 25px; }
-            .preview-footer { flex-direction: column; }
-            .share-bar { flex-direction: column; align-items: stretch; text-align: center; }
+        /* ─── Responsive ─── */
+        @media (max-width: 480px) {
+            .container {
+                padding: 2rem 1.2rem;
+                border-radius: 20px;
+            }
+            .header {
+                gap: 0.1rem;
+                margin-bottom: 1.5rem;
+            }
+            .federal::before,
+            .federal::after {
+                display: none;
+            }
+            .names {
+                font-size: 1rem;
+            }
+            .links {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+            .btn-discord,
+            .btn-sound {
+                width: 100%;
+                justify-content: center;
+            }
+            .telegram {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        @keyframes borderPulse {
+            0% { border-color: rgba(255, 0, 85, 0.2); }
+            50% { border-color: rgba(255, 0, 85, 0.4); }
+            100% { border-color: rgba(255, 0, 85, 0.2); }
+        }
+        .container {
+            animation: borderPulse 4s ease-in-out infinite;
         }
     </style>
 </head>
 <body>
 
-<div class="website-wrapper">
-    
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="logo">
-            <span class="logo-icon">AM</span>
-            AMH Modding
-        </div>
-        <div class="nav-links" id="navLinks">
-            <a onclick="scrollToSection('official')">🏛️ Official</a>
-            <a onclick="scrollToSection('community')">👥 Community</a>
-            <span class="user-badge" id="userBadge" style="display:none;">👤 <strong id="currentUserDisplay">User</strong></span>
-            <button class="btn" id="loginBtn" onclick="openModal()">🔐 Login</button>
-            <button class="btn-logout" id="logoutBtn" style="display:none;" onclick="logoutUser()">🚪 Logout</button>
-        </div>
-    </nav>
+    <div class="container">
 
-    <!-- SHARE BAR - NEW -->
-    <div class="share-bar">
-        <div class="share-info">
-            📦 <strong id="apkCount">0</strong> APKs • 
-            🔗 Share your APKs with friends!
+        <!-- RAINYY + g's (clickable to main page) -->
+        <div class="header">
+            <a href="main.html" class="main-link" title="Go to main page">
+                <span class="federal">RAINYY</span>
+            </a>
+            <span class="gs">g's</span>
         </div>
-        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-            <button class="share-btn" onclick="generateShareLink()">📤 Share APKs</button>
-            <button class="import-btn" onclick="document.getElementById('importInput').click()">📥 Import APKs</button>
-            <input type="file" id="importInput" accept=".json" onchange="importApks(event)">
+
+        <!-- Names -->
+        <div class="names">
+            <span>Vice</span><span class="slash"> / </span>
+            <span>Rebortion</span><span class="slash"> / </span>
+            <span>Virus</span><span class="slash"> / </span>
         </div>
+        <div class="names second-line">
+            <span>Tr4gic</span><span class="slash"> / </span>
+            <span>Sunny</span><span class="slash"> / </span>
+            <span>Navy</span>
+        </div>
+
+        <!-- AKA -->
+        <div class="aka">
+            AKA <span>Prototype</span>
+        </div>
+
+        <!-- Discord Handle -->
+        <div class="discord-handle">
+            discord is: <span>f0deral</span>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="links">
+            <a href="https://discord.gg/Rfm9ZnfNX5" target="_blank" class="btn-discord">
+                Discord Server
+            </a>
+            <span class="telegram">Telegram</span>
+            <button id="soundToggle" class="btn-sound">♫ PAUSED</button>
+        </div>
+
+        <!-- Invite URL -->
+        <div class="invite-link">
+            <a href="https://discord.gg/vRr8jgraW6" target="_blank">
+                https://discord.gg/vRr8jgraW6
+            </a>
+        </div>
+
     </div>
 
-    <!-- Preview Card -->
-    <div class="preview-card">
-        <div class="preview-header">
-            <div class="preview-icon">AM</div>
-            <div>
-                <div class="preview-title">
-                    AMH Modding
-                    <span class="badge">🔗 Official</span>
-                </div>
-                <div class="preview-domain">🌐 amh-modding.xyz <span class="verified">✓ Verified</span></div>
-            </div>
-        </div>
-        <div class="preview-description">
-            AMH modding is a website where people can post <strong>APKs</strong> and 
-            <strong>modding things</strong>. This website was made by <strong>Rainyy</strong>.
-        </div>
-        <div class="preview-tags">
-            <span class="highlight">📱 APK</span>
-            <span>🛠️ Modding</span>
-            <span>🎮 Games</span>
-            <span>🔧 Tools</span>
-            <span>👥 Community</span>
-        </div>
-        <div class="preview-footer">
-            <div class="stats">
-                <span>📥 <span id="totalDownloads">0</span> downloads</span>
-                <span>👤 <span id="totalMembers">0</span> members</span>
-                <span>📝 <span id="totalPosts">0</span> posts</span>
-            </div>
-            <a href="#" class="action-btn">🚀 Visit Website</a>
-        </div>
-        <div class="preview-credit">
-            AMH is founded by <a href="#">Rainyy</a> • <a href="#">.gg/Rfm9ZnfNX5</a>
-        </div>
-    </div>
+    <script>
+        (function() {
+            // ─── CHANGE THIS TO YOUR SONG FILE ───
+            const songFile = 'your-song.mp3';  // <-- put your MP3/WAV filename here
 
-    <!-- OFFICIAL APKS -->
-    <div class="section-header" id="official">
-        <h2>🏛️ Official APKs <span class="official-tag">Verified</span></h2>
-    </div>
-    <div class="apk-grid" id="officialApks"></div>
+            // Create the audio player
+            const audio = new Audio(songFile);
+            audio.loop = true;          // keep repeating
+            audio.volume = 0.7;         // 0.0 to 1.0
 
-    <!-- COMMUNITY APKS -->
-    <div class="section-header" id="community">
-        <h2>👥 Community APKs <span class="community-tag">Community</span></h2>
-    </div>
-    <div class="apk-grid" id="communityApks"></div>
+            const soundBtn = document.getElementById('soundToggle');
+            let isPlaying = false;
 
-    <!-- POST FORM -->
-    <div class="post-form" id="upload">
-        <h3>📤 Post an APK</h3>
-        <div id="postPermission" class="warning">
-            ⚠️ Please <strong>login</strong> to post APKs. Only <strong>Rainyy.mods</strong> can post Official APKs.
-        </div>
-        
-        <div class="form-row">
-            <div class="full-width">
-                <label>APK Title *</label>
-                <input type="text" id="apkTitle" placeholder="Enter APK name..." maxlength="100">
-            </div>
-            <div class="full-width">
-                <label>Description *</label>
-                <textarea id="apkDesc" placeholder="Describe your mod/APK..."></textarea>
-            </div>
-            <div>
-                <label>Version *</label>
-                <input type="text" id="apkVersion" placeholder="v1.0.0">
-            </div>
-            <div>
-                <label>File Size *</label>
-                <input type="text" id="apkSize" placeholder="50 MB">
-            </div>
-            <div class="full-width">
-                <label>Download Link *</label>
-                <input type="url" id="apkLink" placeholder="https://example.com/download.apk">
-            </div>
-            <div class="full-width">
-                <label>Category</label>
-                <select id="apkCategory">
-                    <option value="community">👥 Community</option>
-                    <option value="official">🏛️ Official (Rainyy.mods only)</option>
-                </select>
-            </div>
-        </div>
-        <div class="btn-row">
-            <button class="btn" id="postBtn" onclick="postAPK()">📤 Post APK</button>
-            <button class="btn secondary" onclick="clearForm()">🗑️ Clear</button>
-        </div>
-    </div>
-
-    <div class="footer">
-        <p>AMH Modding • Founded by <a href="#">Rainyy</a> • <a href="#">.gg/Rfm9ZnfNX5</a></p>
-        <p style="margin-top: 6px; color: #2a3248;">© 2026 AMH Modding • Made with ❤️ by Rainyy</p>
-    </div>
-</div>
-
-<!-- LOGIN MODAL -->
-<div class="modal-overlay hidden" id="loginModal">
-    <div class="modal">
-        <h2>🔐 AMH Modding</h2>
-        <div class="subtitle">Login or register to post APKs</div>
-        
-        <div class="tab-btns">
-            <button class="active" onclick="switchAuthTab('login')">🔑 Login</button>
-            <button onclick="switchAuthTab('register')">📝 Register</button>
-        </div>
-
-        <div class="tab-content active" id="auth-login">
-            <div class="error" id="loginError">❌ Invalid username or password</div>
-            <label>👤 Username</label>
-            <input type="text" id="loginUsername" placeholder="Enter your username...">
-            <label>🔑 Password</label>
-            <input type="password" id="loginPassword" placeholder="Enter your password...">
-            <button class="btn" onclick="loginUser()">🚀 Login</button>
-        </div>
-
-        <div class="tab-content" id="auth-register">
-            <div class="error" id="registerError">❌ That username is already taken</div>
-            <div class="success" id="registerSuccess">✅ Account created! Please login.</div>
-            <label>👤 Username</label>
-            <input type="text" id="registerUsername" placeholder="Choose a username...">
-            <label>🔑 Password</label>
-            <input type="password" id="registerPassword" placeholder="Choose a password...">
-            <label>🔑 Confirm Password</label>
-            <input type="password" id="registerConfirm" placeholder="Confirm your password...">
-            <button class="btn" onclick="registerUser()">📝 Create Account</button>
-        </div>
-
-        <div class="info-text">Only <strong>Rainyy.mods</strong> can post Official APKs</div>
-    </div>
-</div>
-
-<!-- Toast -->
-<div class="toast" id="toast"></div>
-
-<script>
-// ============================================================
-// WEBHOOK URL - CHANGE THIS TO YOUR DISCORD WEBHOOK
-// ============================================================
-const WEBHOOK_URL = 'https://discord.com/api/webhooks/1531636978968166511/FNJkNkdO886xHYq4LF4tvUWpIB4lQyk0aonmzXI7EUXnlPhpqbGxIzbwbTjf9FLCjnn3';
-
-// ============================================================
-// STORAGE
-// ============================================================
-const USERS_KEY = 'amh_users';
-const APKS_KEY = 'amh_apks';
-const SESSION_KEY = 'amh_session';
-
-function getUsers() {
-    try { return JSON.parse(localStorage.getItem(USERS_KEY)) || {}; } catch { return {}; }
-}
-
-function saveUsers(users) {
-    localStorage.setItem(USERS_KEY, JSON.stringify(users));
-}
-
-function getApks() {
-    try { return JSON.parse(localStorage.getItem(APKS_KEY)) || []; } catch { return []; }
-}
-
-function saveApks(apks) {
-    localStorage.setItem(APKS_KEY, JSON.stringify(apks));
-}
-
-function getSession() {
-    try { return JSON.parse(localStorage.getItem(SESSION_KEY)) || null; } catch { return null; }
-}
-
-function saveSession(username) {
-    if (username) {
-        localStorage.setItem(SESSION_KEY, JSON.stringify({ username, timestamp: Date.now() }));
-    } else {
-        localStorage.removeItem(SESSION_KEY);
-    }
-}
-
-// ============================================================
-// HELPERS
-// ============================================================
-function generateId() {
-    return Date.now() + '_' + Math.random().toString(36).substr(2, 9);
-}
-
-function escapeHtml(text) {
-    if (!text) return '';
-    const div = document.createElement('div');
-    div.textContent = text;
-    return div.innerHTML;
-}
-
-function showToast(message, type = 'info') {
-    const toast = document.getElementById('toast');
-    toast.textContent = message;
-    toast.className = 'toast ' + type;
-    toast.classList.add('show');
-    clearTimeout(toast._timeout);
-    toast._timeout = setTimeout(() => {
-        toast.classList.remove('show');
-    }, 3500);
-}
-
-function scrollToSection(id) {
-    const element = document.getElementById(id);
-    if (element) {
-        const offset = 80;
-        const elementPosition = element.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - offset;
-        window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-    }
-}
-
-// ============================================================
-// SHARE / EXPORT SYSTEM
-// ============================================================
-function generateShareLink() {
-    const apks = getApks();
-    if (apks.length === 0) {
-        showToast('❌ No APKs to share!', 'error');
-        return;
-    }
-    
-    // Create a shareable JSON file
-    const data = {
-        version: '1.0',
-        exported: new Date().toISOString(),
-        apks: apks,
-        total: apks.length
-    };
-    
-    const json = JSON.stringify(data, null, 2);
-    const blob = new Blob([json], { type: 'application/json' });
-    const url = URL.createObjectURL(blob);
-    
-    // Create download link
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `amh_apks_${new Date().toISOString().slice(0,10)}.json`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-    
-    showToast(`📤 Exported ${apks.length} APKs to JSON file!`, 'success');
-}
-
-function importApks(event) {
-    const file = event.target.files[0];
-    if (!file) return;
-    
-    const reader = new FileReader();
-    reader.onload = function(e) {
-        try {
-            const data = JSON.parse(e.target.result);
-            
-            if (!data.apks || !Array.isArray(data.apks)) {
-                showToast('❌ Invalid file format', 'error');
-                return;
-            }
-            
-            const currentApks = getApks();
-            const newApks = data.apks;
-            
-            // Merge - check for duplicates by link
-            const existingLinks = new Set(currentApks.map(a => a.link));
-            let added = 0;
-            let skipped = 0;
-            
-            newApks.forEach(apk => {
-                if (!existingLinks.has(apk.link)) {
-                    // Generate new ID to avoid conflicts
-                    apk.id = generateId();
-                    currentApks.push(apk);
-                    existingLinks.add(apk.link);
-                    added++;
+            function toggleSong() {
+                if (isPlaying) {
+                    audio.pause();
+                    soundBtn.textContent = '♫ PAUSED';
+                    soundBtn.classList.remove('playing');
+                    isPlaying = false;
                 } else {
-                    skipped++;
+                    // Resume if paused, or start fresh
+                    audio.play().catch(err => {
+                        // Auto-play blocked by browser? Show a hint.
+                        alert('Click again to play – browser requires a user gesture.');
+                        console.warn('Playback failed:', err);
+                    });
+                    soundBtn.textContent = '♫ PLAYING';
+                    soundBtn.classList.add('playing');
+                    isPlaying = true;
                 }
-            });
-            
-            saveApks(currentApks);
-            renderApks();
-            updateUI();
-            
-            showToast(`📥 Imported ${added} APKs (${skipped} skipped - duplicates)`, 'success');
-        } catch (error) {
-            showToast('❌ Error reading file: ' + error.message, 'error');
-        }
-    };
-    reader.readAsText(file);
-    event.target.value = ''; // Reset input
-}
-
-// ============================================================
-// WEBHOOK SYSTEM
-// ============================================================
-async function sendWebhook(apkData) {
-    if (!WEBHOOK_URL) {
-        console.log('⚠️ No webhook URL set');
-        return false;
-    }
-    
-     try {
-        const payload = {
-            content: '@everyone 🏛️ **NEW OFFICIAL APK RELEASED!**',
-            embeds: [{
-                title: '📱 ' + apkData.title,
-                color: 0xF7971E,
-                fields: [
-                    { name: '📝 Description', value: apkData.description || 'No description provided', inline: false },
-                    { name: '📦 Version', value: apkData.version || 'N/A', inline: true },
-                    { name: '💾 Size', value: apkData.size || 'N/A', inline: true },
-                    { name: '👤 Posted By', value: apkData.author || 'Unknown', inline: true },
-                    { name: '🔗 Download Link', value: `[Click Here to Download](${apkData.link || '#'})`, inline: false }
-                ],
-                footer: { text: 'AMH Modding • Official APK Release' },
-                timestamp: new Date().toISOString()
-            }],
-            username: 'AMH Modding'
-        };
-        
-        const response = await fetch(WEBHOOK_URL, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload)
-        });
-        
-        if (response.ok) {
-            showToast('📨 Webhook sent to Discord!', 'success');
-            return true;
-        } else {
-            console.error('Webhook error:', await response.text());
-            showToast('❌ Webhook failed (HTTP ' + response.status + ')', 'error');
-            return false;
-        }
-    } catch (error) {
-        console.error('Webhook error:', error);
-        showToast('❌ Webhook error: ' + error.message, 'error');
-        return false;
-    }
-}
-
-// ============================================================
-// AUTH SYSTEM
-// ============================================================
-function getCurrentUser() {
-    const session = getSession();
-    if (session && session.username) {
-        const users = getUsers();
-        if (users[session.username]) {
-            return session.username;
-        }
-    }
-    return null;
-}
-
-function registerUser() {
-    const username = document.getElementById('registerUsername').value.trim();
-    const password = document.getElementById('registerPassword').value.trim();
-    const confirm = document.getElementById('registerConfirm').value.trim();
-    const errorEl = document.getElementById('registerError');
-    const successEl = document.getElementById('registerSuccess');
-    
-    errorEl.classList.remove('show');
-    successEl.classList.remove('show');
-    
-    if (!username || !password || !confirm) {
-        errorEl.textContent = '❌ Please fill in all fields';
-        errorEl.classList.add('show');
-        return;
-    }
-    
-    if (password !== confirm) {
-        errorEl.textContent = '❌ Passwords do not match';
-        errorEl.classList.add('show');
-        return;
-    }
-    
-    if (password.length < 4) {
-        errorEl.textContent = '❌ Password must be at least 4 characters';
-        errorEl.classList.add('show');
-        return;
-    }
-    
-    const users = getUsers();
-    const existing = Object.keys(users).find(u => u.toLowerCase() === username.toLowerCase());
-    if (existing) {
-        errorEl.textContent = '❌ That username is already taken';
-        errorEl.classList.add('show');
-        return;
-    }
-    
-    users[username] = { password, created: Date.now() };
-    saveUsers(users);
-    
-    successEl.classList.add('show');
-    document.getElementById('registerUsername').value = '';
-    document.getElementById('registerPassword').value = '';
-    document.getElementById('registerConfirm').value = '';
-    
-    setTimeout(() => {
-        switchAuthTab('login');
-        document.getElementById('loginUsername').value = username;
-        successEl.classList.remove('show');
-        showToast('✅ Account created! Please login.', 'success');
-    }, 1500);
-}
-
-function loginUser() {
-    const username = document.getElementById('loginUsername').value.trim();
-    const password = document.getElementById('loginPassword').value.trim();
-    const errorEl = document.getElementById('loginError');
-    
-    errorEl.classList.remove('show');
-    
-    if (!username || !password) {
-        errorEl.textContent = '❌ Please fill in all fields';
-        errorEl.classList.add('show');
-        return;
-    }
-    
-    const users = getUsers();
-    const existing = Object.keys(users).find(u => u.toLowerCase() === username.toLowerCase());
-    
-    if (!existing) {
-        errorEl.textContent = '❌ User does not exist';
-        errorEl.classList.add('show');
-        return;
-    }
-    
-    if (users[existing].password !== password) {
-        errorEl.textContent = '❌ Incorrect password';
-        errorEl.classList.add('show');
-        return;
-    }
-    
-    saveSession(existing);
-    document.getElementById('loginModal').classList.add('hidden');
-    document.getElementById('loginUsername').value = '';
-    document.getElementById('loginPassword').value = '';
-    updateUI();
-    showToast(`✅ Welcome back, ${existing}!`, 'success');
-}
-
-function logoutUser() {
-    if (!confirm('Logout?')) return;
-    saveSession(null);
-    updateUI();
-    showToast('👋 Logged out', 'info');
-}
-
-function openModal() {
-    document.getElementById('loginModal').classList.remove('hidden');
-}
-
-function switchAuthTab(tab) {
-    document.querySelectorAll('.tab-btns button').forEach(b => b.classList.remove('active'));
-    document.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
-    
-    if (tab === 'login') {
-        document.querySelector('.tab-btns button:first-child').classList.add('active');
-        document.getElementById('auth-login').classList.add('active');
-    } else {
-        document.querySelector('.tab-btns button:last-child').classList.add('active');
-        document.getElementById('auth-register').classList.add('active');
-    }
-    
-    document.getElementById('loginError').classList.remove('show');
-    document.getElementById('registerError').classList.remove('show');
-    document.getElementById('registerSuccess').classList.remove('show');
-}
-
-document.addEventListener('keydown', function(e) {
-    if (e.key === 'Enter') {
-        const modal = document.getElementById('loginModal');
-        if (!modal.classList.contains('hidden')) {
-            if (document.getElementById('auth-login').classList.contains('active')) {
-                loginUser();
-            } else {
-                registerUser();
             }
-        }
-    }
-});
 
-// ============================================================
-// APK SYSTEM
-// ============================================================
-async function postAPK() {
-    const currentUser = getCurrentUser();
-    if (!currentUser) {
-        showToast('❌ Please login first!', 'error');
-        return;
-    }
-    
-    const title = document.getElementById('apkTitle').value.trim();
-    const desc = document.getElementById('apkDesc').value.trim();
-    const version = document.getElementById('apkVersion').value.trim();
-    const size = document.getElementById('apkSize').value.trim();
-    const link = document.getElementById('apkLink').value.trim();
-    const category = document.getElementById('apkCategory').value;
-    
-    if (!title || !desc || !version || !size || !link) {
-        showToast('❌ Please fill in all fields', 'error');
-        return;
-    }
-    
-    if (category === 'official' && currentUser.toLowerCase() !== 'rainyy.mods') {
-        showToast('❌ Only Rainyy.mods can post Official APKs!', 'error');
-        return;
-    }
-    
-    const apks = getApks();
-    const newApk = {
-        id: generateId(),
-        title: title,
-        description: desc,
-        version: version,
-        size: size,
-        link: link,
-        category: category,
-        author: currentUser,
-        timestamp: Date.now(),
-        downloads: 0
-    };
-    
-    apks.push(newApk);
-    saveApks(apks);
-    renderApks();
-    clearForm();
-    updateUI();
-    
-    if (category === 'official') {
-        showToast('📨 Sending webhook...', 'info');
-        await sendWebhook(newApk);
-    }
-    
-    showToast(`✅ ${category === 'official' ? 'Official' : 'Community'} APK posted!`, 'success');
-}
+            // Update button state when the song ends naturally (if not looping)
+            audio.addEventListener('ended', () => {
+                if (audio.loop) {
+                    // if loop is true, it won't fire 'ended' – but just in case
+                    return;
+                }
+                soundBtn.textContent = '♫ PAUSED';
+                soundBtn.classList.remove('playing');
+                isPlaying = false;
+            });
 
-function deleteApk(id) {
-    if (!confirm('Delete this APK?')) return;
-    let apks = getApks();
-    apks = apks.filter(a => a.id !== id);
-    saveApks(apks);
-    renderApks();
-    updateUI();
-    showToast('🗑️ APK deleted', 'error');
-}
+            // Click to toggle
+            soundBtn.addEventListener('click', toggleSong);
 
-function clearForm() {
-    document.getElementById('apkTitle').value = '';
-    document.getElementById('apkDesc').value = '';
-    document.getElementById('apkVersion').value = '';
-    document.getElementById('apkSize').value = '';
-    document.getElementById('apkLink').value = '';
-    document.getElementById('apkCategory').value = 'community';
-}
-
-function downloadApk(link, title) {
-    if (link && link.startsWith('http')) {
-        let apks = getApks();
-        const apk = apks.find(a => a.link === link);
-        if (apk) {
-            apk.downloads = (apk.downloads || 0) + 1;
-            saveApks(apks);
-            renderApks();
-        }
-        window.open(link, '_blank');
-        showToast(`⬇️ Opening: ${title}...`, 'success');
-    } else {
-        showToast('❌ Invalid download link', 'error');
-    }
-}
-
-// ============================================================
-// RENDER APKS
-// ============================================================
-function renderApks() {
-    const apks = getApks();
-    const officialApks = apks.filter(a => a.category === 'official');
-    const communityApks = apks.filter(a => a.category === 'community');
-    
-    document.getElementById('totalPosts').textContent = apks.length;
-    document.getElementById('apkCount').textContent = apks.length;
-    const totalDownloads = apks.reduce((sum, a) => sum + (a.downloads || 0), 0);
-    document.getElementById('totalDownloads').textContent = totalDownloads > 1000 ? (totalDownloads/1000).toFixed(1) + 'K' : totalDownloads;
-    
-    const users = getUsers();
-    document.getElementById('totalMembers').textContent = Object.keys(users).length;
-    
-    renderApkList('officialApks', officialApks, 'official');
-    renderApkList('communityApks', communityApks, 'community');
-}
-
-function renderApkList(containerId, apks, category) {
-    const container = document.getElementById(containerId);
-    
-    if (apks.length === 0) {
-        container.innerHTML = `<div style="grid-column: 1/-1; text-align: center; color: #4a5268; padding: 40px; font-size: 1rem;">📭 No ${category} APKs yet.</div>`;
-        return;
-    }
-    
-    const sorted = [...apks].sort((a, b) => b.timestamp - a.timestamp);
-    const currentUser = getCurrentUser();
-    const isAdmin = currentUser && currentUser.toLowerCase() === 'rainyy.mods';
-    
-    let html = '';
-    sorted.forEach(apk => {
-        const badge = category === 'official' 
-            ? '<span class="apk-badge official-badge">Official</span>'
-            : '<span class="apk-badge community-badge">Community</span>';
-        
-        const isAuthor = currentUser === apk.author || isAdmin;
-        const downloads = apk.downloads || 0;
-        
-        html += `
-            <div class="apk-card ${category}">
-                <button class="apk-delete" onclick="deleteApk('${apk.id}')" ${isAuthor ? '' : 'style="display:none;"'}>✕</button>
-                <div class="apk-icon">📱</div>
-                <div class="apk-title">
-                    ${escapeHtml(apk.title)}
-                    ${badge}
-                </div>
-                <div class="apk-version">${escapeHtml(apk.version)} • ${escapeHtml(apk.size)}</div>
-                <div class="apk-desc">${escapeHtml(apk.description)}</div>
-                <div class="apk-author">👤 ${escapeHtml(apk.author)}</div>
-                <div class="apk-link" onclick="window.open('${apk.link}', '_blank')">🔗 ${escapeHtml(apk.link)}</div>
-                <div class="apk-meta">
-                    <span>⬇️ ${downloads} downloads</span>
-                    <button class="download-btn ${category === 'official' ? '' : 'community-btn'}" onclick="downloadApk('${apk.link}', '${escapeHtml(apk.title)}')">⬇️ Download</button>
-                </div>
-            </div>
-        `;
-    });
-    
-    container.innerHTML = html;
-}
-
-// ============================================================
-// UI UPDATE
-// ============================================================
-function updateUI() {
-    const currentUser = getCurrentUser();
-    const loginBtn = document.getElementById('loginBtn');
-    const logoutBtn = document.getElementById('logoutBtn');
-    const userBadge = document.getElementById('userBadge');
-    const userDisplay = document.getElementById('currentUserDisplay');
-    const postPermission = document.getElementById('postPermission');
-    const categorySelect = document.getElementById('apkCategory');
-    const postBtn = document.getElementById('postBtn');
-    
-    if (currentUser) {
-        loginBtn.style.display = 'none';
-        logoutBtn.style.display = 'inline-block';
-        userBadge.style.display = 'inline';
-        userDisplay.textContent = currentUser;
-        
-        const isAdmin = currentUser.toLowerCase() === 'rainyy.mods';
-        
-        if (isAdmin) {
-            postPermission.innerHTML = '✅ You are <strong>Rainyy.mods</strong> - you can post <strong>Official</strong> and <strong>Community</strong> APKs!';
-            postPermission.style.background = '#1e3a2a';
-            postPermission.style.border = '1px solid #2a6b3f';
-            postPermission.style.color = '#7ddfa0';
-            categorySelect.disabled = false;
-            postBtn.disabled = false;
-            postBtn.style.opacity = '1';
-            postBtn.style.cursor = 'pointer';
-        } else {
-            postPermission.innerHTML = `✅ Logged in as <strong>${currentUser}</strong> - you can post <strong>Community</strong> APKs. Only <strong>Rainyy.mods</strong> can post Official APKs.`;
-            postPermission.style.background = '#1e2a3a';
-            postPermission.style.border = '1px solid #2a3a4a';
-            postPermission.style.color = '#8a9bb5';
-            categorySelect.value = 'community';
-            categorySelect.disabled = true;
-            postBtn.disabled = false;
-            postBtn.style.opacity = '1';
-            postBtn.style.cursor = 'pointer';
-        }
-    } else {
-        loginBtn.style.display = 'inline-block';
-        logoutBtn.style.display = 'none';
-        userBadge.style.display = 'none';
-        userDisplay.textContent = '';
-        
-        postPermission.innerHTML = '⚠️ Please <strong>login</strong> to post APKs. Only <strong>Rainyy.mods</strong> can post Official APKs.';
-        postPermission.style.background = '#1e2a3a';
-        postPermission.style.border = '1px solid #2a3a4a';
-        postPermission.style.color = '#8a9bb5';
-        categorySelect.disabled = true;
-        postBtn.disabled = true;
-        postBtn.style.opacity = '0.5';
-        postBtn.style.cursor = 'not-allowed';
-    }
-    
-    renderApks();
-}
-
-// ============================================================
-// INIT
-// ============================================================
-// Create default admin account
-const users = getUsers();
-if (!users['Rainyy.mods']) {
-    users['Rainyy.mods'] = { password: 'admin123', created: Date.now() };
-    saveUsers(users);
-}
-
-// Add example APKs if empty
-const apks = getApks();
-if (apks.length === 0) {
-    const examples = [
-        {
-            id: generateId(),
-            title: 'Mod Manager Pro',
-            description: 'Ultimate mod manager with built-in patcher and installer.',
-            version: 'v3.2.1',
-            size: '24 MB',
-            link: 'https://example.com/mod-manager.apk',
-            category: 'official',
-            author: 'Rainyy.mods',
-            timestamp: Date.now() - 3600000,
-            downloads: 2341
-        },
-        {
-            id: generateId(),
-            title: 'Game X - Unlimited',
-            description: 'Full mod with unlimited coins, gems, and all characters unlocked.',
-            version: 'v4.5.0',
-            size: '156 MB',
-            link: 'https://example.com/game-x-mod.apk',
-            category: 'official',
-            author: 'Rainyy.mods',
-            timestamp: Date.now() - 7200000,
-            downloads: 15789
-        },
-        {
-            id: generateId(),
-            title: 'Random Mod v2',
-            description: 'Community-made mod with new levels and custom characters.',
-            version: 'v2.0.0',
-            size: '67 MB',
-            link: 'https://example.com/random-mod.apk',
-            category: 'community',
-            author: 'CommunityMember',
-            timestamp: Date.now() - 1800000,
-            downloads: 456
-        },
-        {
-            id: generateId(),
-            title: 'Skin Pack Ultra',
-            description: '200+ custom skins and themes for popular games.',
-            version: 'v1.2.0',
-            size: '34 MB',
-            link: 'https://example.com/skin-pack.apk',
-            category: 'community',
-            author: 'SkinMaker',
-            timestamp: Date.now() - 2400000,
-            downloads: 890
-        }
-    ];
-    saveApks(examples);
-}
-
-updateUI();
-
-console.log('✅ AMH Modding loaded!');
-console.log('📤 Use "Share APKs" to export and "Import APKs" to share with friends!');
-</script>
-
+            // Optional: clean up if page is closed
+            window.addEventListener('beforeunload', () => {
+                audio.pause();
+            });
+        })();
+    </script>
 </body>
 </html>
